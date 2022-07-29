@@ -5,7 +5,8 @@ String registration = 'y'
 
 def login(username, password) {
     def post = new URL("http://django:8000/login/").openConnection();
-    def message = '{"username":' + username + "," + '"password":' + password + '}'
+    def message2 = '{"username":' + username + "," + '"password":' + password + '}'
+    def message = '{"username":admin,"password":admin1212}'
     post.setRequestMethod("POST")
     post.setDoOutput(true)
     post.setRequestProperty("Content-Type", "application/json")
