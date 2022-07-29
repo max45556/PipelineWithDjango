@@ -3,7 +3,7 @@ node {
         git branch: 'main', url: 'https://github.com/max45556/PipelineWithDjango.git'
         def file = new File("/var/jenkins_home/workspace/DjangoPipe/snippet.py")
         String fileContent = file.text
-        return fileContent
+        println(fileContent)
     }
     stage('Post request') {
     def post = new URL("http://django:8000/login/").openConnection();
