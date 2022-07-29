@@ -1,6 +1,12 @@
 node {
     stage('Preparation') { // for display purposes
         git branch: 'main', url: 'https://github.com/max45556/PipelineWithDjango.git'
+        new File("snippet.py").withReader('UTF-8') { reader ->
+        def line
+          while ((line = reader.readLine()) != null) {
+          println "${line}"
+    }
+}
     }
     stage('Post request') {
     def post = new URL("http://django:8000/login/").openConnection();
