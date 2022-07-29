@@ -10,10 +10,10 @@ def login(username, password) {
     post.setDoOutput(true)
     post.setRequestProperty("Content-Type", "application/json")
     post.getOutputStream().write(message.getBytes("UTF-8"));
-    def postRC = post.getResponseCode();
-    println(message)
-    println("Response code" + postRC);
-    println("Response" + post.getInputStream().getText());
+    if (post.getResponseCode() == HttpURLConnection.HTTP_OK) {
+    def json = new JsonSlurper().parseText(post.getContent())
+    println(json)
+    }
 }
 
 node {
