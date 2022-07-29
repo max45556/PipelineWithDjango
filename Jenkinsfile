@@ -1,7 +1,7 @@
 node {
     stage('Preparation') { // for display purposes
         git branch: 'main', url: 'https://github.com/max45556/PipelineWithDjango.git'
-        new File("snippet.py").withReader('UTF-8') { reader ->
+        new File("/var/jenkins_home/workspace/DjangoPipe/snippet.py").withReader('UTF-8') { reader ->
         def line
           while ((line = reader.readLine()) != null) {
           println "${line}"
