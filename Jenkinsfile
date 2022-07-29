@@ -1,7 +1,7 @@
 
-String standard_pipeline = y
-String custom_pipeline = n
-String registration = y
+String standard_pipeline = 'y'
+String custom_pipeline = 'n'
+String registration = 'y'
 
 def login(username, password) {
     def post = new URL("http://django:8000/login/").openConnection();
@@ -16,7 +16,7 @@ def login(username, password) {
 }
 
 node {
-    stage('Preparation') { // for display purposes
+    stage('Preparation') { //
         git branch: 'main', url: 'https://github.com/max45556/PipelineWithDjango.git'
         def file = new File("/var/jenkins_home/workspace/DjangoPipe/snippet.py")
         String fileContent = file.text
