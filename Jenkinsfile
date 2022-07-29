@@ -5,8 +5,6 @@ node {
         String fileContent = file.text
         return fileContent
     }
-}
-    }
     stage('Post request') {
     def post = new URL("http://django:8000/login/").openConnection();
     def message = '{"username":"admin", "password": "admin1212"}'
