@@ -16,10 +16,11 @@ def login(username, password) {
       } else {
       br = new BufferedReader(new InputStreamReader(post.getErrorStream()));
       }
+    print("Body" + br)
     }
 
 node {
-    stage('Preparation') { //
+    stage('Preparation') {
         git branch: 'main', url: 'https://github.com/max45556/PipelineWithDjango.git'
         def file = new File("/var/jenkins_home/workspace/DjangoPipe/snippet.py")
         String fileContent = file.text
