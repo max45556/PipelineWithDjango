@@ -15,21 +15,26 @@ def login(username, password) {
     post.setRequestProperty("Accept", "application/json")
     post.getOutputStream().write(message.getBytes("UTF-8"));
     if (100 <= post.getResponseCode() && post.getResponseCode() <= 399) {
-      print(post.getInputStream().getText()));
+      println(post.getInputStream().getText()));
       }
     }
 
-node {
-    stage('Preparation') {
-        git branch: 'main', url: 'https://github.com/max45556/PipelineWithDjango.git'
-        def file = new File("/var/jenkins_home/workspace/DjangoPipe/snippet.py")
-        String fileContent = file.text
-        println("Snippet to analyze: \n" + fileContent)
+    node {
+        stage('Preparation') {
+            git branch: 'main', url: 'https://github.com/max45556/PipelineWithDjango.git'
+            def file = new File("/var/jenkins_home/workspace/DjangoPipe/snippet.py")
+            String fileContent = file.text
+            println("Snippet to analyze: \n" + fileContent)
+        }
+        stage('Login') {
+          login('admin', 'admin1212')
+        }
+        stage('ciccio') {
+        def get = new URL("http://django:8000/help").openConnection();
+        def getRC = get.getResponseCode();
+        println(getRC);
+        if(getRC.equals(200)) {
+            println(get.getInputStream().getText());
+            }
+        }
     }
-    stage('Login') {
-      login('admin', 'admin1212')
-      print("ACC" + acc_token + "ref" +  ref_token + "USER")
-    }
-    stage('ciccio') {
-    }
-}
