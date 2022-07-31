@@ -28,6 +28,4 @@ node {
     stage('Login') {
       login('admin', 'admin1212')
     }
-    stage('ciccio') {
-    }
 }
