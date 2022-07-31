@@ -15,7 +15,7 @@ def login(username, password) {
     post.setRequestProperty("Accept", "application/json")
     post.getOutputStream().write(message.getBytes("UTF-8"));
     if (100 <= post.getResponseCode() && post.getResponseCode() <= 399) {
-      JSONObject credential = new post.getInputStream().getJSONObject();
+      JSONObject credential = post.getInputStream().getJSONObject();
       acc_token = credential.getJSONObject("access")
       ref_token = credential.getJSONObject("refresh")
       user_id = credential.getJSONObject("user_id")
