@@ -15,7 +15,7 @@ def login(username, password) {
     post.setRequestProperty("Accept", "application/json")
     post.getOutputStream().write(message.getBytes("UTF-8"));
     if (100 <= post.getResponseCode() && post.getResponseCode() <= 399) {
-      String string = post.getInputStream().getText());
+      JSONObject j = post.getInputStream().getText());
       }
     }
 
