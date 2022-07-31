@@ -19,7 +19,7 @@ def login(username, password) {
       String json = post.getInputStream().getText();
       JsonSlurper slurper = new JsonSlurper()
       Map parsedJson = slurper.parseText(json)
-      println(parsedJson.access_token)
+      println(parsedJson.access)
       }
     }
 
