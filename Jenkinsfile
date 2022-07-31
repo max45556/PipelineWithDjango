@@ -1,3 +1,4 @@
+
 String standard_pipeline = 'y'
 String custom_pipeline = 'n'
 String registration = 'y'
@@ -14,8 +15,8 @@ def login(username, password) {
     post.setRequestProperty("Accept", "application/json")
     post.getOutputStream().write(message.getBytes("UTF-8"));
     if (100 <= post.getResponseCode() && post.getResponseCode() <= 399) {
-      print(connection.getInputStream());
-        }
+      print(post.getInputStream().getText()));
+      }
     }
 
 node {
@@ -27,5 +28,8 @@ node {
     }
     stage('Login') {
       login('admin', 'admin1212')
+      print("ACC" + acc_token + "ref" +  ref_token + "USER")
+    }
+    stage('ciccio') {
     }
 }
