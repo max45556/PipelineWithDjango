@@ -1,5 +1,3 @@
-import jenkins.model.*
-
 String standard_pipeline = 'y'
 String custom_pipeline = 'n'
 String registration = 'y'
