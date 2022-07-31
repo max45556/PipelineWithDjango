@@ -1,5 +1,4 @@
 import jenkins.model.*
-jenkins = Jenkins.instance
 
 String standard_pipeline = 'y'
 String custom_pipeline = 'n'
