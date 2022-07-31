@@ -1,4 +1,5 @@
 
+import groovy.json.JsonSlurper
 String standard_pipeline = 'y'
 String custom_pipeline = 'n'
 String registration = 'y'
