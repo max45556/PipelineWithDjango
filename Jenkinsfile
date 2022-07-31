@@ -11,7 +11,7 @@ def login(username, password) {
     post.setRequestProperty("Content-Type", "application/json")
     post.getOutputStream().write(message.getBytes("UTF-8"));
     if (post.getResponseCode() == HttpURLConnection.HTTP_OK) {
-        def json = new groovy.json.JsonSlurper().parseText(post.getContent())
+        println(post.getContent())
     }
     println(json)
     }
