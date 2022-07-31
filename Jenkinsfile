@@ -12,11 +12,7 @@ def login(username, password) {
     post.getOutputStream().write(message.getBytes("UTF-8"));
     BufferedReader br = null;
     if (100 <= post.getResponseCode() && post.getResponseCode() <= 399) {
-      br = new BufferedReader(new InputStreamReader(post.getInputStream()));
-      } else {
-      br = new BufferedReader(new InputStreamReader(post.getErrorStream()));
-      }
-    print("Body" + br)
+        println(post.getInputStream().getText());
     }
 
 node {
