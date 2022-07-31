@@ -19,22 +19,22 @@ def login(username, password) {
       }
     }
 
-    node {
-        stage('Preparation') {
-            git branch: 'main', url: 'https://github.com/max45556/PipelineWithDjango.git'
-            def file = new File("/var/jenkins_home/workspace/DjangoPipe/snippet.py")
-            String fileContent = file.text
-            println("Snippet to analyze: \n" + fileContent)
-        }
-        stage('Login') {
-          login('admin', 'admin1212')
-        }
-        stage('ciccio') {
-        def get = new URL("http://django:8000/help").openConnection();
-        def getRC = get.getResponseCode();
-        println(getRC);
-        if(getRC.equals(200)) {
-            println(get.getInputStream().getText());
-            }
+node {
+    stage('Preparation') {
+        git branch: 'main', url: 'https://github.com/max45556/PipelineWithDjango.git'
+        def file = new File("/var/jenkins_home/workspace/DjangoPipe/snippet.py")
+        String fileContent = file.text
+        println("Snippet to analyze: \n" + fileContent)
+    }
+    stage('Login') {
+      login('admin', 'admin1212')
+    }
+    stage('ciccio') {
+    def get = new URL("http://django:8000/help").openConnection();
+    def getRC = get.getResponseCode();
+    println(getRC);
+    if(getRC.equals(200)) {
+        println(get.getInputStream().getText());
         }
     }
+}
