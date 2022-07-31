@@ -14,6 +14,7 @@ def login(username, password) {
     if (100 <= post.getResponseCode() && post.getResponseCode() <= 399) {
         println(post.getInputStream().getText());
     }
+    }
 
 node {
     stage('Preparation') {
