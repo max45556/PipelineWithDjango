@@ -16,7 +16,10 @@ def login(username, password) {
     post.setRequestProperty("Accept", "application/json")
     post.getOutputStream().write(message.getBytes("UTF-8"));
     if (100 <= post.getResponseCode() && post.getResponseCode() <= 399) {
-      def jsonSlurper = new JsonSlurper(post.getInputStream());
+      String json = post.getInputStream();
+      JsonSlurper slurper = new JsonSlurper()
+      Map parsedJson = slurper.parseText(json)
+      println(parsedJson.access_token)
       }
     }
 
