@@ -16,7 +16,7 @@ def login(username, password) {
     post.getOutputStream().write(message.getBytes("UTF-8"));
     if (100 <= post.getResponseCode() && post.getResponseCode() <= 399) {
       print(connection.getInputStream());
-      }
+        }
     }
 
 node {
@@ -28,7 +28,6 @@ node {
     }
     stage('Login') {
       login('admin', 'admin1212')
-      print("ACC " + acc_token + " ref " +  ref_token + "USER " + user_id)
     }
     stage('ciccio') {
     }
