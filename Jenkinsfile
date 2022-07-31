@@ -13,7 +13,6 @@ def login(username, password) {
     if (post.getResponseCode() == HttpURLConnection.HTTP_OK) {
         println(post.getContent())
     }
-    println(json)
     }
 
 node {
