@@ -32,7 +32,7 @@ node {
         println("Snippet to analyze: \n" + fileContent)
     }
     stage('Login') {
-      def result = login('admin', 'admin1212')
+      def result = login('admn', 'admin1212')
       if (result.isClear) {
         println(result.reason)
       }
