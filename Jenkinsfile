@@ -30,9 +30,7 @@ Map language_identification() {
     post_language.getOutputStream().write(body.getBytes("UTF-8"))
     print(post_language.getResponseCode())
     String response = post_language.getInputStream().getText()
-    JsonSlurper slurper = new JsonSlurper()
-    Map parsedJson = slurper.parseText(response)
-    println("DIGEL " + parsedJson)
+    println("DIGEL " + response)
 }
 
 Map login(username, password) {
