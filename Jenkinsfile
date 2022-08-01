@@ -1,10 +1,10 @@
 
 import groovy.json.JsonSlurper
-def access_token = ''
-def refresh_token = ''
-def user_id = ''
-def logged = false
-def snippet
+access_token = ''
+refresh_token = ''
+user_id = ''
+logged = false
+snippet
 
 Map login(username, password) {
     def post_login = new URL("http://django:8000/login/").openConnection()
