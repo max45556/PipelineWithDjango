@@ -34,6 +34,21 @@ Map language_identification() {
     println(response)
 }
 
+Map reindent() {
+    String rov = "coap molto bello"
+    def post_language = new URL("http://django:8000/snippets/reindent/").openConnection()
+    def body = '{"code":' + '"' + snippet + '"}'
+    print(body)
+    post_language.setRequestMethod("POST")
+    post_language.setDoOutput(true)
+    post_language.setRequestProperty("Content-Type", "application/json; charset=utf-8")
+    post_language.setRequestProperty("Authorization", "Bearer " + access_token)
+    post_language.getOutputStream().write(body.getBytes("UTF-8"))
+    print(post_language.getResponseCode())
+    String response = post_language.getInputStream().getText()
+    println(response)
+}
+
 Map login(username, password) {
     def post_login = new URL("http://django:8000/login/").openConnection()
     def body = '{"username":' + '"' + username + '"' + "," + '"password":' + '"' + password + '"}'
@@ -77,7 +92,7 @@ node {
           get_user_snippets()
         }
         stage('Identify language') {
-          language_identification()
+          reindent()
         }
       }
 
