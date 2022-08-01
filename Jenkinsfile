@@ -62,5 +62,4 @@ node {
         get_user_snippets()
           }
         }
-      }
-}
+  }
