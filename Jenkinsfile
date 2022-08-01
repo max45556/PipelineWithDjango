@@ -28,13 +28,13 @@ Map login(username, password) {
 }
 
 node {
-    stage('Preparation') {
+    stage('Get snippet') {
         git branch: 'main', url: 'https://github.com/max45556/PipelineWithDjango.git'
         def file = new File("/var/jenkins_home/workspace/DjangoPipe/snippet.py")
         snippet = file.text
-        println("Snippet to analyze: \n" + snippet)
+        println("Snippet to analyze: \n\n" + snippet)
     }
-    stage('Login') {
+    stage('Logging') {
       def result = login('admin', 'admin1212')
       println(result.reason)
       if (result.isClear) {
