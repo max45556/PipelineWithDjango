@@ -21,8 +21,10 @@ Map login(username, password) {
       user_id = parsedJson.user_id
       return [isClear:true, reason:"GOOD"]
       }
-    return [isClear:false, reason:"BAD"]
-    }
+      else{
+        return [isClear:false, reason:"BAD"]
+        }
+      }
 
 node {
     stage('Preparation') {
