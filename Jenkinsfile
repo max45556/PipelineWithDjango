@@ -22,15 +22,18 @@ def get_user_snippets() {
 Map language_identification() {
     String rov = "coap molto bello"
     def post_language = new URL("http://django:8000/snippets/detect/").openConnection()
-    def body = '{"code":' + '"' + snippet + '"}''
+
+    Sring porcodio = "def merge(*args, missing_val = None):\n one of the smaller lists is shorter tham the others"
+    def body = '{"code":' + '"' + porcodio + '"}'
     post_language.setRequestMethod("POST")
     post_language.setDoOutput(true)
-    post_language.setRequestProperty("Content-Type", "application/json; charset=UTF-8")
+    post_language.setRequestProperty("Content-Type", "application/json")
+    get_request.setRequestProperty("Accept", "application/json")
     post_language.setRequestProperty("Authorization", "Bearer " + access_token)
     post_language.getOutputStream().write(body.getBytes("UTF-8"))
     print(post_language.getResponseCode())
     String response = post_language.getInputStream().getText()
-    println("DIGEL " + response)
+    println(response)
 }
 
 Map login(username, password) {
