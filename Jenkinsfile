@@ -25,8 +25,7 @@ Map language_identification() {
     def body = '{"code":' + '"' + snippet + '"}'
     post_language.setRequestMethod("POST")
     post_language.setDoOutput(true)
-    post_language.setRequestProperty("Content-Type", "text/html; charset=utf-8")
-    post_language.setRequestProperty("Accept", "application/json")
+    post_language.setRequestProperty("Content-Type", "application/json; charset=utf-8")
     post_language.setRequestProperty("Authorization", "Bearer " + access_token)
     post_language.getOutputStream().write(body.getBytes("UTF-8"))
     print(post_language.getResponseCode())
