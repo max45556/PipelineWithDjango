@@ -4,7 +4,7 @@ access_token = ''
 refresh_token = ''
 user_id = ''
 logged = false
-snippet
+snippet = ''
 
 Map login(username, password) {
     def post_login = new URL("http://django:8000/login/").openConnection()
@@ -22,10 +22,10 @@ Map login(username, password) {
       refresh_token = parsedJson.refresh
       user_id = parsedJson.user_id
       return [isClear:true, reason:"Login successfull"]
-      } else {
+    } else {
         return [isClear:false, reason: "Login error"]
-        }
       }
+}
 
 node {
     stage('Preparation') {
@@ -42,8 +42,8 @@ node {
         println("Access: " + access_token)
         println("Refresh: " + refresh_token)
         println("user_id: " + user_id)
+        }
       }
-    }
     if (logged) {
       stage('ciccio') {
         def get = new URL("http://django:8000/help").openConnection();
@@ -51,7 +51,7 @@ node {
         println(getRC);
         if(getRC.equals(200)) {
           println(get.getInputStream().getText())
+          }
         }
-    }
-}
+      }
 }
