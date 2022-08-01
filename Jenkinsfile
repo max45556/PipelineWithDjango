@@ -28,15 +28,11 @@ Map language_identification() {
     post_language.setRequestProperty("Accept", "application/json")
     post_language.setRequestProperty("Authorization", "Bearer " + access_token)
     post_language.getOutputStream().write(body.getBytes("UTF-8"))
-    if (post_language.getResponseCode() == 200) {
-      String response = post_language.getInputStream().getText()
-      JsonSlurper slurper = new JsonSlurper()
-      Map parsedJson = slurper.parseText(response)
-      println("DIGEL " + parsedJson)
-      return [isClear:true, reason:"Login successfull"]
-    } else {
-        return [isClear:false, reason: "Login error"]
-      }
+    print(post_language.getResponseCode())
+    String response = post_language.getInputStream().getText()
+    JsonSlurper slurper = new JsonSlurper()
+    Map parsedJson = slurper.parseText(response)
+    println("DIGEL " + parsedJson)
 }
 
 Map login(username, password) {
