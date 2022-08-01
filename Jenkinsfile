@@ -23,8 +23,8 @@ Map language_identification() {
     String rov = "coap molto bello"
     def post_language = new URL("http://django:8000/snippets/detect/").openConnection()
 
-    String porcodio = "ciao\n"
-    def body = '{"code":' + '"' + porcodio + '"}'
+    def object = jsonSlurper.parseText('{ "code": snippet })
+    def body = object
     post_language.setRequestMethod("POST")
     post_language.setDoOutput(true)
     post_language.setRequestProperty("Content-Type", "application/json")
