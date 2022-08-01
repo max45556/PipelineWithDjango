@@ -19,9 +19,10 @@ Map login(username, password) {
       access_token = parsedJson.access
       refresh_token = parsedJson.refresh
       user_id = parsedJson.user_id
-      return [isClear:true, reason:"GOOD"]
+      return [isClear:true, reason:"Login successfull"]
       } else {
-        return [isClear:true, reason: "" + post_login.getInputStream().getText()]
+        String response_error = post_login.getInputStream().getText();
+        return [isClear:true, reason: response_error]
         }
       }
 
