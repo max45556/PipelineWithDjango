@@ -1,26 +1,27 @@
 
 import groovy.json.JsonSlurper
-String standard_pipeline = 'y'
-String custom_pipeline = 'n'
-String registration = 'y'
-String acc_token = ''
-String ref_token = ''
+String access_token = ''
+String refresh_token = ''
 String user_id = ''
 
-def login(username, password) {
-    def post = new URL("http://django:8000/login/").openConnection();
-    def message = '{"username":' + '"' + username + '"' + "," + '"password":' + '"' + password + '"}'
-    post.setRequestMethod("POST")
-    post.setDoOutput(true)
-    post.setRequestProperty("Content-Type", "application/json")
-    post.setRequestProperty("Accept", "application/json")
-    post.getOutputStream().write(message.getBytes("UTF-8"));
+Map login(username, password) {
+    def post_login = new URL("http://django:8000/login/").openConnection();
+    def body = '{"username":' + '"' + username + '"' + "," + '"password":' + '"' + password + '"}'
+    post_login.setRequestMethod("POST")
+    post_login.setDoOutput(true)
+    post_login.setRequestProperty("Content-Type", "application/json")
+    post_login.setRequestProperty("Accept", "application/json")
+    post_login.getOutputStream().write(body.getBytes("UTF-8"));
     if (100 <= post.getResponseCode() && post.getResponseCode() <= 399) {
-      String json = post.getInputStream().getText();
+      String responde = post_login.getInputStream().getText();
       JsonSlurper slurper = new JsonSlurper()
-      Map parsedJson = slurper.parseText(json)
-      println(parsedJson.access)
+      Map parsedJson = slurper.parseText(responde)
+      access_token = parsedJson.access
+      refresh_token = parsedJson.refresh
+      user_id = parsedJson.user_id
+      return [isClear:true, reason:"GOOD"]
       }
+    return [isClear:false, reason:"BAD"]
     }
 
 node {
@@ -31,7 +32,10 @@ node {
         println("Snippet to analyze: \n" + fileContent)
     }
     stage('Login') {
-      login('admin', 'admin1212')
+      def result = login('admin', 'admin1212')
+      if (result.isClear) {
+        println(result.reason)
+      }
     }
     stage('ciccio') {
     def get = new URL("http://django:8000/help").openConnection();
