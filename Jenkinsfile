@@ -13,15 +13,17 @@ Map login(username, password) {
     post_login.setRequestProperty("Accept", "application/json")
     post_login.getOutputStream().write(body.getBytes("UTF-8"));
     if (post_login.getResponseCode() == 200) {
-      String responde = post_login.getInputStream().getText();
+      String response = post_login.getInputStream().getText();
       JsonSlurper slurper = new JsonSlurper()
-      Map parsedJson = slurper.parseText(responde)
+      Map parsedJson = slurper.parseText(response)
       access_token = parsedJson.access
       refresh_token = parsedJson.refresh
       user_id = parsedJson.user_id
       return [isClear:true, reason:"GOOD"]
       }
-        return [isClear:false, reason:"BAD"]
+      else {
+        return [isClear:false, reason:post_login.getInputStream().getText()]
+        }
       }
 
 node {
