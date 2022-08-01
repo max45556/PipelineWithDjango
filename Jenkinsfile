@@ -21,7 +21,7 @@ Map login(username, password) {
       user_id = parsedJson.user_id
       return [isClear:true, reason:"Login successfull"]
       } else {
-        return [isClear:true, reason: "Login error"]
+        return [isClear:false, reason: "Login error"]
         }
       }
 
@@ -36,6 +36,11 @@ node {
       def result = login('admn', 'admin1212')
       if (result.isClear) {
         println(result.reason)
+      }
+      else {
+        println(result.reason)
+        currentBuild.result = 'SUCCESS'
+        return
       }
     }
     stage('ciccio') {
