@@ -22,7 +22,6 @@ def get_user_snippets() {
 Map language_identification() {
     def post_language = new URL("http://django:8000/snippets/detect/").openConnection()
     def body = '{"code":' + '"' + snippet + '"}'
-    print(body)
     post_language.setRequestMethod("POST")
     post_language.setDoOutput(true)
     post_language.setRequestProperty("Content-Type", "application/json")
@@ -33,7 +32,7 @@ Map language_identification() {
       String response = post_language.getInputStream().getText()
       JsonSlurper slurper = new JsonSlurper()
       Map parsedJson = slurper.parseText(response)
-      println(parsedJson)
+      println("DIGEL " + parsedJson)
       return [isClear:true, reason:"Login successfull"]
     } else {
         return [isClear:false, reason: "Login error"]
