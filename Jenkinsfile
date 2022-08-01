@@ -21,8 +21,7 @@ Map login(username, password) {
       user_id = parsedJson.user_id
       return [isClear:true, reason:"Login successfull"]
       } else {
-        String response_error = post_login.getInputStream().getText();
-        return [isClear:true, reason: response_error]
+        return [isClear:true, reason: "Login error"]
         }
       }
 
