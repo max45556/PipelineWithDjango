@@ -6,6 +6,19 @@ user_id = ''
 logged = false
 snippet = ''
 
+Def get_user_snippets() {
+  def get_request = new URL("http://django:8000/snippets/").openConnection();
+  get_request.setRequestMethod("GET")
+  get_request.setRequestProperty("Content-Type", "application/json")
+  get_request.setRequestProperty("Accept", "application/json")
+  get_request.setRequestProperty("Authorization", "Bearer " + access_token)
+  def getRC = get_request.getResponseCode();
+  println(getRC);
+  if(getRC.equals(200)) {
+    println(get_request.getInputStream().getText())
+    }
+}
+
 Map login(username, password) {
     def post_login = new URL("http://django:8000/login/").openConnection()
     def body = '{"username":' + '"' + username + '"' + "," + '"password":' + '"' + password + '"}'
@@ -45,12 +58,8 @@ node {
         }
       }
     if (logged) {
-      stage('ciccio') {
-        def get = new URL("http://django:8000/help").openConnection();
-        def getRC = get.getResponseCode();
-        println(getRC);
-        if(getRC.equals(200)) {
-          println(get.getInputStream().getText())
+      stage('See user Snippet') {
+        get_user_snippets()
           }
         }
       }
