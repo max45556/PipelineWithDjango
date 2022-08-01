@@ -6,7 +6,7 @@ user_id = ''
 logged = false
 snippet = ''
 
-Def get_user_snippets() {
+def get_user_snippets() {
   def get_request = new URL("http://django:8000/snippets/").openConnection();
   get_request.setRequestMethod("GET")
   get_request.setRequestProperty("Content-Type", "application/json")
