@@ -20,8 +20,8 @@ Map login(username, password) {
       refresh_token = parsedJson.refresh
       user_id = parsedJson.user_id
       return [isClear:true, reason:"GOOD"]
-      }
-      else {
+      } else {
+        println("POCO MALE")
         return [isClear:false, reason:post_login.getInputStream().getText()]
         }
       }
