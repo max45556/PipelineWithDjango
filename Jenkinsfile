@@ -20,7 +20,7 @@ def get_user_snippets() {
 }
 
 Map language_identification() {
-    String rov = "coap è molto bello"
+    String rov = "coap molto bello"
     def post_language = new URL("http://django:8000/snippets/detect/").openConnection()
     def body = '{"code":' + '"' + rov + '"}'
     post_language.setRequestMethod("POST")
