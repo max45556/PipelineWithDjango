@@ -19,6 +19,26 @@ def get_user_snippets() {
     }
 }
 
+Map language_identification() {
+    def post_login = new URL("http://django:8000/snippets/detect/").openConnection()
+    def body = '{"code":' + '"' + snippet + '"}'
+    post_language.setRequestMethod("POST")
+    post_language.setDoOutput(true)
+    post_language.setRequestProperty("Content-Type", "application/json")
+    post_language.setRequestProperty("Accept", "application/json")
+    post_language.setRequestProperty("Authorization", "Bearer " + access_token)
+    post_language.getOutputStream().write(body.getBytes("UTF-8"))
+    if (post_login.getResponseCode() == 200) {
+      String response = post_login.getInputStream().getText()
+      JsonSlurper slurper = new JsonSlurper()
+      Map parsedJson = slurper.parseText(response)
+      println(parsedJson)
+      return [isClear:true, reason:"Login successfull"]
+    } else {
+        return [isClear:false, reason: "Login error"]
+      }
+}
+
 Map login(username, password) {
     def post_login = new URL("http://django:8000/login/").openConnection()
     def body = '{"username":' + '"' + username + '"' + "," + '"password":' + '"' + password + '"}'
@@ -57,9 +77,13 @@ node {
         println("user_id: " + user_id)
         }
       }
-    if (logged) {
-      stage('See user Snippet') {
-        get_user_snippets()
-          }
+      if (logged) {
+        stage('See user Snippet') {
+          get_user_snippets()
         }
+        stage('Identify language') {
+          language_identification()
+        }
+      }
+
   }
