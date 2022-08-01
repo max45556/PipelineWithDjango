@@ -4,6 +4,7 @@ def access_token = ''
 def refresh_token = ''
 def user_id = ''
 def logged = false
+def snippet
 
 Map login(username, password) {
     def post_login = new URL("http://django:8000/login/").openConnection()
@@ -30,27 +31,26 @@ node {
     stage('Preparation') {
         git branch: 'main', url: 'https://github.com/max45556/PipelineWithDjango.git'
         def file = new File("/var/jenkins_home/workspace/DjangoPipe/snippet.py")
-        String fileContent = file.text
-        println("Snippet to analyze: \n" + fileContent)
+        snippet = file.text
+        println("Snippet to analyze: \n" + snippet)
     }
     stage('Login') {
       def result = login('admin', 'admin1212')
+      println(result.reason)
       if (result.isClear) {
         logged = true
-        println(result.reason)
-      }
-      else {
-        println(result.reason)
-        currentBuild.result = 'SUCCESS'
+        println("Access: " + access_token)
+        println("Refresh: " + refresh_token)
+        println("user_id: " + user_id)
       }
     }
     if (logged) {
-    stage('ciccio') {
-    def get = new URL("http://django:8000/help").openConnection();
-    def getRC = get.getResponseCode();
-    println(getRC);
-    if(getRC.equals(200)) {
-        println(get.getInputStream().getText())
+      stage('ciccio') {
+        def get = new URL("http://django:8000/help").openConnection();
+        def getRC = get.getResponseCode();
+        println(getRC);
+        if(getRC.equals(200)) {
+          println(get.getInputStream().getText())
         }
     }
 }
