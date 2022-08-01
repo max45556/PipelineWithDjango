@@ -28,7 +28,7 @@ Map language_identification() {
     post_language.setRequestMethod("POST")
     post_language.setDoOutput(true)
     post_language.setRequestProperty("Content-Type", "application/json")
-    get_request.setRequestProperty("Accept", "application/json")
+    post_language.setRequestProperty("Accept", "application/json")
     post_language.setRequestProperty("Authorization", "Bearer " + access_token)
     post_language.getOutputStream().write(body.getBytes("UTF-8"))
     print(post_language.getResponseCode())
