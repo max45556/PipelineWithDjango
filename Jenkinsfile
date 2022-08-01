@@ -5,10 +5,6 @@ def refresh_token = ''
 def user_id = ''
 def logged = false
 
-Def logged() {
-  return r
-}
-
 Map login(username, password) {
     def post_login = new URL("http://django:8000/login/").openConnection()
     def body = '{"username":' + '"' + username + '"' + "," + '"password":' + '"' + password + '"}'
