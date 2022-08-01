@@ -23,7 +23,7 @@ Map language_identification() {
     String rov = "coap molto bello"
     def post_language = new URL("http://django:8000/snippets/detect/").openConnection()
 
-    String porcodio = "def merge(*args, missing_val = None):\n one of the smaller lists is shorter tham the others"
+    String porcodio = "def merge(*args, missing_val = None):n one of the smaller lists is shorter tham the others"
     def body = '{"code":' + '"' + porcodio + '"}'
     post_language.setRequestMethod("POST")
     post_language.setDoOutput(true)
