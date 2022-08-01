@@ -27,7 +27,6 @@ Map login(username, password) {
       }
 
 node {
-    if (logged) {
     stage('Preparation') {
         git branch: 'main', url: 'https://github.com/max45556/PipelineWithDjango.git'
         def file = new File("/var/jenkins_home/workspace/DjangoPipe/snippet.py")
@@ -45,6 +44,7 @@ node {
         currentBuild.result = 'SUCCESS'
       }
     }
+    if (logged) {
     stage('ciccio') {
     def get = new URL("http://django:8000/help").openConnection();
     def getRC = get.getResponseCode();
