@@ -31,7 +31,7 @@ Map login(username, password) {
       }
 
 node {
-    if logged {
+    if (logged) {
     stage('Preparation') {
         git branch: 'main', url: 'https://github.com/max45556/PipelineWithDjango.git'
         def file = new File("/var/jenkins_home/workspace/DjangoPipe/snippet.py")
@@ -57,5 +57,5 @@ node {
         println(get.getInputStream().getText())
         }
     }
-    }
+}
 }
