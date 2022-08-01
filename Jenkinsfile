@@ -10,7 +10,6 @@ def get_user_snippets() {
   def get_request = new URL("http://django:8000/snippets/").openConnection();
   get_request.setRequestMethod("GET")
   get_request.setRequestProperty("Content-Type", "application/json")
-  get_request.setRequestProperty("Accept", "application/json")
   get_request.setRequestProperty("Authorization", "Bearer " + access_token)
   def getRC = get_request.getResponseCode();
   println(getRC);
@@ -21,7 +20,7 @@ def get_user_snippets() {
 
 Map language_identification() {
     def post_language = new URL("http://django:8000/snippets/detect/").openConnection()
-    def body = '{"code":' + ''' + snippet + ''}'
+    def body = '{"code":' + '"' + snippet + '"}'
     post_language.setRequestMethod("POST")
     post_language.setDoOutput(true)
     post_language.setRequestProperty("Content-Type", "application/json")
