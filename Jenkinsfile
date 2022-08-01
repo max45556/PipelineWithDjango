@@ -21,8 +21,7 @@ Map login(username, password) {
       user_id = parsedJson.user_id
       return [isClear:true, reason:"GOOD"]
       } else {
-        println("POCO MALE")
-        return [isClear:true, reason:"ciao"]
+        return [isClear:true, reason:post_login.getInputStream().getText()]
         }
       }
 
