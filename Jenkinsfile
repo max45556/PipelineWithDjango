@@ -16,8 +16,8 @@ def get_user_snippets() {
   println(getRC);
   if(getRC.equals(200)) {
     jsonsnippets = get_request.getInputStream().getText()
-    def pretty_json = jsonsnippets.toString(2)
-    println(pretty_json)
+    def pretty_json = writeJSON( returnText: true, json: jsonsnippets , pretty: 4)
+    println (pretty_json)
     }
 }
 
