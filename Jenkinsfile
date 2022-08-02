@@ -16,7 +16,7 @@ def get_user_snippets() {
   def getRC = get_request.getResponseCode();
   println(getRC);
   if(getRC.equals(200)) {
-    jsonsnippets = get_request.getInputStream()
+    jsonsnippets = get_request.getInputStream().getText().toJson()
     def pretty = JsonOutput.prettyPrint(jsonsnippets)
     println (pretty)
     }
