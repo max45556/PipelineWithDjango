@@ -7,7 +7,7 @@ logged = false
 snippet = ''
 
 def get_user_snippets() {
-  def get_request = new URL("http://127.0.0.1:8000/snippets/").openConnection();
+  def get_request = new URL("http://django:8000/snippets/").openConnection();
   get_request.setRequestMethod("GET")
   get_request.setRequestProperty("Content-Type", "application/json")
   get_request.setRequestProperty("Accept", "application/json")
@@ -21,7 +21,7 @@ def get_user_snippets() {
 
 Map language_identification() {
     String rov = "coap molto bello"
-    def post_language = new URL("http://127.0.0.1:8000/snippets/detect/").openConnection()
+    def post_language = new URL("http://django:8000/snippets/detect/").openConnection()
     def body = '{"code":' + '"' + snippet + '"}'
     print(body)
     post_language.setRequestMethod("POST")
@@ -36,7 +36,7 @@ Map language_identification() {
 
 Map reindent() {
     String rov = "coap molto bello"
-    def post_language = new URL("http://127.0.0.1:8000/snippets/reindent/").openConnection()
+    def post_language = new URL("http://django:8000/snippets/reindent/").openConnection()
     def body = '{"code":' + '"' + snippet + '"}'
     print(body)
     post_language.setRequestMethod("POST")
@@ -50,7 +50,7 @@ Map reindent() {
 }
 
 Map login(username, password) {
-    def post_login = new URL("http://127.0.0.1:8000/login/").openConnection()
+    def post_login = new URL("http://django:8000/login/").openConnection()
     def body = '{"username":' + '"' + username + '"' + "," + '"password":' + '"' + password + '"}'
     post_login.setRequestMethod("POST")
     post_login.setDoOutput(true)
@@ -74,7 +74,7 @@ node {
     stage('Get snippet') {
         git branch: 'main', url: 'https://github.com/max45556/PipelineWithDjango.git'
         def file = new File("/var/jenkins_home/workspace/DjangoPipe/snippet.py")
-        snippet = file.text
+        snippet = file.text.replaceAll("(\\r|\\n|\\r\\n)+", "\\\\n")
         println("Snippet to analyze: \n\n" + snippet)
     }
     stage('Logging') {
