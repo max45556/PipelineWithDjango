@@ -1,7 +1,5 @@
 
-import groovy.json.JsonSlurper
-import groovy.json.JsonOutput;
-
+import groovy.json.*
 
 access_token = ''
 refresh_token = ''
@@ -19,7 +17,7 @@ def get_user_snippets() {
   println(getRC);
   if(getRC.equals(200)) {
     jsonsnippets = get_request.getInputStream()
-    def pretty = JsonOutput.prettyPrint(json)
+    def pretty = JsonOutput.prettyPrint(jsonsnippets)
     println (pretty)
     }
 }
