@@ -34,9 +34,8 @@ def get_user_snippets() {
   get_request.setRequestProperty("Accept", "application/json")
   get_request.setRequestProperty("Authorization", "Bearer " + access_token)
   def getRC = get_request.getResponseCode();
-  def response = get_request.getInputStream().getText()
+  def response = get_request.getInputStream().getText().toJson()
   if(getRC.equals(200)) {
-    jsonsnippets = response.toJson()
     def pretty = JsonOutput.prettyPrint(jsonsnippets)
     println "User snippets found: \n" + pretty
     } else {
