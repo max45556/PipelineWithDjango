@@ -44,7 +44,7 @@ def get_user_snippets() {
 }
 
 def language_identification() {
-  def post_language = new URL("http://127.0.0.1:8000/snippets/detect/").openConnection()
+  def post_language = new URL("http://django:8000/snippets/detect/").openConnection()
   post_language.setRequestMethod("POST")
   post_language.setDoOutput(true)
   post_language.setRequestProperty("Content-Type", "application/json")
@@ -61,7 +61,7 @@ def language_identification() {
 }
 
 def reindent_code() {
-  def post_reindent = new URL("http://127.0.0.1:8000/snippets/reindent/").openConnection()
+  def post_reindent = new URL("http://django:8000/snippets/reindent/").openConnection()
   post_reindent.setRequestMethod("POST")
   post_reindent.setDoOutput(true)
   post_reindent.setRequestProperty("Content-Type", "application/json")
@@ -78,7 +78,7 @@ def reindent_code() {
   }
 
 def order_import() {
-  def post_order_import = new URL("http://127.0.0.1:8000/snippets/order/").openConnection()
+  def post_order_import = new URL("http://django:8000/snippets/order/").openConnection()
   post_order_import.setRequestMethod("POST")
   post_order_import.setDoOutput(true)
   post_order_import.setRequestProperty("Content-Type", "application/json")
@@ -95,7 +95,7 @@ def order_import() {
 }
 
 def pylint() {
-  def post_pylint = new URL("http://127.0.0.1:8000/snippets/pylint/").openConnection()
+  def post_pylint = new URL("http://django:8000/snippets/pylint/").openConnection()
   post_pylint.setRequestMethod("POST")
   post_pylint.setDoOutput(true)
   post_pylint.setRequestProperty("Content-Type", "application/json")
@@ -112,7 +112,7 @@ def pylint() {
 }
 
 def pyflakes() {
-  def post_pyflakes = new URL("http://127.0.0.1:8000/snippets/pyflakes/").openConnection()
+  def post_pyflakes = new URL("http://django:8000/snippets/pyflakes/").openConnection()
   post_pyflakes.setRequestMethod("POST")
   post_pyflakes.setDoOutput(true)
   post_pyflakes.setRequestProperty("Content-Type", "application/json")
@@ -129,7 +129,7 @@ def pyflakes() {
 }
 
 def flake8() {
-  def post_flake8 = new URL("http://127.0.0.1:8000/snippets/flake8/").openConnection()
+  def post_flake8 = new URL("http://django:8000/snippets/flake8/").openConnection()
   post_flake8.setRequestMethod("POST")
   post_flake8.setDoOutput(true)
   post_flake8.setRequestProperty("Content-Type", "application/json")
@@ -146,7 +146,7 @@ def flake8() {
 }
 
 def mypy() {
-  def post_mypy = new URL("http://127.0.0.1:8000/snippets/mypy/").openConnection()
+  def post_mypy = new URL("http://django:8000/snippets/mypy/").openConnection()
   post_mypy.setRequestMethod("POST")
   post_mypy.setDoOutput(true)
   post_mypy.setRequestProperty("Content-Type", "application/json")
@@ -163,7 +163,7 @@ def mypy() {
 }
 
 def execute() {
-  def post_execute = new URL("http://127.0.0.1:8000/snippets/execute/").openConnection()
+  def post_execute = new URL("http://django:8000/snippets/execute/").openConnection()
   post_execute.setRequestMethod("POST")
   post_execute.setDoOutput(true)
   post_execute.setRequestProperty("Content-Type", "application/json")
