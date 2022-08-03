@@ -9,7 +9,7 @@ body = ''
 
 Map login(username, password) {
     def post_login = new URL("http://django:8000/login/").openConnection()
-    def body_login = '{"username":' + '"' + username + '"' + "," + '"password":' + '"' + password + '"}'
+    URLConnection body_login = '{"username":' + '"' + username + '"' + "," + '"password":' + '"' + password + '"}'
     post_login.setRequestMethod("POST")
     post_login.setDoOutput(true)
     post_login.setRequestProperty("Content-Type", "application/json")
