@@ -8,7 +8,7 @@ snippet = ''
 body = ''
 
 Map login(username, password) {
-    URLConnection post_login = new URL("http://django:8000/login/").openConnection()
+    def post_login = new URL("http://django:8000/login/").openConnection()
     def body_login = '{"username":' + '"' + username + '"' + "," + '"password":' + '"' + password + '"}'
     post_login.setRequestMethod("POST")
     post_login.setDoOutput(true)
@@ -34,7 +34,7 @@ def get_user_snippets() {
   get_request.setRequestProperty("Accept", "application/json")
   get_request.setRequestProperty("Authorization", "Bearer " + access_token)
   def getRC = get_request.getResponseCode();
-  def response = post_login.getInputStream().getText()
+  def response = get_request.getInputStream().getText()
   if(getRC.equals(200)) {
     jsonsnippets = response.toJson()
     def pretty = JsonOutput.prettyPrint(jsonsnippets)
