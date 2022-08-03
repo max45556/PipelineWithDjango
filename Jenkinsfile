@@ -36,7 +36,7 @@ def get_user_snippets() {
   def getRC = get_request.getResponseCode();
   def response = get_request.getInputStream().getText()
   if(getRC.equals(200)) {
-    def pretty = JsonOutput.prettyPrint(jsonsnippets)
+    def pretty = JsonOutput.prettyPrint(response)
     println "User snippets found: \n" + pretty
     } else {
     println "Error happened while trying to get user snippets: " + response
