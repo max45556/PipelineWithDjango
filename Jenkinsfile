@@ -9,12 +9,12 @@ body = ''
 
 Map login(username, password) {
     def post_login = new URL("http://django:8000/login/").openConnection()
-    def body = '{"username":' + '"' + username + '"' + "," + '"password":' + '"' + password + '"}'
+    def body_login = '{"username":' + '"' + username + '"' + "," + '"password":' + '"' + password + '"}'
     post_login.setRequestMethod("POST")
     post_login.setDoOutput(true)
     post_login.setRequestProperty("Content-Type", "application/json")
     post_login.setRequestProperty("Accept", "application/json")
-    post_login.getOutputStream().write(body.getBytes("UTF-8"))
+    post_login.getOutputStream().write(body_login.getBytes("UTF-8"))
     def response = post_login.getInputStream().getText()
     if (post_login.getResponseCode() == 200) {
       Map parsedJson = new JsonSlurper().parseText(response)
