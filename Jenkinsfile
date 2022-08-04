@@ -155,7 +155,7 @@ def mypy() {
   post_mypy.getOutputStream().write(body.getBytes("UTF-8"))
   def getRC_mypy = post_mypy.getResponseCode()
   String response = post_mypy.getInputStream().getText()
-  if (getRC_flake8 == 200) {
+  if (getRC_mypy == 200) {
       Map parsedJson = new JsonSlurper().parseText(response) as Map
       print("mypy output is: " + parsedJson.mypy_output + "\n\n")
   } else {
