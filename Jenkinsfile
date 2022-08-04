@@ -88,7 +88,7 @@ def order_import() {
   def getRC_order = post_order_import.getResponseCode()
   String response = post_order_import.getInputStream().getText()
   if (getRC_order == 200) {
-      Map parsedJson = new JsonSlurper().parseText(response_lan) as Map
+      Map parsedJson = new JsonSlurper().parseText(response) as Map
       print("Correct file after ordering of imports is " + parsedJson.code_modified + "\n\n")
   } else {
     print "Error in order import " + response
