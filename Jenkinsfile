@@ -61,6 +61,7 @@ def language_identification() {
 }
 
 def reindent_code() {
+  print("Enter reindent")
   def post_reindent = new URL("http://django:8000/snippets/reindent/").openConnection()
   post_reindent.setRequestMethod("POST")
   post_reindent.setDoOutput(true)
