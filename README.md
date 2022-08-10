@@ -43,13 +43,13 @@ Per utilizzare le funzionalità offerte dall'applicazione è necessario essere r
 
 ### LOGIN
 Effettuando il login, un utente può ottenere un token di accesso attraverso il quale sfruttare le funzioni del server.
-In caso di accesso riuscito, vengono restituite le seguenti informazioni:
+In caso di accesso riuscito, vengono restituite le seguenti informazioni:<br/>
   - *access*: token di accesso (stringa)
   - *refresh*: Aggiorna di refresh (stringa)
   - *user_id*: ID dell'utente che si è autenticato (int)<br/>
 *Richiesta*: POST 127.0.0.1:8000/login/<br/>
 *Header*: Content-Type: application/json<br/>
-*Body*:
+*Body*:<br/>
 - **username**: 'username'
 - **password**: 'password'<br/>
 *Standard Response*: 200 OK
