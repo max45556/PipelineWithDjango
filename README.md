@@ -9,25 +9,20 @@
 
 # Scopo
 
-L'obbiettivo di questo progetto è stato quello di creare, attraverso, [DJANGO REST FRAMEWORK](https://www.django-rest-framework.org/) delle Web browsable API che permetessero di effettuare varie attività su snippet di codice scritti in Python. Procederemo quindi
+L'obbiettivo di questo progetto è stato quello di creare, attraverso, [DJANGO REST FRAMEWORK](https://www.django-rest-framework.org/) delle Web API che permettano di effettuare varie attività su snippet di codice scritti in Python. Procederemo quindi
 ad illustrare quelle che sono le API create, le loro funzionalità e attraverso quali metodi accerdervi.Le API sono pensate per
 essere integrate sia all'interno di un applicativo che dentro una pipeline CI/CD e per dimostrare ciò è stato creato:
+
  - un software con una semplice interfaccia e che fornisci degli automatismi per agire sugli snippet. Questo
   astrae le modalità di interazione con le API essendo pensato per un pubblico non geek.
 
 - una pipeline CI/CD che presenta come stadi le attività svolte dalle API
 
-**WARNING 1:** *While running this program your machine will be extremely
-vulnerable to attack. You should disconnect from the Internet while using
-this program.*  WebGoat's default configuration binds to localhost to minimize
-the exposure.
+# Funzionamento della API
 
-**WARNING 2:** *This program is for educational purposes only. If you attempt
-these techniques without authorization, you are very likely to get caught. If
-you are caught engaging in unauthorized hacking, most companies will fire you.
-Claiming that you were doing security research will not work as that is the
-first thing that all hackers claim.*
+Per utilizzare l'API è necessario registrarsi. Dopo la registrazione un utente può svolgere le seguenti funzioni:
+- Gestire il profilo
+- Gestire gli snippet personali che ha memorizzato
+- Effettuare delle operazione sugli snippet
 
-# Installation instructions:
-
-contact the administrator of this project to obtain the documentation
+*Gestione del profilo*
