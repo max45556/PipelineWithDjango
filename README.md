@@ -36,7 +36,7 @@ Per utilizzare l'API è necessario registrarsi. Dopo la registrazione un utente 
 ## Gestione del profilo
 
 
-![#f03c15] `REGISTRAZIONE`
+<span style="color: green"> Some green text </span>
 
 Per utilizzare le funzionalità offerte dall'applicazione è necessario essere registrati. Dopo la fase di registrazione, un utente può effettuare il login. Un utente può decidere di eliminare il proprio profilo, dopo averlo creato, in qualsiasi momento.
 
