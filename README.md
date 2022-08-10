@@ -58,7 +58,8 @@ In caso di accesso riuscito, vengono restituite le seguenti informazioni:<br/>
 *Standard Response*: 200 OK
 
 ### REFRESH TOKEN
-Viene utilizzato per ottenere un nuovo token di accesso utilizzando il token di aggiornamento fornito all'accesso. Restituisce un nuovo token di accesso.<br/>
+Viene utilizzato per ottenere un nuovo token di accesso utilizzando il token di aggiornamento fornito all'accesso. Restituisce un nuovo token di accesso.
+
 *Richiesta*: POST 127.0.0.1:8000/login/refresh/<br/>
 *Header*: Content-Type: application/json<br/>
 *Body*:
