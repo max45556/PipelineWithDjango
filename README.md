@@ -38,7 +38,8 @@ Per utilizzare le funzionalità offerte dall'applicazione è necessario essere r
 - **password2**: 'password2'
 - **email**: 'email'
 - **first_name**: 'first_name'
-- **last_name**: 'last_name'<br/>
+- **last_name**: 'last_name'
+
 *Standard Response*: 201 Created
 
 ### LOGIN
@@ -52,7 +53,8 @@ In caso di accesso riuscito, vengono restituite le seguenti informazioni:<br/>
 *Header*: Content-Type: application/json<br/>
 *Body*:<br/>
 - **username**: 'username'
-- **password**: 'password'<br/>
+- **password**: 'password'
+
 *Standard Response*: 200 OK
 
 ### REFRESH TOKEN
@@ -60,19 +62,23 @@ Viene utilizzato per ottenere un nuovo token di accesso utilizzando il token di 
 *Richiesta*: POST 127.0.0.1:8000/login/refresh/<br/>
 *Header*: Content-Type: application/json<br/>
 *Body*:
-- **refresh**: 'refresh token'<br/>
+- **refresh**: 'refresh token'
+
 *Standard Response*: 200 OK
 
 ### CHANGE PASSWORD
 Consente a un utente di modificare la password utilizzando la vecchia password<br/>
-*Richiesta*: PUT 127.0.0.1:8000<br/>
+*Richiesta*: PUT 127.0.0.1:8000
+
 *Header*:
 - Content-Type: application/json  
-- Authorization: Bearer + Access Token<br/>
+- Authorization: Bearer + Access Token
+
 *Body*:  
 - **password**: 'password'
 - **password2**: 'password2'
-- **old_password**: 'old_password'<br/>
+- **old_password**: 'old_password'
+
 *Standard Response*: 200 OK
 
 ### UPDATE PROFILE
