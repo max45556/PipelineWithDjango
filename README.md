@@ -44,7 +44,8 @@ Per utilizzare le funzionalità offerte dall'applicazione è necessario essere r
 
 ### LOGIN
 Effettuando il login, un utente può ottenere un token di accesso attraverso il quale sfruttare le funzioni del server.
-In caso di accesso riuscito, vengono restituite le seguenti informazioni:  
+In caso di accesso riuscito, vengono restituite le seguenti informazioni:
+
   - *access*: token di accesso (stringa)
   - *refresh*: Aggiorna di refresh (stringa)
   - *user_id*: ID dell'utente che si è autenticato (int)  
@@ -57,7 +58,8 @@ In caso di accesso riuscito, vengono restituite le seguenti informazioni:
 *Standard Response*: 200 OK
 
 ### REFRESH TOKEN
-Viene utilizzato per ottenere un nuovo token di accesso utilizzando il token di aggiornamento fornito all'accesso. Restituisce un nuovo token di accesso.  
+Viene utilizzato per ottenere un nuovo token di accesso utilizzando il token di aggiornamento fornito all'accesso. Restituisce un nuovo token di accesso.
+
 *Richiesta*: POST 127.0.0.1:8000/login/refresh/  
 *Header*: Content-Type: application/json  
 *Body*:  
@@ -66,7 +68,8 @@ Viene utilizzato per ottenere un nuovo token di accesso utilizzando il token di 
 *Standard Response*: 200 OK  
 
 ### CHANGE PASSWORD
-Consente a un utente di modificare la password utilizzando la vecchia password  
+Consente a un utente di modificare la password utilizzando la vecchia password
+
 *Richiesta*: PUT 127.0.0.1:8000  
 *Header*:  
 - Content-Type: application/json  
@@ -79,7 +82,8 @@ Consente a un utente di modificare la password utilizzando la vecchia password
 *Standard Response*: 200 OK
 
 ### UPDATE PROFILE
-Consente a un utente di aggiornare il proprio profilo. Restituire dati utente aggiornati  
+Consente a un utente di aggiornare il proprio profilo. Restituire dati utente aggiornati
+
 *Richiesta*: POST 127.0.0.1:8000  
 *Header*:  
 - Content-Type: application/json  
@@ -94,7 +98,8 @@ Consente a un utente di aggiornare il proprio profilo. Restituire dati utente ag
 *Standard Response*: 200 OK
 
 ### GET USER DATA
-Consente a un utente di vedere il suo profilo. Restituisci i dati del profilo  
+Consente a un utente di vedere il suo profilo. Restituisci i dati del profilo
+
 *Richiesta*: GET 127.0.0.1:8000  
 *Header*:  
 - Content-Type: application/json  
@@ -103,7 +108,8 @@ Consente a un utente di vedere il suo profilo. Restituisci i dati del profilo
 *Standard Response*: 200 OK
 
 ### DELETE PROFILE
-Consente a un utente di eliminare il proprio profilo. Nessun dato viene restituito  
+Consente a un utente di eliminare il proprio profilo. Nessun dato viene restituito
+
 *Richiesta*: DELETE 127.0.0.1:8000  
 *Header*:  
 - Content-Type: application/json  
