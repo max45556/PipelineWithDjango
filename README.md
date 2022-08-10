@@ -46,7 +46,7 @@ Effettuando il login, un utente può ottenere un token di accesso attraverso il 
 In caso di accesso riuscito, vengono restituite le seguenti informazioni:<br/>
   - *access*: token di accesso (stringa)
   - *refresh*: Aggiorna di refresh (stringa)
-  - *user_id*: ID dell'utente che si è autenticato (int)<br/>
+  - *user_id*: ID dell'utente che si è autenticato (int)<br/><br/>
 *Richiesta*: POST 127.0.0.1:8000/login/<br/>
 *Header*: Content-Type: application/json<br/>
 *Body*:<br/>
