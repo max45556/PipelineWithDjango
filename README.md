@@ -38,5 +38,5 @@ Per utilizzare le funzionalità offerte dall'applicazione è necessario essere r
 - **password2**: 'password2'
 - **email**: 'email'
 - **first_name**: 'first_name'
-- **last_name**: 'last_name'  
-  *Standard Response*: 201 Created
+- **last_name**: 'last_name'<br/>
+*Standard Response*: 201 Created
