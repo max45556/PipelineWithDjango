@@ -53,6 +53,7 @@ In caso di accesso riuscito, vengono restituite le seguenti informazioni:
 *Body*:  
 - **username**: 'username'
 - **password**: 'password'
+
 *Standard Response*: 200 OK
 
 ### REFRESH TOKEN
@@ -60,7 +61,8 @@ Viene utilizzato per ottenere un nuovo token di accesso utilizzando il token di 
 *Richiesta*: POST 127.0.0.1:8000/login/refresh/  
 *Header*: Content-Type: application/json  
 *Body*:  
-- **refresh**: 'refresh token'  
+- **refresh**: 'refresh token'
+
 *Standard Response*: 200 OK  
 
 ### CHANGE PASSWORD
@@ -72,7 +74,8 @@ Consente a un utente di modificare la password utilizzando la vecchia password
 *Body*:  
 - **password**: 'password'
 - **password2**: 'password2'
-- **old_password**: 'old_password'  
+- **old_password**: 'old_password'
+
 *Standard Response*: 200 OK
 
 ### UPDATE PROFILE
@@ -81,11 +84,13 @@ Consente a un utente di aggiornare il proprio profilo. Restituire dati utente ag
 *Header*:  
 - Content-Type: application/json  
 - Authorization: Bearer + Access Token  
+
 *Body*:  
 - **username**: 'username'
 - **first_name**: 'first_name'
 - **last_name**: 'last_name'
-- **email**: 'email'  
+- **email**: 'email'
+
 *Standard Response*: 200 OK
 
 ### GET USER DATA
@@ -102,6 +107,7 @@ Consente a un utente di eliminare il proprio profilo. Nessun dato viene restitui
 *Richiesta*: DELETE 127.0.0.1:8000  
 *Header*:  
 - Content-Type: application/json  
-- Authorization: Bearer + Access Token  
+- Authorization: Bearer + Access Token
+
 *Body*: empty  
 *Standard Response*: 200 OK
