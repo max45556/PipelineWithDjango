@@ -117,3 +117,21 @@ Consente a un utente di eliminare il proprio profilo. Nessun dato viene restitui
 
 *Body*: empty  
 *Standard Response*: 200 OK
+
+## Gestione degli snippet
+
+### CREA NUOVO SNIPPET
+Con questa operazione è possibile creare uno snippet. L'unico campo obbligatorio è quello del codice ma potrebbero essere fornite altre informazioni per una migliore gestione dello snippet personale.
+
+*Richiesta*: POST 127.0.0.1:8000/snippets/  
+*Header*:  
+- Content-Type: application/json  
+- Authorization: Bearer + Access Token
+
+*Body*:  
+- code: 'code' REQUIRED
+- title: 'title' FACULTATIVE
+- language: 'code language' FACULTATIVE
+- executable: 'bool' FACULTATIVE
+
+*Standard Response*: 200 OK
