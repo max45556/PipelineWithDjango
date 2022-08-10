@@ -51,7 +51,8 @@ In caso di accesso riuscito, vengono restituite le seguenti informazioni:
 *Header*: Content-Type: application/json  
 *Body*:  
 - **username**: 'username'
-- **password**: 'password'  
+- **password**: 'password'
+
 *Standard Response*: 200 OK
 
 ### REFRESH TOKEN
