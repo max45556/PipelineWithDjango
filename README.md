@@ -67,9 +67,9 @@ Viene utilizzato per ottenere un nuovo token di accesso utilizzando il token di 
 *Standard Response*: 200 OK
 
 ### CHANGE PASSWORD
-Consente a un utente di modificare la password utilizzando la vecchia password<br/>
-*Richiesta*: PUT 127.0.0.1:8000
+Consente a un utente di modificare la password utilizzando la vecchia password
 
+*Richiesta*: PUT 127.0.0.1:8000
 *Header*:
 - Content-Type: application/json  
 - Authorization: Bearer + Access Token
