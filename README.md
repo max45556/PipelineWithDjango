@@ -9,16 +9,14 @@
 
 # Scopo
 
-L'obbiettivo di questo progetto è stato quello di creare, attraverso, [DJANGO REST FRAMEWORK](https://www.django-rest-framework.org/) delle Web API che permettano di effettuare varie attività su snippet di codice scritti in Python. Procederemo quindi
-ad illustrare quelle che sono le API create, le loro funzionalità e attraverso quali metodi accerdervi.Le API sono pensate per
-essere integrate sia all'interno di un applicativo che dentro una pipeline CI/CD e per dimostrare ciò è stato creato:
+L'obbiettivo di questo progetto è stato quello di creare, attraverso, [DJANGO REST FRAMEWORK](https://www.django-rest-framework.org/) delle Web API che permettano di effettuare varie attività su snippet di codice scritti in Python. Procederemo quindi ad illustrare quelle che sono le API create, le loro funzionalità e attraverso quali metodi accerdervi.Le API sono pensate per essere integrate sia all'interno di un applicazione che dentro una pipeline CI/CD e per dimostrare ciò è stato creato:
 
  - un software con una semplice interfaccia e che fornisci degli automatismi per agire sugli snippet. Questo
-  astrae le modalità di interazione con le API essendo pensato per un pubblico non geek.
+  astrae le modalità di interazione con le API essendo pensato per un pubblico non esperto.
 
-- una pipeline CI/CD che presenta come stadi le attività svolte dalle API
+- una pipeline CI/CD che presenta come stadi le attività svolte dalle API.
 
-# Funzionamento della API
+# Funzionamento delle API
 
 Per utilizzare l'API è necessario registrarsi. Dopo la registrazione un utente può svolgere le seguenti funzioni:
 - Gestire il profilo
@@ -27,9 +25,11 @@ Per utilizzare l'API è necessario registrarsi. Dopo la registrazione un utente 
 
 ## Gestione del profilo
 
+Questo elenco comprende una serie di API create per la gestione del profilo utente. Le API sono pensate per essere integrate in un ambiente multi-utente e posso quindi gestire l'esecuzione discrimando tra diversi i diversi attori che interagiscono con i servizi.
+
 ### REGISTRAZIONE
 
-Per utilizzare le funzionalità offerte dall'applicazione è necessario essere registrati. Dopo la fase di registrazione, un utente può effettuare il login. Un utente può decidere di eliminare il proprio profilo, dopo averlo creato, in qualsiasi momento.
+Per utilizzare le funzionalità offerte dalle API è necessario essere registrati. Dopo la fase di registrazione, un utente può effettuare il login utilizzando i dati appena inseriti e può ovviamente decidere di eliminare il proprio profilo in qualsiasi momento.Per la registazione sono necessari tutti i campi successivamente esposti nel body ed al termine delle registrazione vengono riportati i dati dell'utente.
 
 *Richiesta*: POST 127.0.0.1:8000/register/  
 *Header*: Content-Type: application/json    
@@ -41,35 +41,46 @@ Per utilizzare le funzionalità offerte dall'applicazione è necessario essere r
 - **first_name**: 'first_name'
 - **last_name**: 'last_name'
 
-*Standard Response*: 201 Created
+*Standard Response Code*: 201 Created
+*Standard Response*:  
+{
+    '*username*': 'username',
+    '*email*': 'email',
+    '*first_name*': 'first name',
+    '*last_name*': 'last name'
+}
 
 ### LOGIN
-Effettuando il login, un utente può ottenere un token di accesso attraverso il quale sfruttare le funzioni del server.
-In caso di accesso riuscito, vengono restituite le seguenti informazioni:
+Effettuando il login un utente può ottenere un token di accesso attraverso il quale sfruttare le API. Insieme ad esso è restituito anche un token di refresh usato per ottenere un nuovo token di accesso e uno user_id che vedremo successivamente come sarà utilizzato.
 
-  - *access*: token di accesso (stringa)
-  - *refresh*: Aggiorna di refresh (stringa)
-  - *user_id*: ID dell'utente che si è autenticato (int)  
 *Richiesta*: POST 127.0.0.1:8000/login/  
 *Header*: Content-Type: application/json  
 *Body*:  
 - **username**: 'username'
 - **password**: 'password'
 
-*Standard Response*: 200 OK
+*Standard Response Code*: 200 OK  
+*Standard Response*:
+{
+  *'access'*: 'token di accesso' (stringa)
+  *'refresh'*: 'token di refresh' (stringa)
+  *'user_id'*: 'ID dell'utente che si è autenticato' (int)
+}
 
-### REFRESH TOKEN
-Viene utilizzato per ottenere un nuovo token di accesso utilizzando il token di aggiornamento fornito all'accesso. Restituisce un nuovo token di accesso.
+### TOKEN DI REFRESH
+Viene utilizzato per ottenere un nuovo token di accesso utilizzando il token di refresh fornito al login. Questa restituisce un nuovo token di accesso.
 
 *Richiesta*: POST 127.0.0.1:8000/login/refresh/  
 *Header*: Content-Type: application/json  
 *Body*:  
 - **refresh**: 'refresh token'
 
-*Standard Response*: 200 OK  
+*Standard Response Code*: 200 OK  
+*Standard Response*:  
+- *'access'*: ìtoken di accesso' (stringa)
 
-### CHANGE PASSWORD
-Consente a un utente di modificare la password utilizzando la vecchia password
+### MODIFICA DELLA PASSWORD UTENTE
+Consente a un utente di modificare la password utilizzando la vecchia password. Specifica se la password è stata correttamente modificata.
 
 *Richiesta*: PUT 127.0.0.1:8000  
 *Header*:  
@@ -80,10 +91,11 @@ Consente a un utente di modificare la password utilizzando la vecchia password
 - **password2**: 'password2'
 - **old_password**: 'old_password'
 
-*Standard Response*: 200 OK
+*Standard Response Code*: 200 OK  
+*Standard Response*: "Data correctly Modified"
 
-### UPDATE PROFILE
-Consente a un utente di aggiornare il proprio profilo. Restituire dati utente aggiornati
+### AGGIORNAMENTO DEL PROFILO
+Consente a un utente di aggiornare il proprio profilo. Se la modifica è avvenuta correttamente restiutisce i dati aggiornati di un utente.
 
 *Richiesta*: POST 127.0.0.1:8000  
 *Header*:  
@@ -96,20 +108,34 @@ Consente a un utente di aggiornare il proprio profilo. Restituire dati utente ag
 - **last_name**: 'last_name'
 - **email**: 'email'
 
-*Standard Response*: 200 OK
+*Standard Response Code*: 200 OK
+*Standard Response*:  
+{
+  *'username'*: 'username'
+  *'first_name'*: 'first_name'
+  *'last_name'*: 'last_name'
+  *'email'*: 'email'
+}
 
-### GET USER DATA
-Consente a un utente di vedere il suo profilo. Restituisci i dati del profilo
+### VISUALIZZAZIONE DEI DATI PERSONALI
+Consente di visualizzare i dati riguardanti il suo profilo. Restituisci se la richiesta è stata effettuata correttamente i dati del profilo.
 
 *Richiesta*: GET 127.0.0.1:8000  
 *Header*:  
 - Content-Type: application/json  
 - Authorization: Bearer + Access Token  
 *Body*: empty  
-*Standard Response*: 200 OK
+*Standard Response Code*: 200 OK
+*Standard Response*:  
+{
+  *'username'*: 'username'
+  *'first_name'*: 'first_name'
+  *'last_name'*: 'last_name'
+  *'email'*: 'email'
+}
 
-### DELETE PROFILE
-Consente a un utente di eliminare il proprio profilo. Nessun dato viene restituito
+### ELIMINAZIONE DEL PROFILO
+Consente a un utente di eliminare il proprio profilo. Qualora l'operazione fosse stata effettuata con successo viene segnalato ciò.
 
 *Richiesta*: DELETE 127.0.0.1:8000  
 *Header*:  
@@ -117,12 +143,18 @@ Consente a un utente di eliminare il proprio profilo. Nessun dato viene restitui
 - Authorization: Bearer + Access Token
 
 *Body*: empty  
-*Standard Response*: 200 OK
+*Standard Response Code*: 200 OK  
+*Standard Response*:
+{
+  *'result'*: 'user delate'
+}
 
 ## Gestione degli snippet
 
-### CREA NUOVO SNIPPET
-Con questa operazione è possibile creare uno snippet. L'unico campo obbligatorio è quello del codice ma potrebbero essere fornite altre informazioni per una migliore gestione dello snippet personale.
+Come detto le API sono pensate per essere utilizzate da più utenti e questi possono anche operare su snippet precedentemente creati. Un utente può infatti creare un suo snippet, recuperarlo a piacimento dal db ed effettuare su di esso una serie di operazioni. Per la gestione degli snippet 'personali' sono state creare diverse API.
+
+### CREAZIONE DI UN NUOVO SNIPPET
+Con questa operazione è possibile creare uno snippet personale. L'unico campo obbligatorio è quello che contiene il codice ma potrebbero essere fornite altre informazioni per una migliore gestione dello stesso. I campi non precisati assumeranno valori di default.
 
 *Richiesta*: POST 127.0.0.1:8000/snippets/  
 *Header*:  
@@ -135,10 +167,19 @@ Con questa operazione è possibile creare uno snippet. L'unico campo obbligatori
 - language: 'code language' FACULTATIVE
 - executable: 'bool' FACULTATIVE
 
-*Standard Response*: 200 OK
+*Standard Response Code*: 200 OK  
+*Standard Response*:
+{
+      "*id*": 13,
+      "*title*": "Mutable Argoument",
+      "*code*": "def    append(n,  l = None):\n  if l is None:\n    l = [     ]\n  l.append(    n)\n  return l\n\nappend(0) # [0]\nappend(     1) # [1]",
+      "*owner*": "admin"        -> non era stato specificato
+      "*language": "unknown",   -> non era stato specificato
+      "*executable*": false,    -> non era stato specificato
+}
 
-### AGGIORNA UNO SNIPPET ESISTENTE
-Con questa operazione è possibile modificare uno snippet esistente. Non sono obbligatori i campi obbligatori e verranno modificati solo i campi superati. È necessario specificare lo snippet tramite l'id.
+### MODIFICA DI UNO SNIPPET ESISTENTE
+Con questa operazione è possibile modificare uno snippet esistente. Tutti i campi sono facoltativi e quelli non specificati continueranno ad avere il valore precedente. È necessario specificare lo snippet che si intende modificare attraverso il suo id. Questo viene fornito al momento della creazione dello snippet o è possibile ottenerlo in un secondo momento.
 
 *Richiesta*: POST 127.0.0.1:8000/snippets/snippet_id/  
 *Header*:  
@@ -151,10 +192,19 @@ Con questa operazione è possibile modificare uno snippet esistente. Non sono ob
 - language: 'code language' FACULTATIVE
 - executable: 'bool' FACULTATIVE
 
-*Standard Response*: 200 OK
+*Standard Response Code*: 200 OK   
+*Standard Response*:  
+{
+      "*id*": 13,
+      "*title*": "Mutable Argoument",
+      "*code*": "def    append(n,  l = None):\n  if l is None:\n    l = [     ]\n  l.append(    n)\n  return l\n\nappend(0) # [0]\nappend(     1) # [1]",
+      "*owner*": "admin"       
+      "*language": "unknown",   
+      "*executable*": false,    
+}
 
-### ELIMINA UNO SNIPPET ESISTENTE
-Con questa operazione è possibile eliminare uno snippet esistente. Non sono obbligatori i campi in budy ma è necessario specificare lo snippet da eliminare tramite l'id.
+### ELIMINARE UNO SNIPPET ESISTENTE
+Con questa operazione è possibile eliminare uno snippet esistente. Non è richiesto alcun campo all'interno del body ma è necessario specificare lo snippet da eliminare tramite il suo id.
 
 *Richiesta*: DELETE 127.0.0.1:8000/snippets/snippet_id/  
 *Header*:  
@@ -162,10 +212,14 @@ Con questa operazione è possibile eliminare uno snippet esistente. Non sono obb
 - Authorization: Bearer + Access Token
 
 *Body*: empty  
-*Standard Response*: 200 OK
+*Standard Response Code*: 204 NO CONTENT  
+{
+    "*detail*": "snippet removed"
+}
 
-### OTTIENI SNIPPET DALL'ID
-Con questa operazione è possibile vedere uno snippet specificato attraverso il suo id
+
+### VISUALIZZAZIONE DI UNO SNIPPET DALL'ID
+Con questa operazione è visualizzare uno snippet personale specificato il suo id.
 
 *Richiesta*: GET 127.0.0.1:8000/snippets/snippet_id/  
 *Header*:  
@@ -173,10 +227,19 @@ Con questa operazione è possibile vedere uno snippet specificato attraverso il 
 - Authorization: Bearer + Access Token
 
 *Body*: empty  
-*Standard Response*: 200 OK
+*Standard Response Code*: 200 OK  
+*Standard Response*:  
+{
+    "id": 8,
+    "title": "difference",
+    "code": "def difference(a, b):\n    set_a = set(a)\n    set_b = set(b)\n    comparison = set_a.difference(set_b)\n    return list(comparison)\n\n\ndifference([1,2,3], [1,2,4]) # [3]",
+    "language": "Python",
+    "executable": false,
+    "owner": "admin"
+}
 
-### OTTIENI GLI SNIPPET DELL'UTENTE
-Con questa operazione è possibile vedere gli snippet salvati dagli utenti
+### VISUALIZZAZIONE DI TUTTI GLI SNIPPET MEMORIZZATI
+Con questa operazione è possibile vedere tutti gli snippet che un utente ha memorizzato.
 
 *Richiesta*:GET 127.0.0.1:8000/snippets/  
 *Header*:  
@@ -185,28 +248,39 @@ Con questa operazione è possibile vedere gli snippet salvati dagli utenti
 
 *Body*: empty  
 *Standard Response*: 200 OK
+*Standard Response*:  
+...
+{
+    "id": 8,
+    "title": "difference",
+    "code": "def difference(a, b):\n    set_a = set(a)\n    set_b = set(b)\n    comparison = set_a.difference(set_b)\n    return list(comparison)\n\n\ndifference([1,2,3], [1,2,4]) # [3]",
+    "language": "Python",
+    "executable": false,
+    "owner": "admin"
+}
+...
 
 ## Operazioni sugli snippet
 
-Di seguito sono riportati alcuni uri utilizzati per eseguire operazioni sul codice. Ad esempio, puoi chiedere al server di re-indentare il codice o verificare che sia eseguibile. Per implementare le funzioni sono state utilizzate varie librerie che verranno spiegate in dettaglio in seguito. Quasi tutte le funzionalità sono accessibili tramite tre tipi di richieste: una richiesta GET, una richiesta POST e una richiesta PATCH.
+Di seguito sono riportati le API utilizzate per eseguire delle operazioni sugli snippet. Per eseguire le attività previste sono state utilizzate varie librerie che verranno illustrate in seguito. Quasi tutte le funzionalità sono accessibili tramite tre tipi di richieste: GET, POST e PATCH.
 
-GET viene utilizzato quando si desidera agire su uno snippet archiviato sul server. Per questo motivo, nella URI è necessario specificare l'ID dello snippet su cui eseguire l'operazione. Ad esempio, per eseguire l'operazione di individuazione del linguaggio di programmazione dello snippet, che ha id uguale a 2, occorre fare la seguente richiesta:
+i metodi GET vengono utilizzato quando si desidera agire su uno snippet memorizzato sul server. Per questo motivo nelle richieste GET è necessario specificare l'ID dello snippet su cui eseguire l'operazione. Ad esempio, per eseguire l'operazione di individuazione del linguaggio di programmazione dello snippet con id 2 occorre fare la seguente richiesta:
 
           GET 127.0.0.1:8000/snippets/2/detect/
 
-Il POST viene utilizzato quando si vuole agire su uno snippet che però non è memorizzato sul server e che viene passato al server. Per questo, quando la richiesta viene effettuata tramite l'uri è necessario specificare nel body un parametro che contiene il codice su cui agire, 'codice': 'codice da analizzare'. Ad esempio, per identificare il linguaggio di programmazione dello snippet passato al server, è necessario fare:
+i metodi POST vengono utilizzati quando si desidera agire su uno snippet *non* memorizzato sul server. Nel body della richiesta è infatti necessario specifiacare un parametro contenente il codice su affettuare l'attività: 'code': 'codice da analizzare'. Le richieste post si prestano nel momento in cui si voglione utilizzare le funzionalità su snippet che non si vuole vengano memorizzati nel db. Ad esempio, per eseguire l'operazione di individuazione del linguaggio di programmazione su uno snippet occorre fare la seguente richiesta:
 
-          POST 127.0.0.1:8000/snippets/detect/ and in the body you need to insert the snippet
+          POST 127.0.0.1:8000/snippets/detect/ e specificare nel body il codice da analizzare
 
-Il PATCH funziona quasi identico a Get. La patch serve per eseguire operazioni su uno snippet salvato sul server e la differenza rispetto a get è che quando si ottiene l'output, il valore ottenuto viene salvato nel db. Ad esempio, quando viene eseguita l'operazione di identificazione del linguaggio di programmazione snippet e si ottiene il risultato, questo valore viene memorizzato nel campo della lingua dell'istanza di questo snippet sul db. Ad esempio, per eseguire l'operazione di individuazione del linguaggio di programmazione dello snippet, che ha id uguale a 2, occorre fare la seguente richiesta:
+I metodi PATCH funzionano in modo quasi identico ai GET. I metodi PATCH servono per eseguire operazioni su uno snippet memorizzato sul server e la differenza rispetto ai metodi GET è che, una volta ottenuto l'output, le modifiche effettaute vengono salvato nel db. Ad esempio, quando viene eseguita l'operazione di identificazione del linguaggio di programmazione e si ottiene il risultato, questo valore viene memorizzato nel campo linguaggio di questo snippet. Ad esempio, per eseguire l'operazione di individuazione del linguaggio di programmazione dello snippet, che ha id 2, occorre fare la seguente richiesta:
 
           PATCH 127.0.0.1:8000/snippets/2/detect/
 
 se l'output restituito è Python, il valore Python verrà inserito nel campo della lingua dello snippet 2.
 
-### RILEVA LA LINGUA DEGLI SNIPPET
+### IDENTIFICAZIONE DEL LINGUAGGIO DELLO SNIPPET
 
-Attraverso questa funzionalità è possibile identificare il linguaggio di programmazione di un particolare snippet. L'identificazione avviene tramite Guesslang, un software di deep learning open source che è stato addestrato con oltre un milione di file di codice sorgente. Questo supporta più di 50 linguaggi di programmazione e rileva il linguaggio di programmazione corretto con una precisione superiore al 90%. Guesslang può essere utilizzato come strumento di interfaccia a riga di comando o come modulo Python.
+Attraverso questa funzionalità è possibile identificare il linguaggio di programmazione di un particolare snippet. L'identificazione avviene tramite Guesslang, un software di deep learning, Open source, stato addestrato con oltre un milione di  sorgente. Questo supporta più di 50 linguaggi di programmazione e rileva il linguaggio di programmazione corretto con una precisione superiore al 90%.
 
 *Richiesta*:  
 - GET 127.0.0.1:8000/snippets/snippet_id/detect
