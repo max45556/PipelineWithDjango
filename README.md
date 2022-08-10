@@ -1,3 +1,11 @@
+```diff
+- text in red
++ text in green
+! text in orange
+# text in gray
+@@ text in purple (and bold)@@
+```
+
 # Snippet Analizer
 
 [![Build](https://github.com/WebGoat/WebGoat/actions/workflows/build.yml/badge.svg?branch=develop)](https://github.com/WebGoat/WebGoat/actions/workflows/build.yml)
@@ -27,7 +35,7 @@ Per utilizzare l'API è necessario registrarsi. Dopo la registrazione un utente 
 
 ## Gestione del profilo
 
-<span style="color: red"> REGISTRAZIONE </span>
+###  REGISTRAZIONE
 Per utilizzare le funzionalità offerte dall'applicazione è necessario essere registrati. Dopo la fase di registrazione, un utente può effettuare il login. Un utente può decidere di eliminare il proprio profilo, dopo averlo creato, in qualsiasi momento.
 
 *Richiesta*: POST 127.0.0.1:8000/register/  
