@@ -25,4 +25,18 @@ Per utilizzare l'API è necessario registrarsi. Dopo la registrazione un utente 
 - Gestire gli snippet personali che ha memorizzato
 - Effettuare delle operazione sugli snippet
 
-**Gestione del profilo**
+## Gestione del profilo
+
+### REGISTRAZIONE
+Per utilizzare le funzionalità offerte dall'applicazione è necessario essere registrati. Dopo la fase di registrazione, un utente può effettuare il login. Un utente può decidere di eliminare il proprio profilo, dopo averlo creato, in qualsiasi momento.
+
+*Richiesta*: POST 127.0.0.1:8000/register/
+*Header*: Content-Type: application/json
+*Body*:
+- **username**: 'username'
+- **password**: 'password'
+- **password2**: 'password2'
+- **email**: 'email'
+- **first_name**: 'first_name'
+- **last_name**: 'last_name'
+*Standard Response*: 201 Created
