@@ -1,0 +1,30 @@
+-------> reindent code operation Successfully 
+-------> order imports operation Successfully 
+
+ ----CODE---- 
+import sys
+
+from my_lib import Object2, Object3
+from third_party import (lib1, lib2, lib3, lib4, lib5, lib6, lib7, lib8, lib9,
+                         lib10, lib11, lib12, lib13, lib14, lib15)
+
+keys_list = ["A", "B", "C"]
+values_list = ["blue", "red", "bold"]
+-------> language recognition operation Successfully 
+{"language": "Python"}
+
+-------> pylint checker operation Successfully 
+{"pylint_output": ""}
+
+-------> pyflakes checker operation Successfully 
+{"pyflakes_output": "file.py:1:1: 'sys' imported but unused\r\nfile.py:3:1: 'my_lib.Object2' imported but unused\r\nfile.py:3:1: 'my_lib.Object3' imported but unused\r\nfile.py:4:1: 'third_party.lib1' imported but unused\r\nfile.py:4:1: 'third_party.lib2' imported but unused\r\nfile.py:4:1: 'third_party.lib3' imported but unused\r\nfile.py:4:1: 'third_party.lib4' imported but unused\r\nfile.py:4:1: 'third_party.lib5' imported but unused\r\nfile.py:4:1: 'third_party.lib6' imported but unused\r\nfile.py:4:1: 'third_party.lib7' imported but unused\r\nfile.py:4:1: 'third_party.lib8' imported but unused\r\nfile.py:4:1: 'third_party.lib9' imported but unused\r\nfile.py:4:1: 'third_party.lib10' imported but unused\r\nfile.py:4:1: 'third_party.lib11' imported but unused\r\nfile.py:4:1: 'third_party.lib12' imported but unused\r\nfile.py:4:1: 'third_party.lib13' imported but unused\r\nfile.py:4:1: 'third_party.lib14' imported but unused\r\nfile.py:4:1: 'third_party.lib15' imported but unused\r\n"}
+
+-------> flake8 checker operation Successfully 
+{"flake8_output": "file.py:1:1: F401 'sys' imported but unused\nfile.py:3:1: F401 'my_lib.Object2' imported but unused\nfile.py:3:1: F401 'my_lib.Object3' imported but unused\nfile.py:4:1: F401 'third_party.lib1' imported but unused\nfile.py:4:1: F401 'third_party.lib2' imported but unused\nfile.py:4:1: F401 'third_party.lib3' imported but unused\nfile.py:4:1: F401 'third_party.lib4' imported but unused\nfile.py:4:1: F401 'third_party.lib5' imported but unused\nfile.py:4:1: F401 'third_party.lib6' imported but unused\nfile.py:4:1: F401 'third_party.lib7' imported but unused\nfile.py:4:1: F401 'third_party.lib8' imported but unused\nfile.py:4:1: F401 'third_party.lib9' imported but unused\nfile.py:4:1: F401 'third_party.lib10' imported but unused\nfile.py:4:1: F401 'third_party.lib11' imported but unused\nfile.py:4:1: F401 'third_party.lib12' imported but unused\nfile.py:4:1: F401 'third_party.lib13' imported but unused\nfile.py:4:1: F401 'third_party.lib14' imported but unused\nfile.py:4:1: F401 'third_party.lib15' imported but unused\nfile.py:8:38: W292 no newline at end of file\n"}
+
+-------> mypy checker operation Successfully 
+{"mypy_output": "file.py:3: error: Cannot find implementation or library stub for module named \"my_lib\"\r\nfile.py:3: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports\r\nfile.py:4: error: Cannot find implementation or library stub for module named \"third_party\"\r\nFound 2 errors in 1 file (checked 1 source file)\r\n"}
+
+-------> check execution operation Successfully 
+{"executable": "True"}
+

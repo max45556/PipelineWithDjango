@@ -1,0 +1,16 @@
+# Python
+app/__pycache__/
+app/*/__pycache__/
+app/*/*/__pycache__/
+app/*/*/*/__pycache__/
+.env/
+.venv/
+venv/
+
+#docker
+.dockerignore
+docker-compose.yml
+Dockerfile
+
+# Local PostgreSQL data
+data/

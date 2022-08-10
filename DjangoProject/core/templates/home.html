@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Snippet Analizer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+p {
+ text-align: center;
+}
+
+.one{
+    color: blue;
+    text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: #9ca0b1;
+}
+
+.wrapper {
+  text-align: center;
+}
+.wrapper h1 {
+  color: #fff;
+  font-size: 60px;
+  text-transform: uppercase;
+  font-weight: 100;
+  font-family: "Lato", sans-serif;
+  background: linear-gradient(to right top, #8A2387 10%, #E94057 50%, #F27121 60%);
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 10s linear infinite;
+  display: inline-block;
+}
+
+.wrapper h2 {
+  color: #fff;
+  font-size: 35px;
+  font-weight: 100;
+  text-transform: uppercase;
+  font-family: "Lato", sans-serif;
+  background: linear-gradient(to right top, #5433FF 10%, #20BDFF 50%, #6FB1FC 60%);
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 10s linear infinite;
+  display: inline-block;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+body, html {
+  height: 100%;
+  color: black;
+
+}
+
+/* Create a Parallax Effect */
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* First image (Logo. Full height) */
+.bgimg-1 {
+  background-image: url("https://www.punto-informatico.it/app/uploads/2022/02/python-programmazione.jpg");
+  min-height: 100%;
+}
+
+/***************************************************************/
+
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+
+.content {
+  position: relative;
+}
+
+.content h2 {
+  color: #fff;
+  font-size: 8em;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.content h2:nth-child(1) {
+  color: transparent;
+  -webkit-text-stroke: 2px #0481ff;
+}
+
+.content h2:nth-child(2) {
+  color: #002db7;
+  animation: animate 4s ease-in-out infinite;
+}
+
+@keyframes animate {
+  0%,
+  100% {
+    clip-path: polygon(
+      0% 45%,
+      16% 44%,
+      33% 50%,
+      54% 60%,
+      70% 61%,
+      84% 59%,
+      100% 52%,
+      100% 100%,
+      0% 100%
+    );
+  }
+
+  50% {
+    clip-path: polygon(
+      0% 60%,
+      15% 65%,
+      34% 66%,
+      51% 62%,
+      67% 50%,
+      84% 45%,
+      100% 46%,
+      100% 100%,
+      0% 100%
+    );
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- First Parallax Image with Logo Text -->
+<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+  <div class="w3-display-middle" style="white-space:nowrap;">
+      <section>
+  <div class="content">
+    <h2>Snippet Analizer</h2>
+    <h2>Snippet Analizer</h2>
+  </div>
+</section>
+  </div>
+</div>
+
+<!-- Container (About Section) -->
+
+<div class="w3-content w3-container w3-padding-32" id="about">
+<div class="wrapper">
+    <h1>Scope</h1><br>
+    <h2><em>General Idea</em></h2>
+</div>
+  <p>The Snippet Analyzer is software that allows you to perform various operations on Python snippet.
+    The software is accessible through web APIs developed using Django Rest Framework.
+    The Web Server that provides the services is running on a Docker Container and an application has been designed in Python that allows,
+    through a GUI, to use the server's functions in a simple way. For further information, or for documentation, please contact the following email address:
+    nicolinimassimiliano96@gmail.com
+  </p>
+  <div class="w3-row">
+    <div class="w3-content w3-container">
+      <p>To use the Api you need to register. After registering a user can perform the following functions: <br>
+        - Manage profile <br>
+        - Manage personal snippet <br>
+        - Manage operation on snippet <br><br>
+        Below we will better analyze the features and endpoint api
+      </p>
+    </div>
+  </div>
+  <div class="wrapper">
+  <h1>User profile</h1><br>
+   <h2><em>Registration</em></h2>
+</div>
+   <p>To use the features offered by the application it's necessery must be registered.
+       After the registration phase, a user can log in. A user can decide to delete their profile, after creating it, at any time.
+   </p>
+  <p class="one">Request:</p><p><em>POST 127.0.0.1:8000/register/</em></p>
+  <p class="one">Header:</p><p><em>Content-Type: application/json</em></p>
+    <p class="one">Body:</p>
+    <p>
+    <em> - username: 'username'</em> <br>
+    <em> - password: 'password'</em> <br>
+    <em> - password2: 'password2'</em> <br>
+    <em> - email: 'email'</em> <br>
+    <em> - first_name: 'first_name'</em> <br>
+    <em> - last_name: 'last_name'</em> <br>
+  </p>
+    <p class="one">Standard Response:</p><p><em>201 Created</em></p>
+
+   <div class="wrapper"><h2><em>Login</em></h2></div>
+   <p>By logging in, a user can obtain an access token through which to exploit the functions of the server. <br>
+     In case of successful login, the following information are returned:
+      <br> - access: Access token (string)
+      <br> - refresh: Refresh token (string)
+      <br> - user_id: Id of the user who authenticated (int)
+    <p class="one">Request:</p><p><em>POST 127.0.0.1:8000/login/</em></p>
+  <p class="one">Header:</p><p><em>Content-Type: application/json</em></p>
+    <p class="one">Body: </p>
+  <p>
+    <em> - username: 'username'</em> <br>
+    <em> - password: 'password'</em> <br>
+  </p>
+  <p class="one">Standard Response:</p><p><em>200 OK</em></p>
+
+   <div class="wrapper"><h2><em>Refresh</em></h2></div>
+  <p>It is used to get a new access token using the refresh token which is provided at login.
+      Returns a new access token. <br>
+  <p class="one">Request:</p><p><em>POST 127.0.0.1:8000/login/refresh/</em></p>
+  <p class="one">Header:</p><p><em>Content-Type: application/json</em></p>
+  <p class="one">Body:</p><p>
+    <em> - refresh: 'Refresh token'</em> <br>
+  </p>
+  <p class="one">Standard Response:</p><p><em>200 OK</em></p>
+
+   <div class="wrapper"><h2><em>Change password</em></h2></div>
+   <p>Allows a user to change the password using the old password<br>
+   <p class="one">Request:</p><p><em>PUT 127.0.0.1:8000</em></p>
+   <p class="one">Header:</p><p>
+     <em> - Content-Type: application/json <br>
+          - Authorization: Bearer + Access Token
+   </em></p>
+   <p class="one">Body:</p><p>
+    <em> - password: 'password'</em> <br>
+    <em> - password2: 'password2'</em> <br>
+    <em> - old_password: 'old_password'</em> <br>
+  </p>
+  <p class="one">Standard Response:</p><p><em>200 OK</em></p>
+
+   <div class="wrapper"><h2><em>Update profile</em></h2></div>
+   <p>Allows a user to update his profile. Return updated user data.<br>
+   <p class="one">Request:</p><p><em>POST 127.0.0.1:8000</em></p>
+   <p class="one">Header:</p><p>
+     <em> - Content-Type: application/json <br>
+          - Authorization: Bearer + Access Token
+   </em></p>
+   <p class="one">Body:</p><p>
+    <em> - username: 'username'</em> <br>
+    <em> - first_name: 'first_name'</em> <br>
+    <em> - last_name: 'last_name'</em> <br>
+    <em> - email: 'email'</em> <br>
+  </p>
+  <p class="one">Standard Response:</p><p><em>200 OK</em></p>
+
+   <div class="wrapper"><h2><em>Get user data</em></h2></div>
+   <p>Allows a user to see his profile. Return profile data<br>
+   <p class="one">Request:</p><p><em>GET 127.0.0.1:8000</em></p>
+   <p class="one">Header:</p><p>
+     <em> - Content-Type: application/json <br>
+          - Authorization: Bearer + Access Token
+   </em></p>
+   <p class="one">Body:</p><p>
+    <em> empty </em><br>
+  </p>
+  <p class="one">Standard Response:</p><p><em>200 OK</em></p>
+
+   <div class="wrapper"><h2><em>Delete profile</em></h2></div>
+   <p>Allows a user to delete his profile. No data are returned<br>
+   <p class="one">Request:</p><p><em>DELETE 127.0.0.1:8000</em></p>
+   <p class="one">Header:</p><p>
+     <em> - Content-Type: application/json <br>
+          - Authorization: Bearer + Access Token
+   </em></p>
+   <p class="one">Body:</p>
+    <p>
+    <em> empty </em><br>
+  </p>
+  <p class="one">Standard Response:</p><p><em>200 OK</em></p>
+
+<div class="wrapper">
+    <h1>Snippet Management</h1><br>
+    <h2><em>Create new snippet</em></h2>
+</div>
+   <p>By this operation it's possible to create a snippet. The only field required
+   is the code field but some other information could be provided for a better management
+   of personal snippet.</p>
+  <p class="one">Request:</p><p><em>POST 127.0.0.1:8000/snippets/</em></p>
+  <p class="one">Header:</p>
+    <p>
+     <em> - Content-Type: application/json <br>
+          - Authorization: Bearer + Access Token
+   </em></p>
+  <p class="one">Body:</p><p>
+    <em> - code: 'code' REQUIRED</em> <br>
+    <em> - title: 'title' FACULTATIVE</em> <br>
+    <em> - language: 'code language' FACULTATIVE </em> <br>
+    <em> - executable: 'bool' FACULTATIVE</em> <br>
+  </p>
+    <p class="one">Standard Response:</p><p><em>200 OK</em></p>
+
+   <div class="wrapper"><h2><em>Update an existing snippet</em></h2></div>
+   <p>By this operation it's possible to modify an existing snippet.
+       Are not required mandatory field and will be modified only field passed. It's necessary
+       to specify the snippet through the id.
+   </p>
+  <p class="one">Request:</p><p><em>POST 127.0.0.1:8000/snippets/snippet_id/</em></p>
+  <p class="one">Header:</p><p>
+     <em> - Content-Type: application/json <br>
+          - Authorization: Bearer + Access Token
+   </em></p>
+  <p class="one">Body:</p><p>
+    <em> - code: 'code' FACULTATIVE</em> <br>
+    <em> - title: 'title' FACULTATIVE</em> <br>
+    <em> - language: 'code language' FACULTATIVE </em> <br>
+    <em> - executable: 'bool' FACULTATIVE</em> <br>
+  </p>
+    <p class="one">Standard Response:</p><p><em>200 OK</em></p>
+
+   <div class="wrapper"><h2><em>Delete an existing snippet</em></h2></div>
+   <p>By this operation it's possible to delete an existing snippet.
+       Are not required field into budy abut it's necessary
+       to specify the snippet to delete through the id.
+   </p>
+  <p class="one">Request:</p><p><em>DELETE 127.0.0.1:8000/snippets/snippet_id/</em></p>
+  <p class="one">Header:</p><p>
+     <em> - Content-Type: application/json <br>
+          - Authorization: Bearer + Access Token
+   </em></p>
+  <p class="one">Body: </p><p>
+    <em> empty </em>
+  </p>
+    <p class="one">Standard Response: </p><p><em>200 OK</em></p>
+
+   <div class="wrapper"><h2><em>Get snippet by id</em></h2></div>
+   <p>By this operation it's possible to see a specified snippet through him id</p>
+  <p class="one">Request:</p><p><em>GET 127.0.0.1:8000/snippets/snippet_id/</em></p>
+  <p class="one">Header:</p><p>
+     <em> - Content-Type: application/json <br>
+          - Authorization: Bearer + Access Token
+   </em></p>
+  <p class="one">Body:</p><p>
+    <em>empty</em> <br>
+  </p>
+    <p class="one">Standard Response:</p><p><em>200 OK</em></p>
+
+   <div class="wrapper"><h2><em>Get user snippet</em></h2></div>
+   <p>By this operation it's possible to see user snippet saved</p>
+  <p class="one">Request: </p><p><em>GET 127.0.0.1:8000/snippets/</em></p>
+  <p class="one">Header: </p>
+    <p>
+     <em> - Content-Type: application/json <br>
+          - Authorization: Bearer + Access Token
+   </em></p>
+  <p class="one">Body:</p><p>
+    <em>empty</em>
+  </p>
+    <p class="one">Standard Response:</p><p> <em>200 OK</em></p>
+
+  <div class="wrapper">
+    <h1>Snippet operation</h1><br>
+  </div>
+   <p>Below are some uri used to perform operations on the code.
+       For example, you can ask the server to re-indent the code or verify that it is executable.
+       To implement the functions, various libraries have been used which will be explained in detail later.
+       Almost every feature is accessible through three types of requests: a GET request, a POST request, and a PATCH request.<br><br>
+       The <b>GET</b> is used when you want to act on a snippet that is stored on the server.
+       For this reason, in the URI it is necessary to specify the ID of the snippet on which to perform the operation.
+       For example, to perform the operation of identifying the programming language of the snippet, which has an id equal to 2,
+       the following request must be made: <br><br>
+       <em>GET 127.0.0.1:8000/snippets/2/detect/</em> <br><br>
+       The <b>POST</b> is used when you want to act on a snippet which, however, is not stored on the server
+       and which is passed to the server. For this reason, when the request is made through the uri it is necessary
+       to specify in the body a parameter that contains the code to act on, 'code': 'code to analize'. For example,
+       to identify the programming language of the snippet passed to the server, it is necessary to do: <br><br>
+       <em>POST 127.0.0.1:8000/snippets/detect/ and in the body you need to insert the snippet</em><br><br>
+       The <b>PATCH</b> works almost identical to Get. The patch is used to perform operations on a snippet saved on the server
+       and the difference from the get is that when the output is obtained, the value obtained is saved in the db.
+       For example, when the snippet programming language identification operation is performed, and the result is obtained,
+       this value is stored in the language field of the instance of this snippet on the db. For example,
+       to perform the operation of identifying the programming language of the snippet, which has an id equal to 2,
+       the following request must be made: <br><br>
+       <em>PATCH 127.0.0.1:8000/snippets/2/detect/</em> <br><br>
+       if the returned output is Python, the Python value will be entered in the language field of snippet 2.
+   </p>
+
+    <div class="wrapper">
+    <h2>Detect language snippet</h2><br>
+    </div>
+   <p>Through this feature it is possible to identify the programming language of a particular snippet.
+       Identification is done through Guesslang, which is open source deep learning software that has been trained
+       with over a million source code files. This supports more than 50 programming languages and detects the correct
+       programming language with greater than 90% accuracy. Guesslang can be used as a command line interface
+       tool or as a Python module.</p>
+  <p class="one">Request: </p>
+    <p>
+      - <em>GET 127.0.0.1:8000/snippets/snippet_id/detect</em><br>
+      - <em>PATCH 127.0.0.1:8000/snippets/snippet_id/detect/</em><br>
+      - <em>POST 127.0.0.1:8000/snippets/detect/</em><br>
+    </p>
+    <p class="one">Header: </p>
+    <p>
+         <em> - Content-Type: application/json <br>
+              - Authorization: Bearer + Access Token
+         </em>
+    </p>
+    <p class="one" >Body: </p>
+    <p>
+        <em> - GET REQUEST, empty</em> <br>
+        <em> - PATCH REQUEST, empty</em> <br>
+        <em> - POST REQUEST, 'code': 'code_to_analyze'</em> <br>
+    </p>
+    <p class="one">Standard Response: </p><p><em>200 OK</em></p>
+    <p class="one">Data returned: </p><p><em>Language identified</em></p>
+
+    <div class="wrapper">
+        <h2>Reindent snippet code</h2><br>
+    </div>
+    <p>Through this operation it is possible to indent the code. To do this, a library called Black was used.
+    Black is the uncompromising Python code formatter. By using it, you agree to cede control over minutiae of hand-formatting.
+    In return, Black gives you speed, determinism, and freedom from pycodestyle nagging about formatting.
+    Blackened code looks the same regardless of the project you're reading. Formatting becomes transparent after a while
+    and you can focus on the content instead. Black makes code review faster by producing the smallest diffs possible.</p>
+    <p class="one">Request: </p>
+    <p>
+      - <em>GET 127.0.0.1:8000/snippets/snippet_id/reindent</em><br>
+      - <em>PATCH 127.0.0.1:8000/snippets/snippet_id/reindent/</em><br>
+      - <em>POST 127.0.0.1:8000/snippets/reindent/</em><br>
+    </p>
+    <p class="one">Header: </p>
+    <p>
+     <em> - Content-Type: application/json <br>
+          - Authorization: Bearer + Access Token
+     </em>
+    </p>
+    <p class="one">Body: </p>
+    <p>
+        <em> - GET REQUEST, empty</em> <br>
+        <em> - PATCH REQUEST, empty</em> <br>
+        <em> - POST REQUEST, 'code': 'code_to_analyze'</em> <br>
+    </p>
+    <p class="one">Standard Response: </p><p><em>200 OK</em></p>
+    <p class="one">Data returned: </p><p><em>Code modified</em></p>
+
+    <div class="wrapper">
+        <h2>Order imports on snippet</h2><br>
+    </div>
+    <p>through this operation it is possible to order the imports inside the code.
+        To do this, a library called Isort was used. Isort is a Python utility / library to sort imports alphabetically,
+        and automatically separated into sections and by type.</p>
+    <p class="one">Request: </p>
+    <p>
+      - <em>GET 127.0.0.1:8000/snippets/snippet_id/order</em><br>
+      - <em>PATCH 127.0.0.1:8000/snippets/snippet_id/order/</em><br>
+      - <em>POST 127.0.0.1:8000/snippets/order/</em><br>
+    </p>
+    <p class="one" >Header: </p>
+    <p>
+     <em> - Content-Type: application/json <br>
+          - Authorization: Bearer + Access Token
+     </em>
+    </p>
+    <p class="one">Body: </p>
+    <p>
+        <em> - GET REQUEST, empty</em> <br>
+        <em> - PATCH REQUEST, empty</em> <br>
+        <em> - POST REQUEST, 'code': 'code_to_analyze'</em> <br>
+    </p>
+    <p class="one">Standard Response: </p><p><em>200 OK</em></p>
+    <p class="one">Data returned: </p><p><em>Code with ordered imports</em></p>
+
+    <div class="wrapper">
+        <h2>Check code / pylint</h2><br>
+    </div>
+    <p>Pylint is a tool that checks for errors in Python code, tries to enforce a
+        coding standard and looks for code smells. It can also look for certain type errors,
+        it can recommend suggestions about how particular blocks can be refactored and can offer
+        you details about the code's complexity.</p>
+    <p class="one">Request: </p>
+    <p>
+      - <em>GET 127.0.0.1:8000/snippets/snippet_id/pylint</em><br>
+      - <em>PATCH 127.0.0.1:8000/snippets/snippet_id/pylint/</em><br>
+      - <em>POST 127.0.0.1:8000/snippets/pylint/</em><br>
+    </p>
+    <p class="one">Header: </p>
+    <p>
+     <em> - Content-Type: application/json <br>
+          - Authorization: Bearer + Access Token
+     </em>
+    </p>
+    <p class="one">Body: </p>
+    <p>
+        <em> - GET REQUEST, empty</em> <br>
+        <em> - PATCH REQUEST, empty</em> <br>
+        <em> - POST REQUEST, 'code': 'code_to_analyze'</em> <br>
+    </p>
+    <p class="one">Standard Response: </p><p><em>200 OK</em></p>
+    <p class="one">Data returned: </p><p><em>Output of pylint</em></p>
+
+    <div class="wrapper">
+        <h2>Check code / pyflakes</h2><br>
+    </div>
+    <p>A simple program which checks Python source files for errors.
+        Pyflakes analyzes programs and detects various errors. It works by parsing the source file,
+        not importing it, so it is safe to use on modules with side effects. It’s also much faster.</p>
+    <p class="one">Request: </p>
+    <p>
+      - <em>GET 127.0.0.1:8000/snippets/snippet_id/pyflakes</em><br>
+      - <em>PATCH 127.0.0.1:8000/snippets/snippet_id/pyflakes/</em><br>
+      - <em>POST 127.0.0.1:8000/snippets/pyflakes/</em><br>
+    </p>
+    <p class="one">Header: </p>
+    <p>
+     <em> - Content-Type: application/json <br>
+          - Authorization: Bearer + Access Token
+     </em>
+    </p>
+    <p class="one">Body: </p>
+    <p>
+        <em> - GET REQUEST, empty</em> <br>
+        <em> - PATCH REQUEST, empty</em> <br>
+        <em> - POST REQUEST, 'code': 'code_to_analyze'</em> <br>
+    </p>
+    <p class="one">Standard Response: </p><p><em>200 OK</em></p>
+    <p class="one">Data returned: </p><p><em>Output of pyflakes</em></p>
+
+    <div class="wrapper">
+        <h2>Check code / flake8</h2><br>
+    </div>
+    <p>Flake8 is a wrapper around these tools: PyFlakes  pycodestyle  Ned Batchelder's McCabe script.
+        Flake8 runs all the tools by launching the single flake8 command.
+        It displays the warnings in a per-file, merged output.</p>
+    <p class="one">Request: </p>
+    <p>
+      - <em>GET 127.0.0.1:8000/snippets/snippet_id/flake8</em><br>
+      - <em>PATCH 127.0.0.1:8000/snippets/snippet_id/flake8/</em><br>
+      - <em>POST 127.0.0.1:8000/snippets/flake8/</em><br>
+    </p>
+    <p class="one">Header: </p>
+    <p>
+     <em> - Content-Type: application/json <br>
+          - Authorization: Bearer + Access Token
+     </em>
+    </p>
+    <p class="one">Body: </p>
+    <p>
+        <em> - GET REQUEST, empty</em> <br>
+        <em> - PATCH REQUEST, empty</em> <br>
+        <em> - POST REQUEST, 'code': 'code_to_analyze'</em> <br>
+    </p>
+    <p class="one">Standard Response: </p><p><em>200 OK</em></p>
+    <p class="one">Data returned: </p><p><em>Output of flake8</em></p>
+
+    <div class="wrapper">
+        <h2>Check code / mypy</h2><br>
+    </div>
+    <p>Mypy is an optional static type checker for Python that aims to combine the benefits of dynamic (or "duck")
+        typing and static typing. Mypy combines the expressive power and convenience of Python with a
+        powerful type system and compile-time type checking.
+        Mypy type checks standard Python programs; run them using any Python VM with basically no runtime overhead.</p>
+    <p class="one">Request: </p>
+    <p>
+      - <em>GET 127.0.0.1:8000/snippets/snippet_id/mypy</em><br>
+      - <em>PATCH 127.0.0.1:8000/snippets/snippet_id/mypy/</em><br>
+      - <em>POST 127.0.0.1:8000/snippets/mypy/</em><br>
+    </p>
+    <p class="one">Header: </p>
+    <p>
+     <em> - Content-Type: application/json <br>
+          - Authorization: Bearer + Access Token
+     </em>
+    </p>
+    <p class="one">Body: </p>
+    <p>
+        <em> - GET REQUEST, empty</em> <br>
+        <em> - PATCH REQUEST, empty</em> <br>
+        <em> - POST REQUEST, 'code': 'code_to_analyze'</em> <br>
+    </p>
+    <p class="one">Standard Response: </p><p><em>200 OK</em></p>
+    <p class="one">Data returned: </p><p><em>Output of mypy</em></p>
+
+    <div class="wrapper">
+        <h2>Code execution</h2><br>
+    </div>
+    <p>Code execution allows you to test the execution of a snippet.
+        The server responds True or False depending on whether this is executable or not.</p>
+    <p class="one">Request: </p>
+    <p>
+      - <em>GET 127.0.0.1:8000/snippets/snippet_id/execute</em><br>
+      - <em>PATCH 127.0.0.1:8000/snippets/snippet_id/execute/</em><br>
+      - <em>POST 127.0.0.1:8000/snippets/execute/</em><br>
+    </p>
+    <p class="one">Header: </p>
+    <p>
+     <em> - Content-Type: application/json <br>
+          - Authorization: Bearer + Access Token
+     </em>
+    </p>
+    <p class="one">Body: </p>
+    <p>
+        <em> - GET REQUEST, empty</em> <br>
+        <em> - PATCH REQUEST, empty</em> <br>
+        <em> - POST REQUEST, 'code': 'code_to_analyze'</em> <br>
+    </p>
+    <p class="one">Standard Response: </p><p><em>200 OK</em></p>
+    <p class="one">Data returned: </p><p><em>True(executable) or False(not executable)</em></p>
+</div>
+
+</body>
+</html>
