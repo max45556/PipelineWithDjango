@@ -25,4 +25,4 @@ Per utilizzare l'API è necessario registrarsi. Dopo la registrazione un utente 
 - Gestire gli snippet personali che ha memorizzato
 - Effettuare delle operazione sugli snippet
 
-*Gestione del profilo*
+**Gestione del profilo**
