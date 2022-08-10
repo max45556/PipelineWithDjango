@@ -38,85 +38,69 @@ Per utilizzare le funzionalità offerte dall'applicazione è necessario essere r
 - **password2**: 'password2'
 - **email**: 'email'
 - **first_name**: 'first_name'
-- **last_name**: 'last_name'
-
+- **last_name**: 'last_name'  
 *Standard Response*: 201 Created
 
 ### LOGIN
 Effettuando il login, un utente può ottenere un token di accesso attraverso il quale sfruttare le funzioni del server.
-In caso di accesso riuscito, vengono restituite le seguenti informazioni:
-
+In caso di accesso riuscito, vengono restituite le seguenti informazioni:  
   - *access*: token di accesso (stringa)
   - *refresh*: Aggiorna di refresh (stringa)
-  - *user_id*: ID dell'utente che si è autenticato (int)
-
-*Richiesta*: POST 127.0.0.1:8000/login/
-*Header*: Content-Type: application/json
-*Body*:
+  - *user_id*: ID dell'utente che si è autenticato (int)  
+*Richiesta*: POST 127.0.0.1:8000/login/  
+*Header*: Content-Type: application/json  
+*Body*:  
 - **username**: 'username'
-- **password**: 'password'
-
+- **password**: 'password'  
 *Standard Response*: 200 OK
 
 ### REFRESH TOKEN
-Viene utilizzato per ottenere un nuovo token di accesso utilizzando il token di aggiornamento fornito all'accesso. Restituisce un nuovo token di accesso.
-
-*Richiesta*: POST 127.0.0.1:8000/login/refresh/
-*Header*: Content-Type: application/json
-*Body*:
-- **refresh**: 'refresh token'
-
-*Standard Response*: 200 OK
+Viene utilizzato per ottenere un nuovo token di accesso utilizzando il token di aggiornamento fornito all'accesso. Restituisce un nuovo token di accesso.  
+*Richiesta*: POST 127.0.0.1:8000/login/refresh/  
+*Header*: Content-Type: application/json  
+*Body*:  
+- **refresh**: 'refresh token'  
+*Standard Response*: 200 OK  
 
 ### CHANGE PASSWORD
-Consente a un utente di modificare la password utilizzando la vecchia password
-
-*Richiesta*: PUT 127.0.0.1:8000
-*Header*:
+Consente a un utente di modificare la password utilizzando la vecchia password  
+*Richiesta*: PUT 127.0.0.1:8000  
+*Header*:  
 - Content-Type: application/json  
-- Authorization: Bearer + Access Token
-
+- Authorization: Bearer + Access Token  
 *Body*:  
 - **password**: 'password'
 - **password2**: 'password2'
-- **old_password**: 'old_password'
-
+- **old_password**: 'old_password'  
 *Standard Response*: 200 OK
 
 ### UPDATE PROFILE
-Consente a un utente di aggiornare il proprio profilo. Restituire dati utente aggiornati.<br/>
-*Richiesta*: POST 127.0.0.1:8000
-
-*Header*:
+Consente a un utente di aggiornare il proprio profilo. Restituire dati utente aggiornati  
+*Richiesta*: POST 127.0.0.1:8000  
+*Header*:  
 - Content-Type: application/json  
-- Authorization: Bearer + Access Token
-
+- Authorization: Bearer + Access Token  
 *Body*:  
 - **username**: 'username'
 - **first_name**: 'first_name'
 - **last_name**: 'last_name'
-- **email**: 'email'
-
+- **email**: 'email'  
 *Standard Response*: 200 OK
 
 ### GET USER DATA
-Consente a un utente di vedere il suo profilo. Restituisci i dati del profilo
-
-*Richiesta*: GET 127.0.0.1:8000
-*Header*:
+Consente a un utente di vedere il suo profilo. Restituisci i dati del profilo  
+*Richiesta*: GET 127.0.0.1:8000  
+*Header*:  
 - Content-Type: application/json  
-- Authorization: Bearer + Access Token
-
-*Body*: empty
+- Authorization: Bearer + Access Token  
+*Body*: empty  
 *Standard Response*: 200 OK
 
 ### DELETE PROFILE
-Consente a un utente di eliminare il proprio profilo. Nessun dato viene restituito<br/>
-*Richiesta*: DELETE 127.0.0.1:8000
-
-*Header*:
+Consente a un utente di eliminare il proprio profilo. Nessun dato viene restituito  
+*Richiesta*: DELETE 127.0.0.1:8000  
+*Header*:  
 - Content-Type: application/json  
-- Authorization: Bearer + Access Token
-
-*Body*: empty
+- Authorization: Bearer + Access Token  
+*Body*: empty  
 *Standard Response*: 200 OK
