@@ -53,7 +53,7 @@ In caso di accesso riuscito, vengono restituite le seguenti informazioni:
 - **username**: 'username'
 - **password**: 'password'
 
-*Standard Response*: 200 OK
+  *Standard Response*: 200 OK
 
 ### REFRESH TOKEN
 Viene utilizzato per ottenere un nuovo token di accesso utilizzando il token di aggiornamento fornito all'accesso. Restituisce un nuovo token di accesso.  
