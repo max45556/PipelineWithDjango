@@ -38,7 +38,8 @@ Per utilizzare le funzionalità offerte dall'applicazione è necessario essere r
 - **password2**: 'password2'
 - **email**: 'email'
 - **first_name**: 'first_name'
-- **last_name**: 'last_name'  
+- **last_name**: 'last_name'
+
 *Standard Response*: 201 Created
 
 ### LOGIN
@@ -52,8 +53,7 @@ In caso di accesso riuscito, vengono restituite le seguenti informazioni:
 *Body*:  
 - **username**: 'username'
 - **password**: 'password'
-
-  *Standard Response*: 200 OK
+*Standard Response*: 200 OK
 
 ### REFRESH TOKEN
 Viene utilizzato per ottenere un nuovo token di accesso utilizzando il token di aggiornamento fornito all'accesso. Restituisce un nuovo token di accesso.  
