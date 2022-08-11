@@ -437,3 +437,9 @@ L'esecuzione del codice consente di testare l'esecuzione di uno snippet. Il serv
 
 *Standard Response*: 200 OK  
 *Data returned*: {'executable': TRUE or FALSE}
+
+# SOFTWARE PER L'UTILIZZO DELLE API
+
+Come detto in precedenza, è stato sviluppato un software che permette di eseguire le operazioni specificate dalle API. Si tratta in particolare di una GUI sviluppata con TKinter e sebbene semplice aiuta a comprendere quella è che la loro utilità all'interno di un software. Procederemo ad analizzare il software attraverso delle immagini e la relativa spiegazione.
+
+![alt text](https://github.com/max45556/PipelineWithDjango/main/GUI_image/immagineUI1.png?raw=true)
