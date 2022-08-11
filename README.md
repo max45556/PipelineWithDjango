@@ -442,4 +442,4 @@ L'esecuzione del codice consente di testare l'esecuzione di uno snippet. Il serv
 
 Come detto in precedenza, è stato sviluppato un software che permette di eseguire le operazioni specificate dalle API. Si tratta in particolare di una GUI sviluppata con TKinter e sebbene semplice aiuta a comprendere quella è che la loro utilità all'interno di un software. Procederemo ad analizzare il software attraverso delle immagini e la relativa spiegazione.
 
-![alt text](https://github.com/max45556/PipelineWithDjango/main/GUI_image/immagineUI1.png?raw=true)
+![alt text](https://github.com/max45556/PipelineWithDjango/blob/main/GUI_image/immagineUI1.png?raw=true)
