@@ -413,4 +413,4 @@ class SnippetExecute(APIView):
         executable_output = self.operation(code)
         snippet.executable = executable_output  # true or false
         snippet.save()
-        return Response(status=status.HTTP_200_OK, data="executable: " + str(executable_output))
+        return Response(status=status.HTTP_200_OK, data={"executable": str(executable_output)})

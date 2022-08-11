@@ -280,7 +280,7 @@ se l'output restituito è Python, il valore Python verrà inserito nel campo del
 
 ### IDENTIFICAZIONE DEL LINGUAGGIO DELLO SNIPPET
 
-Attraverso questa funzionalità è possibile identificare il linguaggio di programmazione di un particolare snippet. L'identificazione avviene tramite Guesslang, un software di deep learning, Open source, stato addestrato con oltre un milione di  sorgente. Questo supporta più di 50 linguaggi di programmazione e rileva il linguaggio di programmazione corretto con una precisione superiore al 90%.
+Attraverso questa funzionalità è possibile identificare il linguaggio di programmazione di un particolare snippet. L'identificazione avviene tramite Guesslang, un software di deep learning Open source, che è stato addestrato con oltre un milione di sorgenti. Questo supporta più di 50 linguaggi di programmazione e rileva il linguaggio di programmazione corretto con una precisione superiore al 90%.
 
 *Richiesta*:  
 - GET 127.0.0.1:8000/snippets/snippet_id/detect
@@ -301,7 +301,7 @@ Attraverso questa funzionalità è possibile identificare il linguaggio di progr
 
 ### REINDENTAZIONE DEL CODICE
 
-Attraverso questa operazione è possibile indentare il codice. Per fare ciò è stata utilizzata una libreria chiamata Black. Il nero è il formattatore di codice Python senza compromessi. Usandolo, accetti di cedere il controllo sulle minuzie della formattazione manuale. In cambio, Black ti dà velocità, determinismo e libertà dal fastidioso stile pycode sulla formattazione. Il codice annerito ha lo stesso aspetto indipendentemente dal progetto che stai leggendo. La formattazione diventa trasparente dopo un po' e puoi invece concentrarti sul contenuto. Il nero rende la revisione del codice più veloce producendo le differenze più piccole possibili.
+Attraverso questa operazione è possibile indentare il codice dello snippet. Per fare ciò è stata utilizzata una libreria chiamata Black che offre un formattatore di codice Python molto veloce. L'API restituisce i codice formattato come risposta.
 
 *Richiesta*:  
 - GET 127.0.0.1:8000/snippets/snippet_id/reindent
@@ -318,11 +318,11 @@ Attraverso questa operazione è possibile indentare il codice. Per fare ciò è 
 - POST REQUEST, 'code': 'code_to_analyze'
 
 *Standard Response*: 200 OK  
-*Data returned*: {'code':'code modified'}
+*Data returned*: {'code_modified':'code modified'}
 
-### ORDINAMENTO DELLE IMPORTAZIONI DEL CODICE
+### ORDINAMENTO DELLE IMPORTAZIONI DELLO SNIPPET
 
-tramite questa operazione è possibile ordinare le importazioni all'interno del codice. Per fare ciò è stata utilizzata una libreria chiamata Isort. Isort è un'utilità / libreria Python per ordinare le importazioni in ordine alfabetico e separate automaticamente in sezioni e per tipo.
+Tramite questa operazione è possibile ordinare le importazioni all'interno del codice. Per fare ciò è stata utilizzata una libreria chiamata Isort. Isort è un'utility/libreria Python che permette di ordinare le importazioni in ordine alfabetico e separarle automaticamente in sezioni e a seconda del tipo.
 
 *Richiesta*:  
 - GET 127.0.0.1:8000/snippets/snippet_id/order
@@ -339,15 +339,14 @@ tramite questa operazione è possibile ordinare le importazioni all'interno del 
 - POST REQUEST, 'code': 'code_to_analyze'
 
 *Standard Response*: 200 OK  
-*Data returned*: {'code':'code with ordered imports'}
+*Data returned*: {'code_modified':'code with ordered imports'}
 
 ### PYLINT
 
-Pylint è uno strumento che controlla gli errori nel codice Python, cerca di imporre uno standard di codifica e cerca gli odori del codice. Può anche cercare determinati errori di tipo, può consigliare suggerimenti su come eseguire il refactoring di determinati blocchi e può offrire dettagli sulla complessità del codice.
+Tramite questa funzione è possibile controllare eventuali errori presenti dentro codice Python. Per fare ciò è stato utilizzato Pylint che cerca di identificare errori dentro il codice imponendo uno standard di codifica. Questo può anche cercare determinate tipologie di errori e consigliare su come eseguire il refactoring di determinati blocchi offrendo anche dettagli sulla complessità del codice.
 
 *Richiesta*:  
 - GET 127.0.0.1:8000/snippets/snippet_id/pylint
-- PATCH 127.0.0.1:8000/snippets/snippet_id/pylint/
 - POST 127.0.0.1:8000/snippets/pylint/
 
 *Header*:  
@@ -356,19 +355,17 @@ Pylint è uno strumento che controlla gli errori nel codice Python, cerca di imp
 
 *Body*:  
 - GET REQUEST, empty
-- PATCH REQUEST, empty
 - POST REQUEST, 'code': 'code_to_analyze'
 
 *Standard Response*: 200 OK  
-*Data returned*: {'output':'output of pylint'}
+*Data returned*: {'pylint_output':'output of pylint'}
 
 ### PYFLAKES
 
-Un semplice programma che controlla gli errori dei file sorgente Python. Pyflakes analizza i programmi e rileva vari errori. Funziona analizzando il file sorgente, non importandolo, quindi è sicuro da usare su moduli con effetti collaterali. È anche molto più veloce.
+Tramite questa funzione è possibile controllare eventuali errori presenti dentro codice Python. Per fare ciò è stato utilizzato Pyflakes il quale analizza i programmi e rileva eventuali errori. Funziona analizzando il file sorgente, non importandolo, quindi è più sicuro e veloce.
 
 *Richiesta*:  
 - GET 127.0.0.1:8000/snippets/snippet_id/pyflakes
-- PATCH 127.0.0.1:8000/snippets/snippet_id/pyflakes/
 - POST 127.0.0.1:8000/snippets/pyflakes/
 
 *Header*:  
@@ -377,19 +374,17 @@ Un semplice programma che controlla gli errori dei file sorgente Python. Pyflake
 
 *Body*:  
 - GET REQUEST, empty
-- PATCH REQUEST, empty
 - POST REQUEST, 'code': 'code_to_analyze'
 
 *Standard Response*: 200 OK  
-*Data returned*: {'output':'output of pyflakes'}
+*Data returned*: {'pyflakes_output':'output of pyflakes'}
 
 ### FLAKE8
 
-Flake8 è un wrapper attorno a questi strumenti: lo script McCabe di PyFlakes pycodestyle di Ned Batchelder. Flake8 esegue tutti gli strumenti lanciando il singolo comando flake8. Visualizza gli avvisi in un output unito per file.
+Flake8 è un wrapper attorno a questi strumenti: lo script McCabe di PyFlakes e pycodestyle di Ned Batchelder. Flake8 esegue tutti gli strumenti lanciando il singolo comando flake8. Visualizza gli avvisi in un output unito per file.
 
 *Richiesta*:  
 - GET 127.0.0.1:8000/snippets/snippet_id/flake8
-- PATCH 127.0.0.1:8000/snippets/snippet_id/flake8/
 - POST 127.0.0.1:8000/snippets/flake8/
 
 *Header*:  
@@ -398,19 +393,17 @@ Flake8 è un wrapper attorno a questi strumenti: lo script McCabe di PyFlakes py
 
 *Body*:  
 - GET REQUEST, empty
-- PATCH REQUEST, empty
 - POST REQUEST, 'code': 'code_to_analyze'
 
 *Standard Response*: 200 OK  
-*Data returned*: {'output':'output of flake8'}
+*Data returned*: {'flake8_output':'output of flake8'}
 
 ### MYPY
 
-Mypy è un controllo del tipo statico opzionale per Python che mira a combinare i vantaggi della digitazione dinamica (o "anatra") e della digitazione statica. Mypy combina la potenza espressiva e la comodità di Python con un potente sistema di tipi e un controllo del tipo in fase di compilazione. Il tipo Mypy controlla i programmi Python standard; eseguili usando qualsiasi VM Python praticamente senza sovraccarico di runtime.
+Mypy è un controllore del tipo statico per Python che mira a combinare i vantaggi offerti dal typing statico e dinamico. Mypy combina la potenza espressiva e la comodità di Python con un potente sistema di tipi e un controllo del tipo in fase di compilazione. Il tipo Mypy controlla i programmi Python standard.
 
 *Richiesta*:  
 - GET 127.0.0.1:8000/snippets/snippet_id/mypy
-- PATCH 127.0.0.1:8000/snippets/snippet_id/mypy/
 - POST 127.0.0.1:8000/snippets/mypy/
 
 *Header*:  
@@ -419,11 +412,10 @@ Mypy è un controllo del tipo statico opzionale per Python che mira a combinare 
 
 *Body*:  
 - GET REQUEST, empty
-- PATCH REQUEST, empty
 - POST REQUEST, 'code': 'code_to_analyze'
 
 *Standard Response*: 200 OK  
-*Data returned*: {'output':'output of mypy'}
+*Data returned*: {'mypy_output':'output of mypy'}
 
 ### ESECUZIONE DEL CODICE
 
