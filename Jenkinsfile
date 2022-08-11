@@ -190,7 +190,7 @@ node {
         println("Snippet to analyze: \n\n" + snippet)
     }
     stage('Logging') {
-      def result = login('admin', 'admin1212')
+      def result = login('admin', 'admin1111')
       println(result.reason)
       if (result.isClear) {
         logged = true
