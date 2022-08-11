@@ -155,9 +155,9 @@ class Manager:
             if self.write:
                 file = open("language_recognition_output.txt", "w")
                 file.truncate(0)
-                file.write(response.json())
+                file.write(json.dumps(response.json()))
                 file.close()
-            return response.status_code, response.json() + "\n"
+            return response.status_code, response.json()
 
     def get_reindent_code(self):
         response = requests.get(self.url + 'snippets/' + str(self.snippet_id) + '/reindent/', data='',
@@ -166,9 +166,9 @@ class Manager:
             if self.write:
                 file = open("reindent_code_output.txt", "w")
                 file.truncate(0)
-                file.write(response.json())
+                file.write(json.dumps(response.json()))
                 file.close()
-            return response.status_code, response.json() + "\n"
+            return response.status_code, response.json()
 
     def get_order_imports(self):
         response = requests.get(self.url + 'snippets/' + str(self.snippet_id) + '/order/', data='',
@@ -177,9 +177,9 @@ class Manager:
             if self.write:
                 file = open("order_import_output.txt", "w")
                 file.truncate(0)
-                file.write(response.json())
+                file.write(json.dumps(response.json()))
                 file.close()
-            return response.status_code, response.json() + "\n"
+            return response.status_code, response.json()
 
     def get_check_pylint(self):
         response = requests.get(self.url + 'snippets/' + str(self.snippet_id) + '/pylint/', data='',
@@ -188,9 +188,9 @@ class Manager:
             if self.write:
                 file = open("pylint_output.txt", "w")
                 file.truncate(0)
-                file.write(response.json())
+                file.write(json.dumps(response.json()))
                 file.close()
-            return response.status_code, response.json() + "\n"
+            return response.status_code, response.json()
 
     def get_check_pyflakes(self):
         response = requests.get(self.url + 'snippets/' + str(self.snippet_id) + '/pyflakes/', data='',
@@ -199,9 +199,9 @@ class Manager:
             if self.write:
                 file = open("pyflakes_output.txt", "w")
                 file.truncate(0)
-                file.write(response.json())
+                file.write(json.dumps(response.json()))
                 file.close()
-            return response.status_code, response.json() + "\n"
+            return response.status_code, response.json()
 
     def get_check_flake8(self):
         response = requests.get(self.url + 'snippets/' + str(self.snippet_id) + '/flake8/', data='',
@@ -210,9 +210,9 @@ class Manager:
             if self.write:
                 file = open("flake8_output.txt", "w")
                 file.truncate(0)
-                file.write(response.json())
+                file.write(json.dumps(response.json()))
                 file.close()
-            return response.status_code, response.json() + "\n"
+            return response.status_code, response.json()
 
     def get_check_mypy(self):
         response = requests.get(self.url + 'snippets/' + str(self.snippet_id) + '/mypy/', data='',
@@ -221,9 +221,9 @@ class Manager:
             if self.write:
                 file = open("mypy_output.txt", "w")
                 file.truncate(0)
-                file.write(response.json())
+                file.write(json.dumps(response.json()))
                 file.close()
-            return response.status_code, response.json() + "\n"
+            return response.status_code, response.json()
 
     def get_execute(self):
         response = requests.get(self.url + 'snippets/' + str(self.snippet_id) + '/execute/', data='',
@@ -232,9 +232,9 @@ class Manager:
             if self.write:
                 file = open("execute_output.txt", "w")
                 file.truncate(0)
-                file.write(response.json())
+                file.write(json.dumps(response.json()))
                 file.close()
-            return response.status_code, response.json() + "\n"
+            return response.status_code, response.json()
 
     # -------------POST OPERATION ON CODE
 
@@ -319,6 +319,8 @@ class Manager:
     def multiple_operation(self, option_choose, write):
         print("MULTIPLE OPERATION")
         self.write = write
+        if write:
+            print("CREO FILE MULTIPLI")
         option = {
             'language recognition': self.get_language_recognition,
             'reindent code': self.get_reindent_code,
@@ -335,14 +337,14 @@ class Manager:
                 status_code, output = option[element]()
                 if status_code == 200:
                     elaborate_response += "-------> " + element + " operation Successfully \n"
-                    elaborate_response += output + "\n"
+                    elaborate_response += json.dumps(output) + "\n\n"
                 else:
                     elaborate_response += "-------> " + element + " operation Not Done \n"
         self.write = False
         return elaborate_response
 
     def single_operation(self, option_choose, write, save_value):
-        print("Entrato dentro Single Opeation")
+        print("SINGOL OPERATION")
         print("Memorizzo file") if write else print("Non memorizzo file")
         print("Salvo i dati") if save_value else print("Non salvo i file")
         code_modified = self.snippet_code
@@ -410,16 +412,14 @@ class Manager:
 
         else:  #SALVO PATCH
             for element in option_choose:
-                print("Opzioni scelte:" + option_choose)
                 if element in patch_operation_on_code:
-                    print("Element " + option_choose)
                     status_code, code_modified = patch_operation_on_code[element]()  # code modified
                     if status_code == 200:
                         final_output += "-------> " + element + " operation Successfully \n"
                     else:
                         final_output += "-------> " + element + " operation Not Done \n"
             final_output += "\n ----CODE---- \n"
-            final_output += code_modified + "\n"
+            final_output += json.dumps(code_modified) + "\n"
             for element in option_choose:
                 if element in patch_operation_of_evaluation:
                     status_code, output = patch_operation_of_evaluation[element]()  # code modified
@@ -438,7 +438,7 @@ class Manager:
 
             file_code = open("Code_to_execute.py", "w")
             file_code.truncate(0)
-            file_code.write(code_modified)
+            file_code.write(json.dumps(code_modified))
             file_code.close()
 
         return final_output
