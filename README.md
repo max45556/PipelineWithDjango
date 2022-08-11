@@ -443,3 +443,11 @@ L'esecuzione del codice consente di testare l'esecuzione di uno snippet. Il serv
 Come detto in precedenza, è stato sviluppato un software che permette di eseguire le operazioni specificate dalle API. Si tratta in particolare di una GUI sviluppata con TKinter e sebbene semplice aiuta a comprendere quella è che la loro utilità all'interno di un software. Procederemo ad analizzare il software attraverso delle immagini e la relativa spiegazione.
 
 ![alt text](https://github.com/max45556/PipelineWithDjango/blob/main/GUI_image/immagineUI1.png?raw=true)
+
+Nella prima shcermata è possibile eseguire una serie di operazioni riguardanti l'utenza. Come prima operazione è necessario loggarsi o registrarsi ed è successivamente possibile:  
+- Visualizzare i propri dati personali (esclusa la password)
+- Aggiornare i propri dati personali attraverso i campi presenti in altro a destra.
+- Modificare la propria password attraverso i campi posti a metà schermata verso destra.
+- Eliminare il proprio account attraverso il pulsante apposito.  
+
+![alt text](https://github.com/max45556/PipelineWithDjango/blob/main/GUI_image/immagineUI2.png?raw=true)
