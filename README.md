@@ -30,7 +30,6 @@ Per utilizzare l'API è necessario registrarsi. Dopo la registrazione un utente 
 Questo elenco comprende una serie di API utilizzate per gestire il profilo utente.
 
 ### REGISTRAZIONE
-
 Per utilizzare le funzionalità offerte dalle API è necessario essere registrati. Dopo la fase di registrazione, un utente può effettuare il login utilizzando i dati appena inseriti e può ovviamente decidere di eliminare il proprio profilo in qualsiasi momento. Per la registazione sono necessari tutti i campi successivamente esposti nel body ed al termine delle registrazione vengono riportati i dati dell'utente.
 
 *Richiesta*: POST 127.0.0.1:8000/register/  
@@ -53,7 +52,7 @@ Per utilizzare le funzionalità offerte dalle API è necessario essere registrat
 }
 
 ### LOGIN
-Effettuando il login un utente può ottenere un token di accesso attraverso il quale sfruttare le API. Insieme ad esso è restituito anche un token di refresh usato per ottenere un nuovo token di accesso e uno user_id che vedremo successivamente come sarà utilizzato.
+Effettuando il Login un utente può ottenere un token di accesso attraverso il quale sfruttare le API. Insieme ad esso è restituito anche un token di refresh usato per ottenere un nuovo token di accesso e uno user_id.
 
 *Richiesta*: POST 127.0.0.1:8000/login/  
 *Header*: Content-Type: application/json  
@@ -70,7 +69,7 @@ Effettuando il login un utente può ottenere un token di accesso attraverso il q
 }
 
 ### TOKEN DI REFRESH
-Viene utilizzato per ottenere un nuovo token di accesso utilizzando il token di refresh fornito al login. Questa restituisce un nuovo token di accesso.
+Viene utilizzato per ottenere un nuovo token di accesso utilizzando il token di refresh fornito al Login. Questa restituisce un nuovo token di accesso.
 
 *Richiesta*: POST 127.0.0.1:8000/login/refresh/  
 *Header*: Content-Type: application/json  
@@ -79,10 +78,10 @@ Viene utilizzato per ottenere un nuovo token di accesso utilizzando il token di 
 
 *Standard Response Code*: 200 OK  
 *Standard Response*:  
-- *'access'*: ìtoken di accesso' (stringa)
+- *'access'*: token di accesso' (stringa)
 
 ### MODIFICA DELLA PASSWORD UTENTE
-Consente a un utente di modificare la password utilizzando la vecchia password. Specifica se la password è stata correttamente modificata.
+Consente a un utente di modificare la password personale utilizzando la sua vecchia password. Specifica se la password è stata correttamente modificata o si è verificato un errore.
 
 *Richiesta*: PUT 127.0.0.1:8000  
 *Header*:  
@@ -97,7 +96,7 @@ Consente a un utente di modificare la password utilizzando la vecchia password. 
 *Standard Response*: "Data correctly Modified"
 
 ### AGGIORNAMENTO DEL PROFILO
-Consente a un utente di aggiornare il proprio profilo. Se la modifica è avvenuta correttamente restiutisce i dati aggiornati di un utente.
+Consente a un utente di aggiornare i dati del proprio profilo. Se la modifica è avvenuta correttamente restiutisce i dati aggiornati dell'utente.
 
 *Richiesta*: POST 127.0.0.1:8000  
 *Header*:  
@@ -120,7 +119,7 @@ Consente a un utente di aggiornare il proprio profilo. Se la modifica è avvenut
 }
 
 ### VISUALIZZAZIONE DEI DATI PERSONALI
-Consente di visualizzare i dati riguardanti il suo profilo. Restituisci se la richiesta è stata effettuata correttamente i dati del profilo.
+Consente a un utente di visualizzare i propri personali. Restituisci, se la richiesta è stata effettuata correttamente, i dati del profilo.
 
 *Richiesta*: GET 127.0.0.1:8000  
 *Header*:  
@@ -137,7 +136,7 @@ Consente di visualizzare i dati riguardanti il suo profilo. Restituisci se la ri
 }
 
 ### ELIMINAZIONE DEL PROFILO
-Consente a un utente di eliminare il proprio profilo. Qualora l'operazione fosse stata effettuata con successo viene segnalato ciò.
+Consente a un utente di eliminare il proprio profilo. Segnala, se la richiesta è stata effettuata correttamente, la corretta eliminazione.
 
 *Richiesta*: DELETE 127.0.0.1:8000  
 *Header*:  
@@ -152,11 +151,10 @@ Consente a un utente di eliminare il proprio profilo. Qualora l'operazione fosse
 }
 
 ## Gestione degli snippet
-
-Come detto le API sono pensate per essere utilizzate da più utenti e questi possono anche operare su snippet precedentemente creati. Un utente può infatti creare un suo snippet, recuperarlo a piacimento dal db ed effettuare su di esso una serie di operazioni. Per la gestione degli snippet 'personali' sono state creare diverse API.
+Come detto precedente, gli utenti possono operare su snippet precedentemente creati. Un utente può infatti creare un suo snippet, recuperarlo a piacimento ed effettuare su di esso una serie di operazioni. Per la gestione degli snippet personali sono state create diverse API.
 
 ### CREAZIONE DI UN NUOVO SNIPPET
-Con questa operazione è possibile creare uno snippet personale. L'unico campo obbligatorio è quello che contiene il codice ma potrebbero essere fornite altre informazioni per una migliore gestione dello stesso. I campi non precisati assumeranno valori di default.
+Con questa operazione è possibile memorizzare uno snippet personale. L'unico campo obbligatorio è quello che contiene il codice ma possono essere fornite anche altre informazioni per una migliore gestione dei propri snippet. I campi non precisati assumeranno valori di default. Se la creazione è avvenuta correttamente vengono riportate le informazioni dello snippet assieme a uno snippet id. Quando vorremo
 
 *Richiesta*: POST 127.0.0.1:8000/snippets/  
 *Header*:  
@@ -181,7 +179,7 @@ Con questa operazione è possibile creare uno snippet personale. L'unico campo o
 }
 
 ### MODIFICA DI UNO SNIPPET ESISTENTE
-Con questa operazione è possibile modificare uno snippet esistente. Tutti i campi sono facoltativi e quelli non specificati continueranno ad avere il valore precedente. È necessario specificare lo snippet che si intende modificare attraverso il suo id. Questo viene fornito al momento della creazione dello snippet o è possibile ottenerlo in un secondo momento.
+Con questa operazione è possibile modificare uno snippet precedente salvato. Tutti i campi sono facoltativi e quelli non specificati continueranno ad assumere il valore che avevano precedentemente. È ovviamente necessario specificare lo snippet che si intende modificare e ciò è fatto attraverso lo snippet id. Questo viene fornito al momento della creazione dello snippet o è possibile ottenerlo in un secondo momento.
 
 *Richiesta*: POST 127.0.0.1:8000/snippets/snippet_id/  
 *Header*:  
