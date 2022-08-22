@@ -52,7 +52,7 @@ Effettuando il Login un utente può ottenere un token di accesso attraverso il q
 
 *Richiesta*:
 
-        POST 127.0.0.1:8000/login/  
+  POST 127.0.0.1:8000/login/  
 
 *Header*: Content-Type: application/json  
 *Body*:  
