@@ -52,7 +52,7 @@ Per utilizzare le funzionalità offerte dalle API è necessario essere registrat
 }
 
 ### LOGIN
-Effettuando il Login un utente può ottenere un token di accesso attraverso il quale sfruttare le API. Insieme ad esso è restituito anche un token di refresh usato per ottenere un nuovo token di accesso e uno user_id.
+Effettuando il Login un utente può ottenere un token di accesso attraverso il quale sfruttare le API. Insieme ad esso è restituito anche un token di refresh usato per ottenere un nuovo token di accesso e uno user_id. Essendo le API pensate per essere integrate in un ambiente multi-utente tutte le API mostrate successivamente richiedono all'interno del body la specifica dell'Access Token in modo da comprendere quale utente sta effettuando la richiesta.
 
 *Richiesta*: POST 127.0.0.1:8000/login/  
 *Header*: Content-Type: application/json  
@@ -154,7 +154,7 @@ Consente a un utente di eliminare il proprio profilo. Segnala, se la richiesta �
 Come detto precedente, gli utenti possono operare su snippet precedentemente creati. Un utente può infatti creare un suo snippet, recuperarlo a piacimento ed effettuare su di esso una serie di operazioni. Per la gestione degli snippet personali sono state create diverse API.
 
 ### CREAZIONE DI UN NUOVO SNIPPET
-Con questa operazione è possibile memorizzare uno snippet personale. L'unico campo obbligatorio è quello che contiene il codice ma possono essere fornite anche altre informazioni per una migliore gestione dei propri snippet. I campi non precisati assumeranno valori di default. Se la creazione è avvenuta correttamente vengono riportate le informazioni dello snippet assieme a uno snippet id. Quando vorremo
+Con questa operazione è possibile memorizzare uno snippet personale. L'unico campo obbligatorio è quello che contiene il codice ma possono essere fornite anche altre informazioni per una migliore gestione dei propri snippet. I campi non precisati assumeranno valori di default. Se la creazione è avvenuta correttamente vengono riportate le informazioni dello snippet assieme ad uno snippet id. Questo sarà utilizzato per selezionare, tra l'elenco degli snippet personali memorizzati, quello su cui effettuare le operazioni.
 
 *Richiesta*: POST 127.0.0.1:8000/snippets/  
 *Header*:  
@@ -179,7 +179,7 @@ Con questa operazione è possibile memorizzare uno snippet personale. L'unico ca
 }
 
 ### MODIFICA DI UNO SNIPPET ESISTENTE
-Con questa operazione è possibile modificare uno snippet precedente salvato. Tutti i campi sono facoltativi e quelli non specificati continueranno ad assumere il valore che avevano precedentemente. È ovviamente necessario specificare lo snippet che si intende modificare e ciò è fatto attraverso lo snippet id. Questo viene fornito al momento della creazione dello snippet o è possibile ottenerlo in un secondo momento.
+Con questa operazione è possibile modificare uno snippet precedente salvato. Tutti i campi sono facoltativi e quelli non specificati continueranno ad assumere il valore che avevano precedentemente. È ovviamente necessario specificare lo snippet che si intende modificare e ciò è fatto attraverso lo snippet id. Questo viene fornito al momento della creazione dello snippet ma è visualizzabile anche in un secondo momento.
 
 *Richiesta*: POST 127.0.0.1:8000/snippets/snippet_id/  
 *Header*:  
@@ -219,7 +219,7 @@ Con questa operazione è possibile eliminare uno snippet esistente. Non è richi
 
 
 ### VISUALIZZAZIONE DI UNO SNIPPET DALL'ID
-Con questa operazione è visualizzare uno snippet personale specificato il suo id.
+Con questa operazione è possibile visualizzare uno snippet specifico tra quelli memorizzati. Ciò è fatto attraverso il suo id.
 
 *Richiesta*: GET 127.0.0.1:8000/snippets/snippet_id/  
 *Header*:  
@@ -261,25 +261,23 @@ Con questa operazione è possibile vedere tutti gli snippet che un utente ha mem
 ...
 
 ## Operazioni sugli snippet
-
 Di seguito sono riportati le API utilizzate per eseguire delle operazioni sugli snippet. Per eseguire le attività previste sono state utilizzate varie librerie che verranno illustrate in seguito. Quasi tutte le funzionalità sono accessibili tramite tre tipi di richieste: GET, POST e PATCH.
 
-i metodi GET vengono utilizzato quando si desidera agire su uno snippet memorizzato sul server. Per questo motivo nelle richieste GET è necessario specificare l'ID dello snippet su cui eseguire l'operazione. Ad esempio, per eseguire l'operazione di individuazione del linguaggio di programmazione dello snippet con id 2 occorre fare la seguente richiesta:
+  i metodi GET vengono utilizzato quando si desidera agire su uno snippet memorizzato. Per questo motivo nelle richieste GET è necessario specificare l'ID dello snippet su cui eseguire l'operazione. Ad esempio, per eseguire l'operazione di individuazione del linguaggio di programmazione dello snippet con id 2 occorre fare la seguente richiesta:
 
           GET 127.0.0.1:8000/snippets/2/detect/
 
-i metodi POST vengono utilizzati quando si desidera agire su uno snippet *non* memorizzato sul server. Nel body della richiesta è infatti necessario specifiacare un parametro contenente il codice su affettuare l'attività: 'code': 'codice da analizzare'. Le richieste post si prestano nel momento in cui si voglione utilizzare le funzionalità su snippet che non si vuole vengano memorizzati nel db. Ad esempio, per eseguire l'operazione di individuazione del linguaggio di programmazione su uno snippet occorre fare la seguente richiesta:
+i metodi POST vengono utilizzati quando si desidera agire su uno snippet *non* memorizzato. Nel body della richiesta è infatti necessario specificare un parametro contenente il codice su affettuare l'attività: 'code': 'codice da analizzare'. Le richieste POST si prestano nel momento in cui si vogliano utilizzare le funzionalità offerte della API senza però preocedere alla memorizzazione degli snippet. All'interno dells pipeline CI/CD si useranno unicamente richieste in POST. Ad esempio, per eseguire l'operazione di individuazione del linguaggio di programmazione su uno snippet occorre fare la seguente richiesta:
 
           POST 127.0.0.1:8000/snippets/detect/ e specificare nel body il codice da analizzare
 
-I metodi PATCH funzionano in modo quasi identico ai GET. I metodi PATCH servono per eseguire operazioni su uno snippet memorizzato sul server e la differenza rispetto ai metodi GET è che, una volta ottenuto l'output, le modifiche effettaute vengono salvato nel db. Ad esempio, quando viene eseguita l'operazione di identificazione del linguaggio di programmazione e si ottiene il risultato, questo valore viene memorizzato nel campo linguaggio di questo snippet. Ad esempio, per eseguire l'operazione di individuazione del linguaggio di programmazione dello snippet, che ha id 2, occorre fare la seguente richiesta:
+I metodi PATCH funzionano in modo quasi identico ai GET. I metodi PATCH servono per eseguire operazioni su uno snippet memorizzato sul server e la differenza rispetto ai metodi GET è che, una volta ottenuto l'output, le modifiche effettuate sul codice (come può essere l'indentazione) vengono salvato nel db. Ad esempio, quando viene eseguita l'operazione di identificazione del linguaggio di programmazione e si ottiene il risultato, questo valore viene memorizzato nel campo linguaggio dello snippet analizzato. Ad esempio, per eseguire l'operazione di individuazione del linguaggio di programmazione dello snippet, che ha id 2, occorre fare la seguente richiesta:
 
           PATCH 127.0.0.1:8000/snippets/2/detect/
 
-se l'output restituito è Python, il valore Python verrà inserito nel campo della lingua dello snippet 2.
+se l'output restituito è Python, il valore Python verrà inserito nel campo language dello snippet 2.
 
 ### IDENTIFICAZIONE DEL LINGUAGGIO DELLO SNIPPET
-
 Attraverso questa funzionalità è possibile identificare il linguaggio di programmazione di un particolare snippet. L'identificazione avviene tramite Guesslang, un software di deep learning Open source, che è stato addestrato con oltre un milione di sorgenti. Questo supporta più di 50 linguaggi di programmazione e rileva il linguaggio di programmazione corretto con una precisione superiore al 90%.
 
 *Richiesta*:  
@@ -381,7 +379,8 @@ Tramite questa funzione è possibile controllare eventuali errori presenti dentr
 
 ### FLAKE8
 
-Flake8 è un wrapper attorno a questi strumenti: lo script McCabe di PyFlakes e pycodestyle di Ned Batchelder. Flake8 esegue tutti gli strumenti lanciando il singolo comando flake8. Visualizza gli avvisi in un output unito per file.
+Oltre agli strumenti che consentono di formattare il codice in Python esistono diversi linter e analizzatori statici di codice.
+Uno dei più popolari Linter su Python è Flake8 che non cambia il codice, ma fornisce uno strumento di warnings in real time.
 
 *Richiesta*:  
 - GET 127.0.0.1:8000/snippets/snippet_id/flake8
@@ -400,7 +399,7 @@ Flake8 è un wrapper attorno a questi strumenti: lo script McCabe di PyFlakes e 
 
 ### MYPY
 
-Mypy è un controllore del tipo statico per Python che mira a combinare i vantaggi offerti dal typing statico e dinamico. Mypy combina la potenza espressiva e la comodità di Python con un potente sistema di tipi e un controllo del tipo in fase di compilazione. Il tipo Mypy controlla i programmi Python standard.
+Mypy è un controllore del tipo statico per Python che mira a combinare i vantaggi offerti dal typing statico e dinamico. Mypy combina la potenza espressiva e la comodità di Python con un potente sistema di tipi e un controllo del tipo in fase di compilazione.
 
 *Richiesta*:  
 - GET 127.0.0.1:8000/snippets/snippet_id/mypy
