@@ -320,9 +320,10 @@ Attraverso questa funzionalità è possibile identificare il linguaggio di progr
 Attraverso questa operazione è possibile indentare il codice dello snippet. Per fare ciò è stata utilizzata una libreria chiamata Black che offre un formattatore di codice Python molto veloce. L'API restituisce i codice formattato come risposta.
 
 *Richiesta*:  
-- GET 127.0.0.1:8000/snippets/snippet_id/reindent
-- PATCH 127.0.0.1:8000/snippets/snippet_id/reindent/
-- POST 127.0.0.1:8000/snippets/reindent/
+
+          GET 127.0.0.1:8000/snippets/snippet_id/reindent
+          PATCH 127.0.0.1:8000/snippets/snippet_id/reindent/
+          POST 127.0.0.1:8000/snippets/reindent/
 
 *Header*:  
 - Content-Type: application/json  
@@ -341,9 +342,10 @@ Attraverso questa operazione è possibile indentare il codice dello snippet. Per
 Tramite questa operazione è possibile ordinare le importazioni all'interno del codice. Per fare ciò è stata utilizzata una libreria chiamata Isort. Isort è un'utility/libreria Python che permette di ordinare le importazioni in ordine alfabetico e separarle automaticamente in sezioni e a seconda del tipo.
 
 *Richiesta*:  
-- GET 127.0.0.1:8000/snippets/snippet_id/order
-- PATCH 127.0.0.1:8000/snippets/snippet_id/order/
-- POST 127.0.0.1:8000/snippets/order/
+
+          GET 127.0.0.1:8000/snippets/snippet_id/order
+          PATCH 127.0.0.1:8000/snippets/snippet_id/order/
+          POST 127.0.0.1:8000/snippets/order/
 
 *Header*:  
 - Content-Type: application/json  
@@ -362,8 +364,9 @@ Tramite questa operazione è possibile ordinare le importazioni all'interno del 
 Tramite questa funzione è possibile controllare eventuali errori presenti dentro codice Python. Per fare ciò è stato utilizzato Pylint che cerca di identificare errori dentro il codice imponendo uno standard di codifica. Questo può anche cercare determinate tipologie di errori e consigliare su come eseguire il refactoring di determinati blocchi offrendo anche dettagli sulla complessità del codice.
 
 *Richiesta*:  
-- GET 127.0.0.1:8000/snippets/snippet_id/pylint
-- POST 127.0.0.1:8000/snippets/pylint/
+
+          GET 127.0.0.1:8000/snippets/snippet_id/pylint
+          POST 127.0.0.1:8000/snippets/pylint/
 
 *Header*:  
 - Content-Type: application/json  
@@ -381,8 +384,9 @@ Tramite questa funzione è possibile controllare eventuali errori presenti dentr
 Tramite questa funzione è possibile controllare eventuali errori presenti dentro codice Python. Per fare ciò è stato utilizzato Pyflakes il quale analizza i programmi e rileva eventuali errori. Funziona analizzando il file sorgente, non importandolo, quindi è più sicuro e veloce.
 
 *Richiesta*:  
-- GET 127.0.0.1:8000/snippets/snippet_id/pyflakes
-- POST 127.0.0.1:8000/snippets/pyflakes/
+
+          GET 127.0.0.1:8000/snippets/snippet_id/pyflakes
+          POST 127.0.0.1:8000/snippets/pyflakes/
 
 *Header*:  
 - Content-Type: application/json  
@@ -401,8 +405,9 @@ Oltre agli strumenti che consentono di formattare il codice in Python esistono d
 Uno dei più popolari Linter su Python è Flake8 che non cambia il codice, ma fornisce uno strumento di warnings in real time.
 
 *Richiesta*:  
-- GET 127.0.0.1:8000/snippets/snippet_id/flake8
-- POST 127.0.0.1:8000/snippets/flake8/
+
+          GET 127.0.0.1:8000/snippets/snippet_id/flake8
+          POST 127.0.0.1:8000/snippets/flake8/
 
 *Header*:  
 - Content-Type: application/json  
@@ -420,8 +425,9 @@ Uno dei più popolari Linter su Python è Flake8 che non cambia il codice, ma fo
 Mypy è un controllore del tipo statico per Python che mira a combinare i vantaggi offerti dal typing statico e dinamico. Mypy combina la potenza espressiva e la comodità di Python con un potente sistema di tipi e un controllo del tipo in fase di compilazione.
 
 *Richiesta*:  
-- GET 127.0.0.1:8000/snippets/snippet_id/mypy
-- POST 127.0.0.1:8000/snippets/mypy/
+
+          GET 127.0.0.1:8000/snippets/snippet_id/mypy
+          POST 127.0.0.1:8000/snippets/mypy/
 
 *Header*:  
 - Content-Type: application/json  
@@ -439,9 +445,10 @@ Mypy è un controllore del tipo statico per Python che mira a combinare i vantag
 L'esecuzione del codice consente di testare l'esecuzione di uno snippet. Il server risponde True o False a seconda che sia eseguibile o meno.
 
 *Richiesta*:  
-- GET 127.0.0.1:8000/snippets/snippet_id/execute
-- PATCH 127.0.0.1:8000/snippets/snippet_id/execute/
-- POST 127.0.0.1:8000/snippets/execute/
+
+          GET 127.0.0.1:8000/snippets/snippet_id/execute
+          PATCH 127.0.0.1:8000/snippets/snippet_id/execute/
+          POST 127.0.0.1:8000/snippets/execute/
 
 *Header*:  
 - Content-Type: application/json  
