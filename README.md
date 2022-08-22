@@ -26,6 +26,7 @@ Questo elenco comprende una serie di API utilizzate per gestire il profilo utent
 Per utilizzare le funzionalità offerte dalle API è necessario essere registrati. Dopo la fase di registrazione, un utente può effettuare il login utilizzando i dati appena inseriti e può ovviamente decidere di eliminare il proprio profilo in qualsiasi momento. Per la registazione sono necessari tutti i campi successivamente esposti nel body ed al termine delle registrazione vengono riportati i dati dell'utente.
 
 *Richiesta*:
+
           POST 127.0.0.1:8000/register/  
 *Header*: Content-Type: application/json    
 *Body*:  
@@ -51,7 +52,6 @@ Effettuando il Login un utente può ottenere un token di accesso attraverso il q
 *Richiesta*:
 
         POST 127.0.0.1:8000/login/  
-
 *Header*: Content-Type: application/json  
 *Body*:  
 - **username**: 'username'
@@ -71,7 +71,6 @@ Viene utilizzato per ottenere un nuovo token di accesso utilizzando il token di 
 *Richiesta*:
 
           POST 127.0.0.1:8000/login/refresh/  
-
 *Header*: Content-Type: application/json  
 *Body*:  
 - **refresh**: 'refresh token'
@@ -86,7 +85,6 @@ Consente a un utente di modificare la password personale utilizzando la sua vecc
 *Richiesta*:
 
           PUT 127.0.0.1:8000  
-
 *Header*:  
 - Content-Type: application/json  
 - Authorization: Bearer + Access Token  
@@ -126,7 +124,9 @@ Consente a un utente di aggiornare i dati del proprio profilo. Se la modifica è
 ### VISUALIZZAZIONE DEI DATI PERSONALI
 Consente a un utente di visualizzare i propri personali. Restituisci, se la richiesta è stata effettuata correttamente, i dati del profilo.
 
-*Richiesta*: GET 127.0.0.1:8000  
+*Richiesta*:
+
+        GET 127.0.0.1:8000  
 *Header*:  
 - Content-Type: application/json  
 - Authorization: Bearer + Access Token  
@@ -143,7 +143,9 @@ Consente a un utente di visualizzare i propri personali. Restituisci, se la rich
 ### ELIMINAZIONE DEL PROFILO
 Consente a un utente di eliminare il proprio profilo. Segnala, se la richiesta è stata effettuata correttamente, la corretta eliminazione.
 
-*Richiesta*: DELETE 127.0.0.1:8000  
+*Richiesta*:
+
+          DELETE 127.0.0.1:8000  
 *Header*:  
 - Content-Type: application/json  
 - Authorization: Bearer + Access Token
@@ -161,7 +163,9 @@ Come detto precedente, gli utenti possono operare su snippet precedentemente cre
 ### CREAZIONE DI UN NUOVO SNIPPET
 Con questa operazione è possibile memorizzare uno snippet personale. L'unico campo obbligatorio è quello che contiene il codice ma possono essere fornite anche altre informazioni per una migliore gestione dei propri snippet. I campi non precisati assumeranno valori di default. Se la creazione è avvenuta correttamente vengono riportate le informazioni dello snippet assieme ad uno snippet id. Questo sarà utilizzato per selezionare, tra l'elenco degli snippet personali memorizzati, quello su cui effettuare le operazioni.
 
-*Richiesta*: POST 127.0.0.1:8000/snippets/  
+*Richiesta*:
+
+          POST 127.0.0.1:8000/snippets/  
 *Header*:  
 - Content-Type: application/json  
 - Authorization: Bearer + Access Token
@@ -186,7 +190,9 @@ Con questa operazione è possibile memorizzare uno snippet personale. L'unico ca
 ### MODIFICA DI UNO SNIPPET ESISTENTE
 Con questa operazione è possibile modificare uno snippet precedente salvato. Tutti i campi sono facoltativi e quelli non specificati continueranno ad assumere il valore che avevano precedentemente. È ovviamente necessario specificare lo snippet che si intende modificare e ciò è fatto attraverso lo snippet id. Questo viene fornito al momento della creazione dello snippet ma è visualizzabile anche in un secondo momento.
 
-*Richiesta*: POST 127.0.0.1:8000/snippets/snippet_id/  
+*Richiesta*:
+
+          POST 127.0.0.1:8000/snippets/snippet_id/  
 *Header*:  
 - Content-Type: application/json  
 - Authorization: Bearer + Access Token
@@ -211,7 +217,9 @@ Con questa operazione è possibile modificare uno snippet precedente salvato. Tu
 ### ELIMINARE UNO SNIPPET ESISTENTE
 Con questa operazione è possibile eliminare uno snippet esistente. Non è richiesto alcun campo all'interno del body ma è necessario specificare lo snippet da eliminare tramite il suo id.
 
-*Richiesta*: DELETE 127.0.0.1:8000/snippets/snippet_id/  
+*Richiesta*:
+
+          DELETE 127.0.0.1:8000/snippets/snippet_id/  
 *Header*:  
 - Content-Type: application/json  
 - Authorization: Bearer + Access Token
@@ -226,7 +234,9 @@ Con questa operazione è possibile eliminare uno snippet esistente. Non è richi
 ### VISUALIZZAZIONE DI UNO SNIPPET DALL'ID
 Con questa operazione è possibile visualizzare uno snippet specifico tra quelli memorizzati. Ciò è fatto attraverso il suo id.
 
-*Richiesta*: GET 127.0.0.1:8000/snippets/snippet_id/  
+*Richiesta*:
+
+          GET 127.0.0.1:8000/snippets/snippet_id/  
 *Header*:  
 - Content-Type: application/json  
 - Authorization: Bearer + Access Token
@@ -246,7 +256,9 @@ Con questa operazione è possibile visualizzare uno snippet specifico tra quelli
 ### VISUALIZZAZIONE DI TUTTI GLI SNIPPET MEMORIZZATI
 Con questa operazione è possibile vedere tutti gli snippet che un utente ha memorizzato.
 
-*Richiesta*:GET 127.0.0.1:8000/snippets/  
+*Richiesta*:
+
+          GET 127.0.0.1:8000/snippets/  
 *Header*:  
 - Content-Type: application/json  
 - Authorization: Bearer + Access Token
