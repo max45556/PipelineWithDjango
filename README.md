@@ -26,7 +26,9 @@ Questo elenco comprende una serie di API utilizzate per gestire il profilo utent
 Per utilizzare le funzionalità offerte dalle API è necessario essere registrati. Dopo la fase di registrazione, un utente può effettuare il login utilizzando i dati appena inseriti e può ovviamente decidere di eliminare il proprio profilo in qualsiasi momento. Per la registazione sono necessari tutti i campi successivamente esposti nel body ed al termine delle registrazione vengono riportati i dati dell'utente.
 
 *Richiesta*:
+
           POST 127.0.0.1:8000/register/  
+          
 *Header*: Content-Type: application/json    
 *Body*:  
 - **username**: 'username'
