@@ -9,27 +9,28 @@
 
 # Scopo
 
-L'obbiettivo di questo progetto è stato quello di creare, attraverso, [DJANGO REST FRAMEWORK](https://www.django-rest-framework.org/) delle Web API che permettano di effettuare varie attività su snippet di codice scritti in Python. Procederemo quindi ad illustrare quelle che sono le API create, le loro funzionalità e attraverso quali metodi accerdervi.Le API sono pensate per essere integrate sia all'interno di un applicazione che dentro una pipeline CI/CD e per dimostrare ciò è stato creato:
+L'obbiettivo di questo progetto è stato quello di creare, attraverso, [DJANGO REST FRAMEWORK](https://www.django-rest-framework.org/) delle Web API che permettessero di effettuare varie attività su snippet di codice scritti in Python. Le API sono pensate per essere integrate sia all'interno di un applicazione che dentro una pipeline CI/CD e per dimostrare ciò è stato creato:
 
- - un software con una semplice interfaccia e che fornisci degli automatismi per agire sugli snippet. Questo
-  astrae le modalità di interazione con le API essendo pensato per un pubblico non esperto.
+ - un software con una semplice interfaccia che consente facilmente di operare sugli snippet. Questo
+  astrae le modalità di interazione con le API dato che + stato pensato per un utilizzato da utenti non esperti.
 
 - una pipeline CI/CD che presenta come stadi le attività svolte dalle API.
+
+Procederemo quindi ad illustrare quelle che sono le API create, le loro funzionalità e attraverso quali metodi è possibile sfruttarle per poi illustrare il software e la pipeline CI/CD creata.
 
 # Funzionamento delle API
 
 Per utilizzare l'API è necessario registrarsi. Dopo la registrazione un utente può svolgere le seguenti funzioni:
-- Gestire il profilo
-- Gestire gli snippet personali che ha memorizzato
-- Effettuare delle operazione sugli snippet
+- Gestire il proprio profilo;
+- Memorizzare snippet;
+- Effettuare delle operazione su snippet memorizzati o non memorizzati.
 
 ## Gestione del profilo
 
-Questo elenco comprende una serie di API create per la gestione del profilo utente. Le API sono pensate per essere integrate in un ambiente multi-utente e posso quindi gestire l'esecuzione discrimando tra diversi i diversi attori che interagiscono con i servizi.
+Questo elenco comprende una serie di API utilizzate per gestire il profilo utente.
 
 ### REGISTRAZIONE
-
-Per utilizzare le funzionalità offerte dalle API è necessario essere registrati. Dopo la fase di registrazione, un utente può effettuare il login utilizzando i dati appena inseriti e può ovviamente decidere di eliminare il proprio profilo in qualsiasi momento.Per la registazione sono necessari tutti i campi successivamente esposti nel body ed al termine delle registrazione vengono riportati i dati dell'utente.
+Per utilizzare le funzionalità offerte dalle API è necessario essere registrati. Dopo la fase di registrazione, un utente può effettuare il login utilizzando i dati appena inseriti e può ovviamente decidere di eliminare il proprio profilo in qualsiasi momento. Per la registazione sono necessari tutti i campi successivamente esposti nel body ed al termine delle registrazione vengono riportati i dati dell'utente.
 
 *Richiesta*: POST 127.0.0.1:8000/register/  
 *Header*: Content-Type: application/json    
