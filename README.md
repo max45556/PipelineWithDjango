@@ -298,9 +298,10 @@ se l'output restituito è Python, il valore Python verrà inserito nel campo lan
 Attraverso questa funzionalità è possibile identificare il linguaggio di programmazione di un particolare snippet. L'identificazione avviene tramite Guesslang, un software di deep learning Open source, che è stato addestrato con oltre un milione di sorgenti. Questo supporta più di 50 linguaggi di programmazione e rileva il linguaggio di programmazione corretto con una precisione superiore al 90%.
 
 *Richiesta*:  
-- GET 127.0.0.1:8000/snippets/snippet_id/detect
-- PATCH 127.0.0.1:8000/snippets/snippet_id/detect/
-- POST 127.0.0.1:8000/snippets/detect/
+
+          GET 127.0.0.1:8000/snippets/snippet_id/detect
+          PATCH 127.0.0.1:8000/snippets/snippet_id/detect/
+          POST 127.0.0.1:8000/snippets/detect/
 
 *Header*:  
 - Content-Type: application/json  
