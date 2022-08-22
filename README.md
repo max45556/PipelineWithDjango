@@ -461,3 +461,7 @@ In questa schermata è possibile specificare su quale snippet effettuare le oper
 Per usare uno snippet memorizzato nel db esiste un pulsante apposito, Cerca, che mostra gli snippet personali nella finestra sulla destra. Ogni snippet ha un id personale e possiamo utilizzarlo per indicare di voler effettuare le operazioni su di esso. Per fare ciò è possibile inserire l'id nel form nel quale è indicato usa questo snippet. Dopo aver inserito l'id e aver premuto su Select lo snippet verrà mostrato sulla finestra di destra. Sotto la selezione è anche presente un form utilizzato per eliminare uno snippet. Abbiamo quindi spceficato in che modo selezionare lo snippet su cui agire ma manca un dettaglio: se volessimo modifircarlo prima di eseguire attività su di esso? In questo caso è possibile modificare il codice usando la finestra sulla sinistra e sotto di esso sono presenti una serie di metodi opzione per modificare le caratteristiche dello snippet. Per quanto riguarda l'analisi su snippet non memorizzati nel db il procedimento di salvataggio è il medesimo di quello di modifica.
 
 ![alt text](https://github.com/max45556/PipelineWithDjango/blob/main/GUI_image/immagineUI3.png?raw=true)
+
+# PIPELINE CI/CD
+
+![alt text](https://github.com/max45556/PipelineWithDjango/blob/main/GUI_image/restpipe.png?raw=true)
