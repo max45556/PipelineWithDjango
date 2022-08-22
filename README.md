@@ -28,7 +28,6 @@ Per utilizzare le funzionalità offerte dalle API è necessario essere registrat
 *Richiesta*:
 
           POST 127.0.0.1:8000/register/  
-
 *Header*: Content-Type: application/json    
 *Body*:  
 - **username**: 'username'
@@ -51,6 +50,7 @@ Per utilizzare le funzionalità offerte dalle API è necessario essere registrat
 Effettuando il Login un utente può ottenere un token di accesso attraverso il quale sfruttare le API. Insieme ad esso è restituito anche un token di refresh usato per ottenere un nuovo token di accesso e uno user_id. Essendo le API pensate per essere integrate in un ambiente multi-utente tutte le API mostrate successivamente richiedono all'interno del body la specifica dell'Access Token in modo da comprendere quale utente sta effettuando la richiesta.
 
 *Richiesta*:
+
         POST 127.0.0.1:8000/login/  
 
 *Header*: Content-Type: application/json  
@@ -70,6 +70,7 @@ Effettuando il Login un utente può ottenere un token di accesso attraverso il q
 Viene utilizzato per ottenere un nuovo token di accesso utilizzando il token di refresh fornito al Login. Questa restituisce un nuovo token di accesso.
 
 *Richiesta*:
+
           POST 127.0.0.1:8000/login/refresh/  
 
 *Header*: Content-Type: application/json  
@@ -84,6 +85,7 @@ Viene utilizzato per ottenere un nuovo token di accesso utilizzando il token di 
 Consente a un utente di modificare la password personale utilizzando la sua vecchia password. Specifica se la password è stata correttamente modificata o si è verificato un errore.
 
 *Richiesta*:
+
           PUT 127.0.0.1:8000  
 
 *Header*:  
@@ -100,7 +102,9 @@ Consente a un utente di modificare la password personale utilizzando la sua vecc
 ### AGGIORNAMENTO DEL PROFILO
 Consente a un utente di aggiornare i dati del proprio profilo. Se la modifica è avvenuta correttamente restiutisce i dati aggiornati dell'utente.
 
-*Richiesta*: POST 127.0.0.1:8000  
+*Richiesta*:
+
+          POST 127.0.0.1:8000  
 *Header*:  
 - Content-Type: application/json  
 - Authorization: Bearer + Access Token  
