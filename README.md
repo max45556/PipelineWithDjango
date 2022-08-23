@@ -23,7 +23,7 @@ Per utilizzare l'API è necessario registrarsi. Dopo la registrazione un utente 
 Questo elenco comprende una serie di API utilizzate per gestire il profilo utente.
 
 ### REGISTRAZIONE
-Per utilizzare le funzionalità offerte dalle API è necessario essere registrati. Dopo la fase di registrazione, un utente può effettuare il login utilizzando i dati appena inseriti e può ovviamente decidere di eliminare il proprio profilo in qualsiasi momento. Per la registazione sono necessari tutti i campi successivamente esposti nel body ed al termine delle registrazione vengono riportati i dati dell'utente.
+Per utilizzare le funzionalità offerte dalle API è necessario essere registrati. Dopo la fase di registrazione, un utente può effettuare il login utilizzando i dati appena inseriti e può ovviamente decidere di eliminare il proprio profilo in qualsiasi momento. Per la registrazione sono necessari tutti i campi successivamente esposti nel body ed al termine delle registrazione vengono riportati i dati dell'utente.
 
 *Richiesta*:
 
@@ -97,7 +97,7 @@ Consente a un utente di modificare la password personale utilizzando la sua vecc
 *Standard Response*: "Data correctly Modified"
 
 ### AGGIORNAMENTO DEL PROFILO
-Consente a un utente di aggiornare i dati del proprio profilo. Se la modifica è avvenuta correttamente restiutisce i dati aggiornati dell'utente.
+Consente a un utente di aggiornare i dati del proprio profilo. Se la modifica è avvenuta correttamente restituisce i dati aggiornati dell'utente.
 
 *Richiesta*:
 
@@ -284,7 +284,7 @@ Di seguito sono riportati le API utilizzate per eseguire delle operazioni sugli 
 
           GET 127.0.0.1:8000/snippets/2/detect/
 
-i metodi POST vengono utilizzati quando si desidera agire su uno snippet *non* memorizzato. Nel body della richiesta è infatti necessario specificare un parametro contenente il codice su affettuare l'attività: 'code': 'codice da analizzare'. Le richieste POST si prestano nel momento in cui si vogliano utilizzare le funzionalità offerte della API senza però preocedere alla memorizzazione degli snippet. All'interno dells pipeline CI/CD si useranno unicamente richieste in POST. Ad esempio, per eseguire l'operazione di individuazione del linguaggio di programmazione su uno snippet occorre fare la seguente richiesta:
+i metodi POST vengono utilizzati quando si desidera agire su uno snippet *non* memorizzato. Nel body della richiesta è infatti necessario specificare un parametro contenente il codice su affettuare l'attività: 'code': 'codice da analizzare'. Le richieste POST si prestano nel momento in cui si vogliano utilizzare le funzionalità offerte della API senza però procedere alla memorizzazione degli snippet. All'interno dells pipeline CI/CD si useranno unicamente richieste in POST. Ad esempio, per eseguire l'operazione di individuazione del linguaggio di programmazione su uno snippet occorre fare la seguente richiesta:
 
           POST 127.0.0.1:8000/snippets/detect/ e specificare nel body il codice da analizzare
 
@@ -475,7 +475,7 @@ Nella prima schermata offerta è possibile gestire il profilo utente. Come prima
 - Eliminare il proprio account attraverso il pulsante Delete.
 - Visualizzare un menu di aiuto attraverso il pulsante Help. Questo apre una pagina Web utile per comprendere come le richieste verso svolte.   
 
-Attraverso il pusante con il logo di python è possibile muoversi alla schermata successiva
+Attraverso il pulsante con il logo di python è possibile muoversi alla schermata successiva
 
 ![alt text](https://github.com/max45556/PipelineWithDjango/blob/main/GUI_image/immagineUI2.png?raw=true)
 
@@ -484,13 +484,13 @@ In questa schermata è possibile specificare su quale snippet effettuare le oper
 - Caricare uno snippet da file
 - Incollare uno snippet copiato
 
-Per usare uno snippet precedentemente memorizzato esiste un bottone apposito Cerca (posizionato in alto a destra), che mostra tutti gli snippet memorizzati. Questi sono mostrati nella finestra presente sulla destra. Ogni snippet ha un id personale e possiamo utilizzarlo per indicare su quale snippet bogliamo agire. Per fare ciò è necessario inserire l'id nel form 'usa questo snippet' e premere, dopo aver fatto ciò, su Select. Lo snippet caricato sarà allora mostrato sulla finestra di sinistra. Sotto il pulsante di selezione è anche presente un form nel quale inserire uno snippet da eliminare. Dopo aver selezioanto lo snippet su cui effettuare le attività è anche possibile modificarlo. Si può, nello specifico, modificare direttamente il codice utilizzando la finestra sulla sinistra nel quale lo snippet è stato caricato e qualora si volessero modificare anche le informazioni ad esso associate sono presenti una serie di form per fare ciò posti sotto la finestra di sinistra. Per quanto riguarda l'analisi di snippet non memorizzati nel db il procedimento è il medesimo.
+Per usare uno snippet precedentemente memorizzato esiste un bottone apposito Cerca (posizionato in alto a destra), che mostra tutti gli snippet memorizzati. Questi sono mostrati nella finestra presente sulla destra. Ogni snippet ha un id personale e possiamo utilizzarlo per indicare su quale snippet vogliamo agire. Per fare ciò è necessario inserire l'id nel form 'usa questo snippet' e premere, dopo aver fatto ciò, su Select. Lo snippet caricato sarà allora mostrato sulla finestra di sinistra. Sotto il pulsante di selezione è anche presente un form nel quale inserire uno snippet da eliminare. Dopo aver selezionato lo snippet su cui effettuare le attività è anche possibile modificarlo. Si può, nello specifico, modificare direttamente il codice utilizzando la finestra sulla sinistra nel quale lo snippet è stato caricato e qualora si volessero modificare anche le informazioni ad esso associate sono presenti una serie di form per fare ciò posti sotto la finestra di sinistra. Per quanto riguarda l'analisi di snippet non memorizzati nel db il procedimento è il medesimo.
 
 Attraverso il bottone che presenta una freccia è possibile muoversi alla schermata successiva per effettuare effettivamente le operazioni sullo snippet selezionato.
 
 ![alt text](https://github.com/max45556/PipelineWithDjango/blob/main/GUI_image/immagineUI3.png?raw=true)
 
-In questa schermata è possibile. come prima operazione, selezionare la modalità Pipeline o Single Operation. Con la 
+In questa schermata è possibile come prima operazione, selezionare la modalità Pipeline o Single Operation. Con la modalità Pipeline vengono eseguite tutte le operazioni disponibili sullo snippet. In alternativa è possibile selezionare le singole attività spuntandole. Dopodiché è necessario scegliere tra la modalità singolo output o output multipli. Scegliendo singolo output tutte le modifiche effettuate sul codice vengono unite riportando quindi un unico frammento di codice. Scegliendo invece output multipli vengono riportati diversi frammenti di codice mostrando le singole attività che sono state svolte. Attraverso l'opzione Creazione file è possibile salvare l'output all'interno di un file. Infine attraverso salva modifiche tutte le modifiche effettuate sul codice vengono salvate in modo che lo snippet memorizzato sia corretto. 
 
 # PIPELINE CI/CD
 
