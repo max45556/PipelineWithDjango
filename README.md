@@ -464,28 +464,33 @@ L'esecuzione del codice consente di testare l'esecuzione di uno snippet. Il serv
 
 # SOFTWARE PER L'UTILIZZO DELLE API
 
-Come detto in precedenza, è stato sviluppato un software che permette di eseguire le operazioni specificate dalle API. Si tratta in particolare di una GUI sviluppata con TKinter e sebbene semplice aiuta a comprendere quella è che la loro utilità all'interno di un software. Procederemo ad analizzare il software attraverso delle immagini e la relativa spiegazione.
+Come detto in precedenza, è stato sviluppato un software che permette di eseguire le operazioni previste dalle API. Si tratta in particolare di una GUI sviluppata con TKinter e sebbene semplice aiuta a comprendere quella è che la loro utilità all'interno di un software. Procederemo ad analizzare il funzionamento del software attraverso delle immagini.
 
 ![alt text](https://github.com/max45556/PipelineWithDjango/blob/main/GUI_image/immagineUI1.png?raw=true)
 
-Nella prima shcermata è possibile eseguire una serie di operazioni riguardanti l'utenza. Come prima operazione è necessario loggarsi o registrarsi ed è successivamente possibile:  
-- Visualizzare i propri dati personali (esclusa la password)
-- Aggiornare i propri dati personali attraverso i campi presenti in altro a destra.
-- Modificare la propria password attraverso i campi posti a metà schermata verso destra.
-- Eliminare il proprio account attraverso il pulsante apposito.  
+Nella prima schermata offerta è possibile gestire il profilo utente. Come prima operazione è necessario loggarsi o registrarsi e dopo aver fatto ciò è possibile:  
+- Visualizzare i propri dati personali (esclusa la password) attraverso il bottone Get Data.
+- Aggiornare i propri dati personali attraverso i form presenti in altro a destra.
+- Modificare la propria password personale attraverso i form posti a metà schermata verso destra.
+- Eliminare il proprio account attraverso il pulsante Delete.
+- Visualizzare un menu di aiuto attraverso il pulsante Help. Questo apre una pagina Web utile per comprendere come le richieste verso svolte.   
 
-è possibile utilizzare il pusante apposito (logo di python) per muoversi alla successiva schermata
+Attraverso il pusante con il logo di python è possibile muoversi alla schermata successiva
 
 ![alt text](https://github.com/max45556/PipelineWithDjango/blob/main/GUI_image/immagineUI2.png?raw=true)
 
 In questa schermata è possibile specificare su quale snippet effettuare le operazioni ed è possibile:  
-- Usare uno snippet personale memorizzato nel db
+- Usare uno snippet personale memorizzato precedentemente
 - Caricare uno snippet da file
 - Incollare uno snippet copiato
 
-Per usare uno snippet memorizzato nel db esiste un pulsante apposito, Cerca, che mostra gli snippet personali nella finestra sulla destra. Ogni snippet ha un id personale e possiamo utilizzarlo per indicare di voler effettuare le operazioni su di esso. Per fare ciò è possibile inserire l'id nel form nel quale è indicato usa questo snippet. Dopo aver inserito l'id e aver premuto su Select lo snippet verrà mostrato sulla finestra di destra. Sotto la selezione è anche presente un form utilizzato per eliminare uno snippet. Abbiamo quindi spceficato in che modo selezionare lo snippet su cui agire ma manca un dettaglio: se volessimo modifircarlo prima di eseguire attività su di esso? In questo caso è possibile modificare il codice usando la finestra sulla sinistra e sotto di esso sono presenti una serie di metodi opzione per modificare le caratteristiche dello snippet. Per quanto riguarda l'analisi su snippet non memorizzati nel db il procedimento di salvataggio è il medesimo di quello di modifica.
+Per usare uno snippet precedentemente memorizzato esiste un bottone apposito Cerca (posizionato in alto a destra), che mostra tutti gli snippet memorizzati. Questi sono mostrati nella finestra presente sulla destra. Ogni snippet ha un id personale e possiamo utilizzarlo per indicare su quale snippet bogliamo agire. Per fare ciò è necessario inserire l'id nel form 'usa questo snippet' e premere, dopo aver fatto ciò, su Select. Lo snippet caricato sarà allora mostrato sulla finestra di sinistra. Sotto il pulsante di selezione è anche presente un form nel quale inserire uno snippet da eliminare. Dopo aver selezioanto lo snippet su cui effettuare le attività è anche possibile modificarlo. Si può, nello specifico, modificare direttamente il codice utilizzando la finestra sulla sinistra nel quale lo snippet è stato caricato e qualora si volessero modificare anche le informazioni ad esso associate sono presenti una serie di form per fare ciò posti sotto la finestra di sinistra. Per quanto riguarda l'analisi di snippet non memorizzati nel db il procedimento è il medesimo.
+
+Attraverso il bottone che presenta una freccia è possibile muoversi alla schermata successiva per effettuare effettivamente le operazioni sullo snippet selezionato.
 
 ![alt text](https://github.com/max45556/PipelineWithDjango/blob/main/GUI_image/immagineUI3.png?raw=true)
+
+In questa schermata è possibile. come prima operazione, selezionare la modalità Pipeline o Single Operation. Con la 
 
 # PIPELINE CI/CD
 
