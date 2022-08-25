@@ -163,19 +163,20 @@ class LoginPage(tk.Frame):
             for field in register_entry_list:
                 if field.get() == '':
                     messagebox.showerror("Missing fields", "Check data inserted")
+                    return
+
+            if entry_register_password.get() != entry_register_password_again.get():
+                messagebox.showerror("Password error", "Password inserted are different!")
+            else:
+                sc, text = manager.register(entry_register_username.get(), entry_register_password.get(),
+                                            entry_register_password_again.get(), entry_register_email.get(),
+                                            entry_register_first_name.get(), entry_register_lastname.get())
+                if sc == 201:
+                    messagebox.showinfo("Registration completed", "now you can login")
+                    for j in register_entry_list:
+                        j.delete(0, END)
                 else:
-                    if entry_register_password.get() != entry_register_password_again.get():
-                        messagebox.showerror("Password error", "Password inserted are different!")
-                    else:
-                        sc, text = manager.register(entry_register_username.get(), entry_register_password.get(),
-                                                    entry_register_password_again.get(), entry_register_email.get(),
-                                                    entry_register_first_name.get(), entry_register_lastname.get())
-                        if sc == 201:
-                            messagebox.showinfo("Registration completed", "now you can login")
-                            for j in register_entry_list:
-                                j.delete(0, END)
-                        else:
-                            messagebox.showerror(sc, text)
+                    messagebox.showerror(sc, text)
 
         # --------------------------------------------- UPDATE PROFILE DATA
 
@@ -216,25 +217,20 @@ class LoginPage(tk.Frame):
         button_update = tk.Button(self, state='disabled', text="Update", command=lambda: try_update_profile())
         button_update.place(x=630, y=115)
         list_locked_entry.append(button_update)
-        list_update_entry.append(button_update)
 
         def unlock():
             for element in list_locked_entry:
                 element.configure(state='normal')
 
         def try_update_profile():
-            for i in list_update_entry:
-                if i.get() == '':
-                    messagebox.showerror("Missing fields", "Check data inserted")
-                else:
-                    sc, text = manager.update_profile(entry_update_username.get(), entry_update_firstname.get(),
-                                                      entry_update_lastname.get(), entry_update_email.get())
-                    if sc == 200:
-                        messagebox.showinfo("update completed", "Now you can see your profile updated")
-                        for entry in list_update_entry:
-                            entry.delete("1.0", END)
-                    else:
-                        messagebox.showerror(sc, text)
+            sc, text = manager.update_profile(entry_update_username.get(), entry_update_firstname.get(),
+                                              entry_update_lastname.get(), entry_update_email.get())
+            if sc == 200:
+                messagebox.showinfo("update completed", "Now you can see your profile updated")
+                for entry in list_update_entry:
+                    entry.delete(0, END)
+            else:
+                messagebox.showerror(sc, text)
 
         # --------------------------------- UPDATE PASSWORD
 
@@ -272,19 +268,20 @@ class LoginPage(tk.Frame):
             for i in list_update_pw_entry:
                 if i.get() == '':
                     messagebox.showerror("Missing fields", "Check data inserted")
+                    return
+
+            if entry_update_pw_password1.get() != entry_update_pw_password2.get():
+                messagebox.showerror("Password error", "Password inserted are different!")
+            else:
+                sc, text = manager.update_password(entry_update_pw_password1.get(),
+                                                   entry_update_pw_password2.get(),
+                                                   entry_update_pw_password_old.get())
+                if sc == 200:
+                    messagebox.showinfo("Password changed", "you can login now")
+                    for entry in list_update_pw_entry:
+                        entry.delete(0, END)
                 else:
-                    if entry_update_pw_password1.get() != entry_update_pw_password2.get():
-                        messagebox.showerror("Password error", "Password inserted are different!")
-                    else:
-                        sc, text = manager.update_password(entry_update_pw_password1.get(),
-                                                           entry_update_pw_password2.get(),
-                                                           entry_update_pw_password_old.get())
-                        if sc == 200:
-                            messagebox.showinfo("Password changed", "you can login now")
-                            for entry in list_update_pw_entry:
-                                entry.delete(0, END)
-                        else:
-                            messagebox.showerror(sc, text)
+                    messagebox.showerror(sc, text)
 
         # --------------------------------- DELETE
 
@@ -320,7 +317,10 @@ class LoginPage(tk.Frame):
         def try_see_data():
             sc, data = manager.get_user_data()
             if sc == 200:
-                messagebox.showinfo("Data retrieved", data)
+                personal_data = ''
+                for k in data:
+                    personal_data += k + ': ' + data[k] + '\n'
+                messagebox.showinfo("User data", personal_data)
             else:
                 messagebox.showerror(sc, data)
 

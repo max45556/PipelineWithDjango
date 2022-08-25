@@ -1,1 +1,0 @@
-{"flake8_output": "file.py:8:14: E231 missing whitespace after ','\nfile.py:8:16: E231 missing whitespace after ','\nfile.py:8:23: E231 missing whitespace after ','\nfile.py:8:25: E231 missing whitespace after ','\nfile.py:8:29: E261 at least two spaces before inline comment\nfile.py:8:35: W292 no newline at end of file\n"}

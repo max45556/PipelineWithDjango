@@ -1,1 +1,0 @@
-{"code_modified": "def difference(a, b):\n    set_a = set(a)\n    set_b = set(b)\n    comparison = set_a.difference(set_b)\n    return list(comparison)\n\n\ndifference([1, 2, 3], [1, 2, 4])  # [3]\n"}
