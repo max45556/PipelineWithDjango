@@ -490,8 +490,16 @@ Attraverso il bottone che presenta una freccia è possibile muoversi alla scherm
 
 ![alt text](https://github.com/max45556/PipelineWithDjango/blob/main/GUI_image/immagineUI3.png?raw=true)
 
-In questa schermata è possibile come prima operazione, selezionare la modalità Pipeline o Single Operation. Con la modalità Pipeline vengono eseguite tutte le operazioni disponibili sullo snippet. In alternativa è possibile selezionare le singole attività spuntandole. Dopodiché è necessario scegliere tra la modalità singolo output o output multipli. Scegliendo singolo output tutte le modifiche effettuate sul codice vengono unite riportando quindi un unico frammento di codice. Scegliendo invece output multipli vengono riportati diversi frammenti di codice mostrando le singole attività che sono state svolte. Attraverso l'opzione Creazione file è possibile salvare l'output all'interno di un file. Infine attraverso salva modifiche tutte le modifiche effettuate sul codice vengono salvate in modo che lo snippet memorizzato sia corretto. 
+In questa schermata è possibile come prima operazione, selezionare la modalità Pipeline o Single Operation. Con la modalità Pipeline vengono eseguite tutte le operazioni disponibili sullo snippet. In alternativa è possibile selezionare le singole attività spuntandole. Dopodiché è necessario scegliere tra la modalità singolo output o output multipli. Scegliendo singolo output tutte le modifiche effettuate sul codice vengono unite riportando quindi un unico frammento di codice. Scegliendo invece output multipli vengono riportati diversi frammenti di codice mostrando le singole attività che sono state svolte. Attraverso l'opzione Creazione file è possibile salvare l'output all'interno di un file. Infine attraverso salva modifiche tutte le modifiche effettuate sul codice vengono salvate in modo che lo snippet memorizzato sia corretto. Questa opzione è disponibile solo se si seleziona l'opzione singolo output.
 
 # PIPELINE CI/CD
+
+Una pipeline CI/CD (continuous integration / continuous delivery) è un insieme dei passaggi automatizzati e standardizzati che vengono eseguiti per fornire una nuova versione software. Le pipeline di integrazione e distribuzione continua (CI/CD) sono procedure pensate per ottimizzare l'erogazione di software attraverso l'approccio DevOps. Per informazioni in merito all'approccio DevOps si consulti il seguente link. 
+  La pipeline CI/CD permette di comprendere come è possibile utilizzare le API da noi create in ambito CI/CD. La pipeline dovrebbe essere utilizzata nel modo seguente:
+  - si inserisce lo snippet da analizzare (snippet.py) all'interno del repository Git
+  - si triggera l'esecuzione della pipeline dalla UI
+  - si visualizzano i risultati ottenuti dalla pipeline
+
+Entrando un po' più nel merito la pipeline è stata sviluppata con Jenkins.
 
 ![alt text](https://github.com/max45556/PipelineWithDjango/blob/main/GUI_image/restpipe.png?raw=true)
