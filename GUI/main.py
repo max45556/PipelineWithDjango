@@ -109,6 +109,7 @@ class LoginPage(tk.Frame):
         def try_login():
             sc, text = manager.login(entry_username.get(), entry_pw.get())
             if sc == 200:
+                messagebox.showinfo("Login", "Login Successful")
                 unlock()
             else:
                 messagebox.showerror(sc, text)
