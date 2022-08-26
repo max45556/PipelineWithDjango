@@ -499,6 +499,6 @@ Come detto precedentemente la pipeline CI/CD permette di comprendere come è pos
   - si triggera l'esecuzione della pipeline dalla UI
   - si visualizzano i risultati ottenuti dalla UI
 
-Entrando un po' più nel merito la pipeline questa è stata sviluppata con il noto servizio Jenkins. Quello che è il flusso di esecuzione è stabilito attraverso un file che prende il nome di Jenkinsfile e che è memorizzato all'interno di Github. Nel momento in cui si triggera l'esecuzione Jenkins cerca all'interno del repository il Jenkinsfile, il quale è stato scritto linguaggio groovy, e provvede a eseguire le operazioni da esso specificate. Le operazioni sono richieste in POST svolte sullo snippet. 
+Entrando un po' più nel merito la pipeline questa è stata sviluppata con il noto servizio Jenkins. Quello che è il flusso di esecuzione è stabilito attraverso un file che prende il nome di Jenkinsfile e che è memorizzato all'interno di Github. Nel momento in cui si triggera l'esecuzione Jenkins cerca all'interno del repository il Jenkinsfile, il quale è stato scritto linguaggio Groovy, e provvede a eseguire le operazioni da esso specificate. Le operazioni sono richieste in POST svolte sullo snippet. 
 
 ![alt text](https://github.com/max45556/PipelineWithDjango/blob/main/GUI_image/restpipe.png?raw=true)
