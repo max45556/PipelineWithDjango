@@ -67,7 +67,7 @@ def reindent_code() {
   post_reindent.setDoOutput(true)
   post_reindent.setRequestProperty("Content-Type", "application/json")
   post_reindent.setRequestProperty("Authorization", "Bearer " + access_token)
-  post_reindent.getOutputStream().write(body)
+  post_reindent.getOutputStream().write(body.getBytes("UTF-8"))
   def getRC_reindent = post_reindent.getResponseCode()
   def response_reindet = post_reindent.getInputStream().getText()
   if (getRC_reindent == 200) {
