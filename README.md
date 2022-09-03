@@ -23,7 +23,7 @@ Per utilizzare l'API è necessario registrarsi. Dopo la registrazione un utente 
 Questo elenco comprende una serie di API utilizzate per gestire il profilo utente.
 
 ### REGISTRAZIONE
-Per utilizzare le funzionalità offerte dalle API è necessario essere registrati. Dopo la fase di registrazione, un utente può effettuare il login utilizzando i propri dati personali e può ovviamente decidere in qualsiasi momento di eliminare il proprio profilo. Per la registrazione sono necessari tutti i campi successivamente esposti nel body ed al termine delle registrazione vengono riportati i dati dell'utente.
+Per utilizzare le funzionalità offerte dalle API è necessario essere registrati. Dopo la fase di registrazione, un utente può effettuare il login utilizzando i propri dati personali e può ovviamente decidere in qualsiasi momento di eliminare il proprio profilo. Per la registrazione sono necessari tutti i campi successivamente esposti nel body ed al termine delle registrazione vengono riportati i dati dell'utente come risposta.
 
 *Richiesta*:
 
@@ -47,7 +47,7 @@ Per utilizzare le funzionalità offerte dalle API è necessario essere registrat
 }
 
 ### LOGIN
-Effettuando il Login un utente può ottenere un token di accesso attraverso il quale sfruttare le API. Insieme ad esso è restituito anche un token di refresh usato per ottenere un nuovo token di accesso e uno user_id. Essendo le API pensate per essere integrate in un ambiente multi-utente tutte le API mostrate successivamente richiedono all'interno del body la specifica dell'Access Token in modo da comprendere quale utente sta effettuando la richiesta.
+Effettuando il Login un utente può ottenere un token di accesso attraverso il quale sfruttare le API. Insieme ad esso è restituito anche un token di refresh usato per ottenere un nuovo token di accesso e uno user_id. Essendo le API pensate per essere integrate in un ambiente multi-utente ognuna di queste richiede, come vedremo meglio successivamente, la specifica dell'Access Token nel body. Questo permette a Django di comprendere quale utente sta effettuando la richiesta.
 
 *Richiesta*:
 
@@ -66,7 +66,7 @@ Effettuando il Login un utente può ottenere un token di accesso attraverso il q
 }
 
 ### TOKEN DI REFRESH
-Viene utilizzato per ottenere un nuovo token di accesso utilizzando il token di refresh fornito al Login. Questa restituisce un nuovo token di accesso.
+Viene utilizzato per ottenere un nuovo token di accesso utilizzando il token di refresh fornito al Login. La risposta restituita è un nuovo token di accesso.
 
 *Richiesta*:
 
@@ -80,7 +80,7 @@ Viene utilizzato per ottenere un nuovo token di accesso utilizzando il token di 
 - *'access'*: token di accesso' (stringa)
 
 ### MODIFICA DELLA PASSWORD UTENTE
-Consente a un utente di modificare la password personale utilizzando la sua vecchia password. Specifica se la password è stata correttamente modificata o si è verificato un errore.
+Consente a un utente di modificare la password personale utilizzando la sua vecchia password. L'API notifica se il cambio della password è avvenuto correttamente.
 
 *Richiesta*:
 
@@ -97,7 +97,7 @@ Consente a un utente di modificare la password personale utilizzando la sua vecc
 *Standard Response*: "Data correctly Modified"
 
 ### AGGIORNAMENTO DEL PROFILO
-Consente a un utente di aggiornare i dati del proprio profilo. Se la modifica è avvenuta correttamente restituisce i dati aggiornati dell'utente.
+Consente a un utente di aggiornare i dati del proprio profilo. L'API notifica se la modifica è avvenuta coon successo restituendo i dati aggiornati.
 
 *Richiesta*:
 
@@ -158,10 +158,10 @@ Consente a un utente di eliminare il proprio profilo. Segnala, se la richiesta �
 }
 
 ## Gestione degli snippet
-Come detto precedente, gli utenti possono operare su snippet precedentemente creati. Un utente può infatti creare un suo snippet, recuperarlo a piacimento ed effettuare su di esso una serie di operazioni. Per la gestione degli snippet personali sono state create diverse API.
+Come detto precedente, gli utenti possono operare su snippet personali che hanno memorizzato. Un utente può infatti creare un suo snippet personale, recuperarlo ed effettuare su di esso una serie di operazioni. Per la gestione degli snippet personali sono state create diverse API.
 
 ### CREAZIONE DI UN NUOVO SNIPPET
-Con questa operazione è possibile memorizzare uno snippet personale. L'unico campo obbligatorio è quello che contiene il codice ma possono essere fornite anche altre informazioni per una migliore gestione dei propri snippet. I campi non precisati assumeranno valori di default. Se la creazione è avvenuta correttamente vengono riportate le informazioni dello snippet assieme ad uno snippet id. Questo sarà utilizzato per selezionare, tra l'elenco degli snippet personali memorizzati, quello su cui effettuare le operazioni.
+Con questa operazione è possibile memorizzare uno snippet personale. L'unico campo obbligatorio è quello che contiene il codice ma possono essere fornite anche altre informazioni complementari per una migliore gestione dei propri snippet. I campi non precisati assumeranno valori di default. Se la creazione è avvenuta correttamente vengono riportate le informazioni dello snippet assieme ad uno snippet id. Questo sarà utilizzato per selezionare, tra l'elenco degli snippet personali memorizzati, quello su cui effettuare le operazioni.
 
 *Richiesta*:
 
@@ -188,7 +188,7 @@ Con questa operazione è possibile memorizzare uno snippet personale. L'unico ca
 }
 
 ### MODIFICA DI UNO SNIPPET ESISTENTE
-Con questa operazione è possibile modificare uno snippet precedente salvato. Tutti i campi sono facoltativi e quelli non specificati continueranno ad assumere il valore che avevano precedentemente. È ovviamente necessario specificare lo snippet che si intende modificare e ciò è fatto attraverso lo snippet id. Questo viene fornito al momento della creazione dello snippet ma è visualizzabile anche in un secondo momento.
+Con questa operazione è possibile modificare uno snippet precedente salvato. Tutti i campi sono facoltativi e quelli non specificati continueranno ad assumere il valore che avevano precedentemente. È ovviamente necessario specificare lo snippet che si intende modificare attraverso lo snippet id. Lo snippet id viene fornito al momento della creazione ma è visualizzabile anche in un secondo momento.
 
 *Richiesta*:
 
@@ -232,7 +232,7 @@ Con questa operazione è possibile eliminare uno snippet esistente. Non è richi
 
 
 ### VISUALIZZAZIONE DI UNO SNIPPET DALL'ID
-Con questa operazione è possibile visualizzare uno snippet specifico tra quelli memorizzati. Ciò è fatto attraverso il suo id.
+Con questa operazione è possibile visualizzare uno snippet specifico tra quelli memorizzati specificando il suo id.
 
 *Richiesta*:
 
@@ -254,7 +254,7 @@ Con questa operazione è possibile visualizzare uno snippet specifico tra quelli
 }
 
 ### VISUALIZZAZIONE DI TUTTI GLI SNIPPET MEMORIZZATI
-Con questa operazione è possibile vedere tutti gli snippet che un utente ha memorizzato.
+Con questa operazione è possibile visualizzare tutti gli snippet che un utente ha memorizzato.
 
 *Richiesta*:
 
@@ -284,18 +284,19 @@ Di seguito sono riportati le API utilizzate per eseguire delle operazioni sugli 
 
           GET 127.0.0.1:8000/snippets/2/detect/
 
-i metodi POST vengono utilizzati quando si desidera agire su uno snippet *non* memorizzato. Nel body della richiesta è infatti necessario specificare un parametro contenente il codice su affettuare l'attività: 'code': 'codice da analizzare'. Le richieste POST si prestano nel momento in cui si vogliano utilizzare le funzionalità offerte della API senza però procedere alla memorizzazione degli snippet. All'interno dells pipeline CI/CD si useranno unicamente richieste in POST. Ad esempio, per eseguire l'operazione di individuazione del linguaggio di programmazione su uno snippet occorre fare la seguente richiesta:
+I metodi POST vengono utilizzati quando si desidera agire su uno snippet *non* memorizzato. Nel body della richiesta è infatti necessario specificare un parametro contenente il codice su cui effettuare l'operazione: 'code': 'codice da analizzare'. Le richieste POST si prestano nel momento in cui si vogliano utilizzare le funzionalità offerte della API senza però procedere alla memorizzazione degli snippet. All'interno dells pipeline CI/CD si useranno unicamente richieste in POST. Ad esempio, per eseguire l'operazione di individuazione del linguaggio di programmazione su uno snippet non memorizzato occorre fare la seguente richiesta:
 
-          POST 127.0.0.1:8000/snippets/detect/ e specificare nel body il codice da analizzare
+          POST 127.0.0.1:8000/snippets/detect/ + specifica nel body del codice da analizzare
 
-I metodi PATCH funzionano in modo quasi identico ai GET. I metodi PATCH servono per eseguire operazioni su uno snippet memorizzato sul server e la differenza rispetto ai metodi GET è che, una volta ottenuto l'output, le modifiche effettuate sul codice (come può essere l'indentazione) vengono salvato nel db. Ad esempio, quando viene eseguita l'operazione di identificazione del linguaggio di programmazione e si ottiene il risultato, questo valore viene memorizzato nel campo linguaggio dello snippet analizzato. Ad esempio, per eseguire l'operazione di individuazione del linguaggio di programmazione dello snippet, che ha id 2, occorre fare la seguente richiesta:
+I metodi PATCH funzionano in modo quasi identico ai GET. I metodi PATCH servono per eseguire operazioni su uno snippet memorizzato sul server e la differenza rispetto ai metodi GET è che, una volta ottenuto l'output, le modifiche effettuate sul codice (come può essere l'indentazione) vengono applicate allo snippet salvato in memoria. Ad esempio, quando viene eseguita l'operazione di identificazione del linguaggio di programmazione e si ottiene il risultato, questo valore viene memorizzato nel campo linguaggio dello snippet analizzato. Ad esempio, per eseguire l'operazione di individuazione del linguaggio di programmazione dello snippet, che ha id 2, occorre fare la seguente richiesta:
 
           PATCH 127.0.0.1:8000/snippets/2/detect/
 
 se l'output restituito è Python, il valore Python verrà inserito nel campo language dello snippet 2.
 
 ### IDENTIFICAZIONE DEL LINGUAGGIO DELLO SNIPPET
-Attraverso questa funzionalità è possibile identificare il linguaggio di programmazione di un particolare snippet. L'identificazione avviene tramite Guesslang, un software di deep learning Open source, che è stato addestrato con oltre un milione di sorgenti. Questo supporta più di 50 linguaggi di programmazione e rileva il linguaggio di programmazione corretto con una precisione superiore al 90%.
+
+Attraverso questa API è possibile identificare il linguaggio di programmazione di un particolare snippet. L'identificazione avviene tramite Guesslang, un software di deep learning Open source, che è stato addestrato con oltre un milione di sorgenti. Questo supporta più di 50 linguaggi di programmazione e rileva il linguaggio di programmazione corretto con una precisione superiore al 90%.
 
 *Richiesta*:  
 
@@ -317,7 +318,7 @@ Attraverso questa funzionalità è possibile identificare il linguaggio di progr
 
 ### REINDENTAZIONE DEL CODICE
 
-Attraverso questa operazione è possibile indentare il codice dello snippet. Per fare ciò è stata utilizzata una libreria chiamata Black che offre un formattatore di codice Python molto veloce. L'API restituisce i codice formattato come risposta.
+Attraverso questa API è possibile indentare il codice dello snippet. Per fare ciò è stata utilizzata una libreria chiamata Black che offre un formattatore di codice Python molto veloce. L'API restituisce il codice formattato come risposta.
 
 *Richiesta*:  
 
@@ -339,7 +340,7 @@ Attraverso questa operazione è possibile indentare il codice dello snippet. Per
 
 ### ORDINAMENTO DELLE IMPORTAZIONI DELLO SNIPPET
 
-Tramite questa operazione è possibile ordinare le importazioni all'interno del codice. Per fare ciò è stata utilizzata una libreria chiamata Isort. Isort è un'utility/libreria Python che permette di ordinare le importazioni in ordine alfabetico e separarle automaticamente in sezioni e a seconda del tipo.
+Attraverso questa API è possibile ordinare le importazioni all'interno del codice. Per fare ciò è stata utilizzata una libreria chiamata Isort. Isort è un'utility/libreria Python che permette di ordinare le importazioni in ordine alfabetico e separarle automaticamente in sezioni e a seconda del tipo.
 
 *Richiesta*:  
 
@@ -361,7 +362,7 @@ Tramite questa operazione è possibile ordinare le importazioni all'interno del 
 
 ### PYLINT
 
-Tramite questa funzione è possibile controllare eventuali errori presenti dentro codice Python. Per fare ciò è stato utilizzato Pylint che cerca di identificare errori dentro il codice imponendo uno standard di codifica. Questo può anche cercare determinate tipologie di errori e consigliare su come eseguire il refactoring di determinati blocchi offrendo anche dettagli sulla complessità del codice.
+Attraverso questa API è possibile controllare eventuali errori presenti dentro codice Python. Per fare ciò è stato utilizzato Pylint che cerca di identificare errori dentro il codice imponendo uno standard di codifica. Questo può anche cercare determinate tipologie di errori e fornire consigli su come eseguire il refactoring di determinati blocchi offrendo anche dettagli sulla complessità del codice.
 
 *Richiesta*:  
 
@@ -381,7 +382,7 @@ Tramite questa funzione è possibile controllare eventuali errori presenti dentr
 
 ### PYFLAKES
 
-Tramite questa funzione è possibile controllare eventuali errori presenti dentro codice Python. Per fare ciò è stato utilizzato Pyflakes il quale analizza i programmi e rileva eventuali errori. Funziona analizzando il file sorgente, non importandolo, quindi è più sicuro e veloce.
+Attraverso questa API è possibile controllare eventuali errori presenti dentro codice Python. Per fare ciò è stato utilizzato Pyflakes il quale analizza i programmi e rileva eventuali errori. Funziona analizzando il file sorgente, non importandolo, quindi è più sicuro e veloce.
 
 *Richiesta*:  
 
@@ -402,7 +403,8 @@ Tramite questa funzione è possibile controllare eventuali errori presenti dentr
 ### FLAKE8
 
 Oltre agli strumenti che consentono di formattare il codice in Python esistono diversi linter e analizzatori statici di codice.
-Uno dei più popolari Linter su Python è Flake8 che non cambia il codice, ma fornisce uno strumento di warnings in real time.
+Uno dei più popolari Linter su Python è Flake8 che non cambia il codice, ma fornisce uno strumento di warnings real time. Attraverso questa API
+potremo identificare eventuali errori presenti nello snippet.
 
 *Richiesta*:  
 
@@ -422,7 +424,10 @@ Uno dei più popolari Linter su Python è Flake8 che non cambia il codice, ma fo
 
 ### MYPY
 
-Mypy è un controllore del tipo statico per Python che mira a combinare i vantaggi offerti dal typing statico e dinamico. Mypy combina la potenza espressiva e la comodità di Python con un potente sistema di tipi e un controllo del tipo in fase di compilazione.
+Mypy è un altro analizzatore statico per Python che mira a combinare i vantaggi offerti dal typing statico e dinamico.
+Mypy combina la potenza espressiva e la comodità di Python con un potente sistema di tipi e un controllo del tipo in fase di compilazione.
+Attraverso questa API potremo identificare eventuali errori presenti nello snippet.
+
 
 *Richiesta*:  
 
