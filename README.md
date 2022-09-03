@@ -469,7 +469,7 @@ L'esecuzione del codice consente di testare l'esecuzione di uno snippet. Il serv
 
 # SOFTWARE PER L'UTILIZZO DELLE API
 
-Come detto in precedenza, è stato sviluppato un software che permette di eseguire le operazioni previste dalle API. Si tratta in particolare di una GUI sviluppata con TKinter e sebbene semplice aiuta a comprendere quella è che la loro utilità all'interno di un software. Procederemo ad analizzare il funzionamento del software attraverso delle immagini.
+Come detto in precedenza, è stato sviluppato un software che permette di eseguire le operazioni previste dalle API tramite una GUI. Questa è stata sviluppata con TKinter e sebbene semplice aiuta a comprendere come è possibile sfruttare le API all'interno di un software. Procederemo ad analizzare il funzionamento del software attraverso delle immagini.
 
 ![alt text](https://github.com/max45556/PipelineWithDjango/blob/main/GUI_image/immagineUI1.png?raw=true)
 
