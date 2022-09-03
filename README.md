@@ -7,23 +7,23 @@ L'obbiettivo di questo progetto è stato quello di creare, attraverso, [DJANGO R
  - un software con una semplice interfaccia che consente di effettuare delle operazioni su snippet. Questo
   astrae le modalità di interazione con le API dato che è stato pensato per essere utilizzato da utenti non esperti.
 
-- una pipeline CI/CD che presenta come stadi alcune attività svolte dalle API.
+- una pipeline CI/CD che presenta come fasi alcune richieste alle API.
 
-Procederemo quindi ad illustrare quelle che sono le API create, le loro funzionalità e attraverso quali metodi è possibile sfruttarle per poi illustrare il software e la pipeline CI/CD creata.
+Procederemo quindi ad illustrare quelle che sono le API create, le loro funzionalità e attraverso quali metodi è possibile sfruttarle. Dopo aver fatto ciò illustreremo il software creato per interagire con le API e la pipeline CI/CD.
 
 # Funzionamento delle API
 
-Per utilizzare l'API è necessario registrarsi. Dopo la registrazione un utente può svolgere le seguenti funzioni:
-- Gestire il proprio profilo;
-- Memorizzare snippet;
-- Effettuare delle operazione su snippet memorizzati o non memorizzati.
+Per utilizzare l'API è necessario registrarsi. Dopo la registrazione un utente può svolgere le seguenti attività:
+- Gestire il proprio profilo utente;
+- Memorizzare snippet di codice;
+- Effettuare delle operazione su snippet memorizzati (o non memorizzati).
 
 ## Gestione del profilo
 
 Questo elenco comprende una serie di API utilizzate per gestire il profilo utente.
 
 ### REGISTRAZIONE
-Per utilizzare le funzionalità offerte dalle API è necessario essere registrati. Dopo la fase di registrazione, un utente può effettuare il login utilizzando i dati appena inseriti e può ovviamente decidere di eliminare il proprio profilo in qualsiasi momento. Per la registrazione sono necessari tutti i campi successivamente esposti nel body ed al termine delle registrazione vengono riportati i dati dell'utente.
+Per utilizzare le funzionalità offerte dalle API è necessario essere registrati. Dopo la fase di registrazione, un utente può effettuare il login utilizzando i propri dati personali e può ovviamente decidere in qualsiasi momento di eliminare il proprio profilo. Per la registrazione sono necessari tutti i campi successivamente esposti nel body ed al termine delle registrazione vengono riportati i dati dell'utente.
 
 *Richiesta*:
 
