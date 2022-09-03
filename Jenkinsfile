@@ -70,7 +70,6 @@ def reindent_code() {
   post_reindent.getOutputStream().write(body.getBytes("UTF-8"))
   def getRC_reindent = post_reindent.getResponseCode()
   def response_reindet = post_reindent.getInputStream().getText()
-  print(post_reindent.getInputStream().getText())
   if (getRC_reindent == 200) {
     Map parsedJson2 = new JsonSlurper().parseText(response_reindet) as Map
     print("Correct file is: \n" + parsedJson2.code_modified + "\n\n")
