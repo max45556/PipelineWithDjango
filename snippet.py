@@ -22,7 +22,7 @@ def sort_by_indexes(lst, indexes, reverse=False):
   reverse)]
 
 a = ['eggs', 'bread', 'oranges', 'jam', 'apples', 'milk']
-b = [3, 2, \
+b = [3, 2, 
      6, 4,
      1, 5   ]
 sort_by_indexes(a,     b) # ['apples', 'bread', 'eggs', 'jam', 'milk', 'oranges']
