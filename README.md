@@ -2,12 +2,12 @@
 
 # Scopo
 
-L'obbiettivo di questo progetto è stato quello di creare, attraverso, [DJANGO REST FRAMEWORK](https://www.django-rest-framework.org/) delle Web API che permettessero di effettuare varie attività su snippet di codice scritti in Python. Le API sono pensate per essere integrate sia all'interno di un applicazione che dentro una pipeline CI/CD e per dimostrare ciò è stato creato:
+L'obbiettivo di questo progetto è stato quello di creare, attraverso, [DJANGO REST FRAMEWORK](https://www.django-rest-framework.org/) delle Web API che permettessero di effettuare varie attività su snippet di codice scritti in Python. Le API sono pensate per essere integrate sia all'interno di un applicazione che dentro una pipeline CI/CD e per mostrare ciò è stato creato:
 
- - un software con una semplice interfaccia che consente facilmente di operare sugli snippet. Questo
-  astrae le modalità di interazione con le API dato che + stato pensato per un utilizzato da utenti non esperti.
+ - un software con una semplice interfaccia che consente di effettuare delle operazioni su snippet. Questo
+  astrae le modalità di interazione con le API dato che è stato pensato per essere utilizzato da utenti non esperti.
 
-- una pipeline CI/CD che presenta come stadi le attività svolte dalle API.
+- una pipeline CI/CD che presenta come stadi alcune attività svolte dalle API.
 
 Procederemo quindi ad illustrare quelle che sono le API create, le loro funzionalità e attraverso quali metodi è possibile sfruttarle per poi illustrare il software e la pipeline CI/CD creata.
 
