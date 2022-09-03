@@ -186,7 +186,7 @@ node {
         git branch: 'main', url: 'https://github.com/max45556/PipelineWithDjango.git'
         def file = new File("/var/jenkins_home/workspace/DjangoPipe/snippet.py")
         snippet = file.text
-        body = '{"code":' + '"' + snippet.replaceAll("(\\r|\\n|\\r\\n)+", "\\\\n") + '"}'
+        body = '{"code":' + '"' + snippet+ '"}'
         println("Snippet to analyze: \n\n" + snippet)
     }
     stage('Logging') {
