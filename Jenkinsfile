@@ -54,7 +54,7 @@ def language_identification() {
   String response = post_language.getInputStream().getText()
   if (getRC_lan == 200) {
     Map parsedJson = new JsonSlurper().parseText(response) as Map
-    println "Language is " + parsedJson.language + "\n"
+    println "Language is: " + parsedJson.language + "\n"
   } else {
     print "Error in language " + response
   }
@@ -69,10 +69,10 @@ def reindent_code() {
   post_reindent.setRequestProperty("Authorization", "Bearer " + access_token)
   post_reindent.getOutputStream().write(body.getBytes("UTF-8"))
   def getRC_reindent = post_reindent.getResponseCode()
-  def response = post_reindent.getInputStream().getText()
+  def response_reindet = post_reindent.getInputStream().getText()
   if (getRC_reindent == 200) {
-    Map parsedJson = new JsonSlurper().parseText(response) as Map
-    print("Correct file is " + parsedJson.code_modified + "\n\n")
+    Map parsedJson2 = new JsonSlurper().parseText(response_reindet) as Map
+    print("Correct file is: \n" + parsedJson2.code_modified + "\n\n")
     } else {
       print "Error in reindet code " + response
     }
@@ -89,7 +89,7 @@ def order_import() {
   String response = post_order_import.getInputStream().getText()
   if (getRC_order == 200) {
       Map parsedJson = new JsonSlurper().parseText(response) as Map
-      print("Correct file after ordering of imports is " + parsedJson.code_modified + "\n\n")
+      print("Correct file after ordering of imports is: \n" + parsedJson.code_modified + "\n\n")
   } else {
     print "Error in order import " + response
   }
@@ -106,7 +106,7 @@ def pylint() {
   String response = post_pylint.getInputStream().getText()
   if (getRC_pylint == 200) {
       Map parsedJson = new JsonSlurper().parseText(response) as Map
-      print("Pylint output is: " + parsedJson.pylint_output + "\n\n")
+      print("Pylint output is: \n" + parsedJson.pylint_output + "\n\n")
   } else {
     print "Error using pylint " + response
   }
@@ -123,7 +123,7 @@ def pyflakes() {
   String response = post_pyflakes.getInputStream().getText()
   if (getRC_pyflake == 200) {
       Map parsedJson = new JsonSlurper().parseText(response) as Map
-      print("Pyflake output is: " + parsedJson.pyflakes_output + "\n\n")
+      print("Pyflake output is: \n" + parsedJson.pyflakes_output + "\n\n")
   } else {
     print "Error using pyflakes " + response
   }
@@ -140,7 +140,7 @@ def flake8() {
   String response = post_flake8.getInputStream().getText()
   if (getRC_flake8 == 200) {
       Map parsedJson = new JsonSlurper().parseText(response) as Map
-      print("flake8 output is: " + parsedJson.flake8_output + "\n\n")
+      print("flake8 output is: \n" + parsedJson.flake8_output + "\n\n")
   } else {
     print "Error using flake8 " + response
   }
@@ -157,7 +157,7 @@ def mypy() {
   String response = post_mypy.getInputStream().getText()
   if (getRC_mypy == 200) {
       Map parsedJson = new JsonSlurper().parseText(response) as Map
-      print("mypy output is: " + parsedJson.mypy_output + "\n\n")
+      print("mypy output is: \n" + parsedJson.mypy_output + "\n\n")
   } else {
     print "Error using mypy " + response
   }

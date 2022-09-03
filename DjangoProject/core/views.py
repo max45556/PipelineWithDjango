@@ -161,7 +161,7 @@ class SnippetDetect(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request, pk):
-        print("GET DETECT")
+        print("Identificazione lingua dello snippet... GET\n")
         snippet = Snippet.objects.get(pk=pk)
         if snippet.owner != self.request.user.username:
             raise PermissionDenied
@@ -170,7 +170,7 @@ class SnippetDetect(APIView):
         return Response(status=status.HTTP_200_OK, data={"language": language})
 
     def post(self, request):
-        print("POST DETECT")
+        print("Identificazione lingua dello snippet... POST\n")
         print(request.data)
         if not request.data.get('code'):
             return Response(status=status.HTTP_200_OK, data="You must specify the code into body (code: 'code') ")
@@ -180,7 +180,7 @@ class SnippetDetect(APIView):
         return JsonResponse(status=status.HTTP_200_OK, data={"language": language})
 
     def patch(self, request, pk):
-        print("PATCH DETECT")
+        print("Identificazione lingua dello snippet... PATCH\n")
         snippet = Snippet.objects.get(pk=pk)
         if snippet.owner != self.request.user.username:
             raise PermissionDenied
@@ -193,7 +193,7 @@ class SnippetDetect(APIView):
     def identify_language(self, code):
         guess = Guess()
         language = guess.language_name(code)
-        print("LANGUAGE FOUND IS : " + language)
+        print("LANGUAGE FOUND IS : " + language + "\n")
         return language
 
 
@@ -202,18 +202,17 @@ def operation(code, command):
         os.remove("file.py")
     file = open("file.py", "a")
     file.write(code)
-    print("Codice " + code)
     file.close()
     pipes = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=False)
     std_out, std_err = pipes.communicate()
     if pipes.returncode == 123:
-        print("Error")
+        print("Errore rilevato, ritorno il codice originario...\n")
         return code
     else:
-        print("Good")
         f = open("file.py", "r")
         contents = f.read()
         f.close()
+        print("Modifica effettuata, ritorno il nuovo codice...:\n " + contents + "\n")
         return contents
 
 
@@ -226,6 +225,7 @@ class SnippetReindent(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request, pk):
+        print("Eseguendo black...GET\n")
         snippet = Snippet.objects.get(pk=pk)
         if snippet.owner != self.request.user.username:
             raise PermissionDenied
@@ -234,6 +234,7 @@ class SnippetReindent(APIView):
         return JsonResponse(status=status.HTTP_200_OK, data={"code_modified": code_modified})
 
     def post(self, request):
+        print("Eseguendo black...POST\n")
         if not request.data.get('code'):
             return Response(status=status.HTTP_200_OK, data="You must specify the code into body (code: 'code') ")
         code = request.data.get('code')
@@ -241,6 +242,7 @@ class SnippetReindent(APIView):
         return JsonResponse(status=status.HTTP_200_OK, data={"code_modified": code_modified})
 
     def patch(self, request, pk):
+        print("Eseguendo black...PATCH\n")
         snippet = Snippet.objects.get(pk=pk)
         if snippet.owner != self.request.user.username:
             raise PermissionDenied
@@ -260,6 +262,7 @@ class SnippetOrderImport(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request, pk):
+        print("Ordinando le importazioni...GET\n")
         snippet = Snippet.objects.get(pk=pk)
         if snippet.owner != self.request.user.username:
             raise PermissionDenied
@@ -268,6 +271,7 @@ class SnippetOrderImport(APIView):
         return JsonResponse(status=status.HTTP_200_OK, data={"code_modified": code_modified})
 
     def post(self, request):
+        print("Ordinando le importazioni...POST\n")
         if not request.data.get('code'):
             return Response(status=status.HTTP_200_OK, data="You must specify the code into body (code: 'code') ")
         code = request.data.get('code')
@@ -275,6 +279,7 @@ class SnippetOrderImport(APIView):
         return JsonResponse(status=status.HTTP_200_OK, data={"code_modified": code_modified})
 
     def patch(self, request, pk):
+        print("Ordinando le importazioni...PATCH\n")
         snippet = Snippet.objects.get(pk=pk)
         if snippet.owner != self.request.user.username:
             raise PermissionDenied
@@ -284,6 +289,7 @@ class SnippetOrderImport(APIView):
         snippet.save()
         return JsonResponse(status=status.HTTP_200_OK, data={"code_modified": code_modified})
 
+#---------------------------------------------------
 
 def check_operation(code, command):
     if os.path.exists("file.py"):
