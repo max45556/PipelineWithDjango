@@ -494,11 +494,15 @@ In questa schermata è possibile come prima operazione, selezionare la modalità
 
 # PIPELINE CI/CD
 
-Come detto precedentemente la pipeline CI/CD permette di comprendere come è possibile utilizzare le API da noi create in ambito CI/CD. La pipeline è pensata per essere utilizzata nel modo seguente:
-  - si inserisce lo snippet da analizzare (snippet.py) all'interno del repository Git
-  - si triggera l'esecuzione della pipeline dalla UI
-  - si visualizzano i risultati ottenuti dalla UI
+Come detto precedentemente la pipeline CI/CD permette di comprendere come è possibile utilizzare le API da noi create in ambito DevOps. La pipeline è stata creata attraverso [Jenkins](https://www.jenkins.io/) il quale è un server open source di CI/CD (Continuous Integration/Continuous Deployment). Per fornire un minimo di contesto, Jenkins permette di automatizzare le diverse fasi del ciclo di vita del software, dalla compilazione alla distribuzione permettendo di programmare l'esecuzione di determinate attività con una pianificazione ad eventi o utilizzando trigger, come un commit del codice all’interno di una repository. Jenkins è uno strumento molto completo grazie anche ad un grande numero di plug-in compatibili, sviluppati e diffusi dalla comunità di utenti e developer che lo usa. Sebbene Jenkins sia uno strumento abbastanza intuitivo non procederemo ad illustrare le operazioni svolte per il suo utilizzo dato che ciò impiegherebbe molto tempo. Comprenderemo invece come la pipeline esegue e cosa saremo in grado di visualizzare attraverso il suo utilizzo.
 
-Entrando un po' più nel merito la pipeline questa è stata sviluppata con il noto servizio Jenkins. Quello che è il flusso di esecuzione è stabilito attraverso un file che prende il nome di Jenkinsfile e che è memorizzato all'interno di Github. Nel momento in cui si triggera l'esecuzione Jenkins cerca all'interno del repository il Jenkinsfile, il quale è stato scritto linguaggio Groovy, e provvede a eseguire le operazioni da esso specificate. Le operazioni sono richieste in POST svolte sullo snippet. 
+La pipeline è pensata per essere utilizzata nel modo seguente:
+  - si inserisce lo snippet da analizzare (snippet.py) all'interno del repository Git
+  - si triggera l'esecuzione della pipeline dalla Web UI di Jenkins.
+  - si visualizzano i risultati ottenuti dalla UI.
+
+Volendo fornire qualche dettaglio aggiuntivo, il flusso di esecuzione della pipeline è stabilito e compreso da Jenkins attraverso un file denominato Jenkinsfile e che è memorizzato all'interno di questo repository Github. Il Jenkinsfile è scritto in linguaggio Groovy ed è visibile dal repository. Quindi, nel momento in cui si triggera l'esecuzione della pipeline dalla Web UI di Jenkins questo cerca all'interno del repository un file chiamato Jenkinsfile e provvede alla sua lettura per comprendere quali operazioni devono essere svolte. Le operazioni saranno richieste in POST rivolte verso il server Django e saranno effettuate per modificare lo snippet presente nel repository GitHub.
 
 ![alt text](https://github.com/max45556/PipelineWithDjango/blob/main/GUI_image/restpipe.png?raw=true)
+
+Mostriamo come graficamente avviene l'esecuzione della pipeline e cosa mostra:
