@@ -68,9 +68,9 @@ def reindent_code() {
   post_reindent.setRequestProperty("Content-Type", "application/json")
   post_reindent.setRequestProperty("Authorization", "Bearer " + access_token)
   post_reindent.getOutputStream().write(body.getBytes("UTF-8"))
-  print(post_reindent)
   def getRC_reindent = post_reindent.getResponseCode()
   def response_reindet = post_reindent.getInputStream().getText()
+  print(post_reindent.getInputStream())
   if (getRC_reindent == 200) {
     Map parsedJson2 = new JsonSlurper().parseText(response_reindet) as Map
     print("Correct file is: \n" + parsedJson2.code_modified + "\n\n")
