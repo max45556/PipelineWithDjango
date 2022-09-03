@@ -207,13 +207,13 @@ def operation(code, command):
     pipes = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=False)
     std_out, std_err = pipes.communicate()
     if pipes.returncode == 123:
-        print("Error")
+        print("Errore rilevato, ritorno il codice originario \n")
         return code
     else:
-        print("Good")
         f = open("file.py", "r")
         contents = f.read()
         f.close()
+        print("Modifica effettuata, ritorno il nuovo codice:\n " + contents + "\n")
         return contents
 
 
@@ -224,6 +224,7 @@ Reindent code
 
 class SnippetReindent(APIView):
     permission_classes = (IsAuthenticated,)
+    print("Eseguendo black \n")
 
     def get(self, request, pk):
         snippet = Snippet.objects.get(pk=pk)
@@ -258,6 +259,7 @@ Order Import
 
 class SnippetOrderImport(APIView):
     permission_classes = (IsAuthenticated,)
+    print("Ordinando le importazioni \n")
 
     def get(self, request, pk):
         snippet = Snippet.objects.get(pk=pk)
