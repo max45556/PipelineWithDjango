@@ -509,5 +509,3 @@ La pipeline è pensata per essere utilizzata nel modo seguente:
 Volendo fornire qualche dettaglio aggiuntivo, il flusso di esecuzione della pipeline è stabilito e compreso da Jenkins attraverso un file denominato Jenkinsfile e che è memorizzato all'interno di questo repository Github. Il Jenkinsfile è scritto in linguaggio Groovy ed è visibile dal repository. Quindi, nel momento in cui si triggera l'esecuzione della pipeline dalla Web UI di Jenkins questo cerca all'interno del repository un file chiamato Jenkinsfile e provvede alla sua lettura per comprendere quali operazioni devono essere svolte. Le operazioni saranno richieste in POST rivolte verso il server Django e saranno effettuate per modificare lo snippet presente nel repository GitHub.
 
 ![alt text](https://github.com/max45556/PipelineWithDjango/blob/main/GUI_image/restpipe.png?raw=true)
-
-Mostriamo come graficamente avviene l'esecuzione della pipeline e cosa mostra:
